@@ -3,7 +3,6 @@
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import CountUp from "react-countup"
-import Link from "next/link"
 
 const seats = "/assets/img/backgroundImages/seats.jpeg"
 
@@ -155,22 +154,6 @@ export default function Seat() {
             </motion.div>
           </motion.div>
 
-          {/* Call-to-action button */}
-          <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1.8 }}
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(251, 191, 36, 0.1)",
-                borderColor: "rgba(251, 191, 36, 0.5)",
-                transition: { duration: 0.2 },
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="mt-12 px-8 py-2.5 border border-amber-300/30 text-amber-100 rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-amber-900/10 transition-all duration-300"
-          >
-            <Link href="/contact-us">Join Us</Link>
-          </motion.button>
 
           {/* Floating elements for visual interest */}
           {[...Array(5)].map((_, index) => (
