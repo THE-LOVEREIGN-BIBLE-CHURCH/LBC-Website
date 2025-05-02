@@ -61,7 +61,7 @@ export default function Belief() {
   const titleWords = titleText.split(" ")
 
   return (
-    <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden z-1 -mt-72" style={{ opacity }}>
+    <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden z-10 -mt-72" style={{ opacity }}>
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
