@@ -3,15 +3,15 @@
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import CountUp from "react-countup"
+import Link from "next/link"
+
 const seats = "/assets/img/backgroundImages/seats.jpeg"
-import { useNavigate } from "react-router-dom"
 
 export default function Seat() {
   const containerRef = useRef(null)
   const statsRef = useRef(null)
   const isInView = useInView(containerRef, { once: false, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: false, amount: 0.5 })
-  const navigate = useNavigate()
 
   // Scroll-based animations
   const { scrollYProgress } = useScroll({
@@ -24,19 +24,8 @@ export default function Seat() {
   const titleY = useTransform(scrollYProgress, [0, 0.5], [0, -30])
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, -15])
 
-  // Stats data
-  const stats = [{ label: "Service Times a Week", value: 5, suffix: "+" }]
-
-  const handleJoinUsClick = () => {
-    navigate("/contact-us")
-  }
-
   return (
-      <motion.div
-          ref={containerRef}
-          className="relative h-screen w-full overflow-hidden mt-16 md:mt-24 z-50"
-          style={{ opacity }}
-      >
+      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden z-20" style={{ opacity }}>
         {/* Background image with parallax */}
         <motion.div
             className="absolute inset-0 bg-cover bg-center"
@@ -46,11 +35,10 @@ export default function Seat() {
             }}
         />
 
-        {/*<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>*/}
-
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>
 
         {/* Content */}
-        <div className="relative flex flex-col items-center justify-center h-full text-center px-6 pt-16 md:pt-0">
+        <div className="relative z-30 flex flex-col items-center justify-center h-full text-center px-6 pt-16 md:pt-0">
           <motion.div style={{ y: titleY }} className="max-w-2xl mx-auto mt-16 md:mt-0">
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -179,10 +167,9 @@ export default function Seat() {
                 transition: { duration: 0.2 },
               }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleJoinUsClick}
               className="mt-12 px-8 py-2.5 border border-amber-300/30 text-amber-100 rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-amber-900/10 transition-all duration-300"
           >
-            Join Us
+            <Link href="/contact-us">Join Us</Link>
           </motion.button>
 
           {/* Floating elements for visual interest */}
@@ -191,12 +178,15 @@ export default function Seat() {
                   key={index}
                   className="absolute w-1 h-1 rounded-full bg-amber-300/30"
                   initial={{
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
+                    x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
+                    y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
                     opacity: 0,
                   }}
                   animate={{
-                    y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight - 100],
+                    y: [
+                      Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+                      Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800) - 100,
+                    ],
                     opacity: [0, 0.4, 0],
                     scale: [0, 1, 0],
                   }}
