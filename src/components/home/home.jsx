@@ -1,15 +1,14 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
-import { useNavigate } from "react-router-dom"
 import useWindowSize from "../../hooks/useWindowSize"
 
 // Define images outside component to prevent recreating on each render
-const mobileImage1 = '/assets/img/backgroundImages/welcomehomemobilebg2.jpg'
-const mobileImage2 = '/assets/img/backgroundImages/welcomehomeMobilebg1.jpg'
-const desktopImage1 = '/assets/img/backgroundImages/homedesktopbg1.jpg'
-const desktopImage2 = '/assets/img/backgroundImages/homedesktopbg2.png'
+const mobileImage1 = "/assets/img/backgroundImages/welcomehomemobilebg2.jpg"
+const mobileImage2 = "/assets/img/backgroundImages/welcomehomeMobilebg1.jpg"
+const desktopImage1 = "/assets/img/backgroundImages/homedesktopbg1.jpg"
+const desktopImage2 = "/assets/img/backgroundImages/homedesktopbg2.png"
 
 // Constants
 const PHRASES = [
@@ -29,10 +28,12 @@ export default function Home() {
   const phraseIntervalRef = useRef(null)
   const titleIntervalRef = useRef(null)
   const { width } = useWindowSize()
-  const navigate = useNavigate()
+
+  // Determine if mobile based on screen width
+  const isMobile = width <= 768
 
   // Determine images based on screen width
-  const images = width <= 768 ? [mobileImage1, mobileImage2] : [desktopImage1, desktopImage2]
+  const images = isMobile ? [mobileImage1, mobileImage2] : [desktopImage1, desktopImage2]
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
@@ -60,7 +61,11 @@ export default function Home() {
   // Image transition
   useEffect(() => {
     imageIntervalRef.current = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length)
+      setIsImageTransitioning(true)
+      setTimeout(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length)
+        setIsImageTransitioning(false)
+      }, 300) // Short delay for smoother transition
     }, IMAGE_TRANSITION_INTERVAL)
 
     return () => {
@@ -91,81 +96,91 @@ export default function Home() {
   }, [])
 
   return (
-    <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
-      {/* Background Images */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentImageIndex}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: "fadein" }}
-        />
-      </AnimatePresence>
+      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
+        {/* Background Images with improved transitions */}
+        <AnimatePresence mode="wait">
+          <motion.div
+              key={currentImageIndex}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-black/20 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70 z-20"></div>
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70 z-20"></div>
 
-      {/* Content */}
-      <div className="relative z-30 flex flex-col items-center justify-center text-center h-full px-4">
-        {/* Title */}
-        <motion.div
-          style={{ y: titleY }}
-          className={`${width <= 768 ? "mt-[-18rem]" : "mt-[-8rem]"}`}
+        {/* Content - Positioned left for desktop, bottom right for mobile */}
+        <div
+            className={`absolute z-30 flex flex-col  ${
+                isMobile
+                    ? "items-end justify-end bottom-64 right-6 text-right "
+                    : "items-start justify-center h-full left-12 md:left-16 lg:left-24 text-left"
+            }`}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-Geist tracking-tight overflow-hidden text-white">
-            {TITLES[currentTitleIndex].split(" ").map((word, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.1 + index * 0.05,
-                  ease: [0.215, 0.61, 0.355, 1],
-                }}
-                className="inline-block mr-4"
+          {/* Title with improved animations */}
+          <motion.div style={{ y: titleY }} className={`${isMobile ? "" : ""}`}>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                  key={currentTitleIndex}
+                  className={`${
+                      isMobile ? "text-4xl" : "text-5xl md:text-7xl lg:text-8xl"
+                  } font-Geist tracking-tight overflow-hidden text-white`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
               >
-                {word === "Bible" || word === "Home" ? (
-                  <span className="italic">{word}</span>
-                ) : (
-                  word
-                )}
-              </motion.span>
-            ))}
-          </h1>
-        </motion.div>
+                {TITLES[currentTitleIndex].split(" ").map((word, index) => (
+                    <motion.span
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.8,
+                          delay: 0.1 + index * 0.05,
+                          ease: [0.215, 0.61, 0.355, 1],
+                        }}
+                        className={`inline-block ${isMobile ? "ml-4" : "mr-4"}`}
+                    >
+                      {word === "Bible" || word === "Home" ? <span className="italic font-semibold">{word}</span> : word}
+                    </motion.span>
+                ))}
+              </motion.h1>
+            </AnimatePresence>
+          </motion.div>
 
-        {/* Divider */}
-        <motion.div
-          className="w-16 h-px bg-purple-300/70 my-8"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 0.7 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        />
+          {/* Phrases with improved animations */}
+          <motion.div
+              style={{ y: phraseY }}
+              className={`h-12 md:h-16 flex ${
+                  isMobile ? "items-end justify-end" : "items-start justify-start"
+              } overflow-hidden max-w-md`}
+          >
+            <AnimatePresence mode="wait">
+              <motion.p
+                  key={currentPhraseIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                  }}
+                  className={`text-white/90 ${
+                      isMobile ? "text-base" : "text-lg md:text-2xl lg:text-3xl"
+                  } font-Geist font-light`}
+              >
+                {PHRASES[currentPhraseIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </motion.div>
 
-        {/* Phrases */}
-        <motion.div style={{ y: phraseY }} className="h-12 md:h-16 flex items-center justify-center overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentPhraseIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{
-                duration: 0.8,
-                ease: [0.215, 0.61, 0.355, 1],
-              }}
-              className="text-white/90 text-lg md:text-2xl lg:text-3xl font-Geist font-light"
-            >
-              {PHRASES[currentPhraseIndex]}
-            </motion.p>
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
   )
 }

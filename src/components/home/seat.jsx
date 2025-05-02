@@ -32,7 +32,11 @@ export default function Seat() {
   }
 
   return (
-      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
+      <motion.div
+          ref={containerRef}
+          className="relative h-screen w-full overflow-hidden mt-16 md:mt-24"
+          style={{ opacity }}
+      >
         {/* Background image with parallax */}
         <motion.div
             className="absolute inset-0 bg-cover bg-center"
@@ -42,16 +46,12 @@ export default function Seat() {
             }}
         />
 
-        {/* Gradient overlays for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>
+        {/*<div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>*/}
 
-        {/* Subtle texture overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-5 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
-          {/* Title */}
-          <motion.div style={{ y: titleY }} className="max-w-2xl mx-auto">
+        <div className="relative flex flex-col items-center justify-center h-full text-center px-6 pt-16 md:pt-0">
+          <motion.div style={{ y: titleY }} className="max-w-2xl mx-auto mt-16 md:mt-0">
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -78,7 +78,7 @@ export default function Seat() {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="text-sm md:text-base leading-relaxed text-white/80 font-light"
+                className="text-m md:text-base leading-relaxed text-white/80 font-bold"
             >
               At Lovereign Bible Church, we want to stand with you as you discover more about God's grace, grow in His
               knowledge, and serve His will.
@@ -110,7 +110,7 @@ export default function Seat() {
                   className="mb-2"
               >
               <span className="text-6xl md:text-9xl font-bold text-white">
-                {statsInView ? <CountUp start={2.5} end={5} duration={2.5} delay={0.5}  /> : "5+"}
+                {statsInView ? <CountUp start={2.5} end={5} duration={2.5} delay={0.5} /> : "5+"}
               </span>
               </motion.div>
               <motion.p
@@ -134,10 +134,9 @@ export default function Seat() {
                   className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3">
-                </div>
+                <div className="flex items-center justify-center mb-3"></div>
                 <h3 className="text-amber-200 text-center font-medium mb-2">Sunday</h3>
-                <div className="space-y-2 text-center text-white/80 text-sm">
+                <div className="space-y-2 text-center text-white text-sm">
                   <p>8:00 AM - First Service</p>
                   <p>11:30 AM - Second Service</p>
                   <p>5:00 PM - Evening Feast</p>
@@ -148,8 +147,7 @@ export default function Seat() {
                   className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3">
-                </div>
+                <div className="flex items-center justify-center mb-3"></div>
                 <h3 className="text-amber-200 text-center font-medium mb-2">Wednesday</h3>
                 <div className="space-y-2 text-center text-white/80 text-sm">
                   <p>6:00 PM Each Night- Midweek Service</p>
@@ -160,8 +158,7 @@ export default function Seat() {
                   className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3">
-                </div>
+                <div className="flex items-center justify-center mb-3"></div>
                 <h3 className="text-amber-200 text-center font-medium mb-2">Friday</h3>
                 <div className="space-y-2 text-center text-white/80 text-sm">
                   <p>6:00 PM Each Night- Supernatural Encounter Night</p>

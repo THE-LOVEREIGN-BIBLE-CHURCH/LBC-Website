@@ -29,25 +29,25 @@ const Events = () => {
       date: "This Sunday",
       time: "8AM, 10:3OAM, 5PM",
       description:
-        "Get ready for an experience this year's ending as we crown it with an encounter with Rev. Dr. Kwadwo Boateng Bempah on Flourishing in Hard Times. Grab your tickets at the nearest branch or call",
+        "",
       phone: "0242371411",
     },
     {
       image: midweek,
-      title: "MIDWEEK SERVICE",
+      title: "Midweek Service",
       date: "This Wednesday",
       time: "6:00PM GMT",
       description:
-        "Get ready for an experience this year's ending as we crown it with an encounter with Rev. Dr. Kwadwo Boateng Bempah on Flourishing in Hard Times. Grab your tickets at the nearest branch or call",
+        "",
       phone: "0242371411",
     },
     {
       image: sunday,
-      title: "Supernatural Encounter Night",
+      title: "Supernatural Encounter",
       date: "This Friday",
       time: "6:00PM GMT",
       description:
-        "Grow in faith with special speakers and sessions. Join us for this transformative experience that will elevate your spiritual journey.",
+        "",
       phone: "0242371433",
     },
   ]
@@ -212,8 +212,8 @@ const Events = () => {
             dynamicBullets: true,
           }}
           autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
+            delay: 3000,
+            disableOnInteraction: true,
           }}
           onBeforeInit={(swiper) => {
             // @ts-ignore

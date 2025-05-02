@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { MessageCircle, ChevronDown, Mail } from "lucide-react"
+import { ChevronDown, Mail } from "lucide-react"
 
-const pjwd1 = '/assets/img/pjwd1.jpg'
-const pjwm1 = '/assets/img/pjw1.jpg'
-import ContactMethods from "./contactmethods"
+const pjwd1 = '/assets/img/backgroundImages/homedesktopbg1.jpg'
+const pjwm1 = '/assets/img/backgroundImages/welcomehomeMobilebg1.jpg'
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)

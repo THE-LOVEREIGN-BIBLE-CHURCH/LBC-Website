@@ -88,7 +88,7 @@ export default function TestimonyCorner() {
   }, [activeIndex, testimonyData.length])
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-[#7564CC] to-[#B1A4F6] px-4 py-10 md:py-14">
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#a855f7] to-[#B1A4F6] px-4 py-10 md:py-14">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-[10%] left-[5%] w-64 h-64 rounded-full bg-purple-400 blur-3xl"></div>

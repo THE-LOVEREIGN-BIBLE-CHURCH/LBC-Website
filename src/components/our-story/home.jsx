@@ -5,13 +5,13 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import useWindowSize from "../../hooks/useWindowSize"
 
 // Import your images
-const mobileImage1 = '/assets/img/backgroundImages/ourstorymobile2.jpg'
-const mobileImage2 = '/assets/img/backgroundImages/ourstorymobile1.jpg'
-const desktopImage1= '/assets/img/backgroundImages/ourstorydesktop1.jpg'
-const desktopImage2= '/assets/img/backgroundImages/ourstorydesktop2.jpg'
-const desktopImage3= '/assets/img/backgroundImages/ourstorydesktop3.jpg'
-const desktopImage4= '/assets/img/backgroundImages/ourstorydesktop4.jpg'
-const desktopImage5= '/assets/img/backgroundImages/ourstorydesktop5.jpg'
+const mobileImage1 = "/assets/img/backgroundImages/ourstorymobile2.jpg"
+const mobileImage2 = "/assets/img/backgroundImages/ourstorymobile1.jpg"
+const desktopImage1 = "/assets/img/backgroundImages/ourstorydesktop1.jpg"
+const desktopImage2 = "/assets/img/backgroundImages/ourstorydesktop2.jpg"
+const desktopImage3 = "/assets/img/backgroundImages/ourstorydesktop3.jpg"
+const desktopImage4 = "/assets/img/backgroundImages/ourstorydesktop4.jpg"
+const desktopImage5 = "/assets/img/backgroundImages/ourstorydesktop5.jpg"
 
 const Home = () => {
   const { width } = useWindowSize()
@@ -72,60 +72,64 @@ const Home = () => {
   }
 
   return (
-    <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
-      {/* Background Images with Crossfade */}
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={currentImageIndex}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          onAnimationComplete={() => setIsTransitioning(false)}
-        />
-      </AnimatePresence>
+      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
+        {/* Background Images with Crossfade */}
+        <AnimatePresence mode="sync">
+          <motion.div
+              key={currentImageIndex}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              onAnimationComplete={() => setIsTransitioning(false)}
+          />
+        </AnimatePresence>
 
-      {/* Subtle texture overlay */}
-      <div className="absolute inset-0 bg-black/10 z-10" />
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 bg-black/10 z-10" />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80 z-20"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80 z-20"></div>
 
-      {/* Content */}
-      <div className={`relative z-30 flex flex-col items-center justify-center text-center h-full px-4 ${isMobile ? "-mt-48" : "mt-0"}`}>
-        {/* Title Animation */}
-        <motion.div style={{ y: titleY }}>
-          <motion.h1
-            variants={titleVariants}
-            initial="hidden"
-            animate="visible"
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide text-white"
-          >
-            <span className="font-bold">Our</span>{" "}
-            <span className="italic font-bold">Story</span>
-          </motion.h1>
-        </motion.div>
+        {/* Additional left-side gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-20"></div>
 
-        {/* Subtitle */}
-        <div className="mt-6 md:mt-8">
-          <p className="text-base md:text-xl text-white/80 font-light tracking-wide">
-            Discover the journey that defines us.
-          </p>
+        {/* Content - Now positioned on the left */}
+        <div
+            className={`relative z-30 flex flex-col items-start justify-center h-full px-4 md:px-12 lg:px-24 ${isMobile ? "pt-24" : "mt-0"}`}
+        >
+          {/* Title Animation */}
+          <motion.div style={{ y: titleY }} className="text-left">
+            <motion.h1
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide text-white"
+            >
+              <span className="font-bold">Our</span> <span className="italic font-bold">Story</span>
+            </motion.h1>
+          </motion.div>
+
+          {/* Subtitle */}
+          <div className="mt-6 md:mt-8 text-left">
+            <p className="text-base md:text-xl text-white/80 font-light tracking-wide">
+              Discover the journey that defines us.
+            </p>
+          </div>
+
+          {/* Decorative line */}
+          <motion.div
+              className="w-16 h-px bg-purple-300/50 mt-8"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 1.5 }}
+          />
         </div>
 
-        {/* Decorative line */}
-        <motion.div
-          className="w-16 h-px bg-purple-300/50 mt-8"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        />
-      </div>
-
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 h-[25vh] w-full bg-gradient-to-t from-[#1B172F] to-transparent z-20"></div>
-    </motion.div>
+        {/* Bottom Gradient */}
+        <div className="absolute bottom-0 h-[25vh] w-full bg-gradient-to-t from-[#1B172F] to-transparent z-20"></div>
+      </motion.div>
   )
 }
 
