@@ -3,7 +3,6 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import useWindowSize from "../hooks/useWindowSize"
-import Link from "next/link"
 
 const desktopImage1 = "/assets/img/backgroundImages/belief.png"
 const mobileImage1 = "/assets/img/backgroundImages/beliefinthebilemobile.jpg"
@@ -108,22 +107,6 @@ export default function Belief() {
               church planting, working for the Lord by serving in His House.
             </p>
           </motion.div>
-
-          <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1 }}
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                borderColor: "rgba(255, 255, 255, 0.5)",
-                transition: { duration: 0.2 },
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="mt-10 px-8 py-2.5 border border-white/20 text-white rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-white/5 transition-all duration-300"
-          >
-            <Link href="/books">Learn More</Link>
-          </motion.button>
         </div>
 
         {/* Floating elements for visual interest */}
