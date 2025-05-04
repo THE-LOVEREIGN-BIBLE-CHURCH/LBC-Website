@@ -24,7 +24,7 @@ export default function Seat() {
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, -15])
 
   return (
-      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden z-20" style={{ opacity }}>
+      <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden z-20 mt-48" style={{ opacity }}>
         {/* Background image with parallax */}
         <motion.div
             className="absolute inset-0 bg-cover bg-center"
