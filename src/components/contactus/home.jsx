@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { ChevronDown, Mail } from "lucide-react"
 
-const pjwd1 = '/assets/img/backgroundImages/homedesktopbg1.jpg'
+const pjwd1 = '/assets/img/blacknwhite.jpg'
 const pjwm1 = '/assets/img/backgroundImages/welcomehomeMobilebg1.jpg'
 
 export default function Home() {

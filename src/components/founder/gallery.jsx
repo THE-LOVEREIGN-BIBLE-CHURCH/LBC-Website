@@ -5,16 +5,16 @@ import { X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 // Image paths
-const image1 = "/assets/img/pjw1.jpg"
-const image2 = "/assets/img/pjwm3.jpg"
-const image3 = "/assets/img/pjwd2.jpg"
-const image4 = "/assets/img/pjwd4.jpg"
-const image5 = "/assets/img/pjwd3.jpg"
-const image6 = "/assets/img/pjwm4.jpg"
-const image7 = "/assets/img/pjw1.jpg"
-const image8 = "/assets/img/pjwm3.jpg"
-const image9 = "/assets/img/pjwd2.jpg"
-const image10 = "/assets/img/pjwd4.jpg"
+const image1 = "/assets/img/gallery/pastorImage1.jpeg"
+const image2 = "/assets/img/gallery/pastorImage2.jpeg"
+const image3 = "/assets/img/gallery/pastorImage3.jpeg"
+const image4 = "/assets/img/gallery/pastorImage4.jpeg"
+const image5 = "/assets/img/gallery/pastorImage5.jpeg"
+const image6 = "/assets/img/gallery/pastorImage6.jpeg"
+const image7 = "/assets/img/gallery/pastorImage7.jpeg"
+const image8 = "/assets/img/gallery/pastorImage8.jpeg"
+const image9 = "/assets/img/gallery/pastorImage9.jpeg"
+const image10 ="/assets/img/gallery/pastorImage10.jpeg"
 
 export default function Gallery() {
     const [selectedImage, setSelectedImage] = useState(null)

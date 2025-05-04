@@ -6,10 +6,17 @@ import "yet-another-react-lightbox/styles.css"
 import { motion } from "framer-motion"
 import { Info } from "lucide-react"
 
-const image1 = "/assets/img/pjw1.jpg"
-const image2 = "/assets/img/pjwm3.jpg"
-const image3 = "/assets/img/pjwd2.jpg"
-const image4 = "/assets/img/pjwd4.jpg"
+const image1 = "/assets/img/gallery/churchImage1.jpeg"
+const image2 = "/assets/img/gallery/churchImage2.jpeg"
+const image3 = "/assets/img/gallery/churchImage3.jpeg"
+const image4 = "/assets/img/gallery/churchImage4.jpeg"
+const image5 = "/assets/img/gallery/churchImage5.jpeg"
+const image6 = "/assets/img/gallery/churchImage6.jpeg"
+const image7 = "/assets/img/gallery/churchImage7.jpeg"
+const image8 = "/assets/img/gallery/churchImage8.jpeg"
+const image9 = "/assets/img/gallery/churchImage9.jpeg"
+const image10 = "/assets/img/gallery/churchImage10.jpeg"
+
 
 // Define gallery images with metadata
 const galleryImages = [
@@ -38,37 +45,37 @@ const galleryImages = [
     className: "col-span-1 row-span-1 md:col-start-1 md:col-end-2 md:row-start-2 md:row-end-3",
   },
   {
-    src: image1,
+    src: image5,
     alt: "Street Photography",
     description: "Life as it happens",
     className: "col-span-1 row-span-1 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3",
   },
   {
-    src: image2,
+    src: image6,
     alt: "Architectural Detail",
     description: "The art of structure and form",
     className: "col-span-2 row-span-2 md:col-start-1 md:col-end-3 md:row-start-3 md:row-end-5",
   },
   {
-    src: image3,
+    src: image7,
     alt: "Minimalist Composition",
     description: "Less is more",
     className: "col-span-1 row-span-1 md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-4",
   },
   {
-    src: image4,
+    src: image8,
     alt: "Light and Shadow",
     description: "The interplay of darkness and light",
     className: "col-span-1 row-span-1 md:col-start-4 md:col-end-5 md:row-start-3 md:row-end-4",
   },
   {
-    src: image1,
+    src: image9,
     alt: "Macro Photography",
     description: "The world up close",
     className: "col-span-1 row-span-1 md:col-start-3 md:col-end-4 md:row-start-4 md:row-end-5",
   },
   {
-    src: image2,
+    src: image10,
     alt: "Conceptual Art",
     description: "Ideas made visible",
     className: "col-span-1 row-span-1 md:col-start-4 md:col-end-5 md:row-start-4 md:row-end-5",
