@@ -37,7 +37,7 @@ export default function Seat() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-50 flex flex-col items-center justify-center h-full text-center px-6 pt-36 md:pt-0">
+        <div className="relative z-50 flex flex-col items-center justify-center h-full text-center px-6 pt-30 md:pt-0">
           <motion.div style={{ y: titleY }} className="max-w-2xl mx-auto ">
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
