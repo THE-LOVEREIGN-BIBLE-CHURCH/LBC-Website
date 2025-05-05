@@ -37,7 +37,7 @@ export default function Seat() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-50 flex flex-col items-center justify-center h-full text-center px-6 pt-64 md:pt-0">
+        <div className="relative z-50 flex flex-col items-center justify-center h-full text-center px-6 pt-40 md:pt-0">
           <motion.div style={{ y: titleY }} className="max-w-2xl mx-auto ">
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function Seat() {
 
           {/* Decorative line */}
           <motion.div
-              className="w-16 h-px bg-amber-300/50 my-8"
+              className="w-16 h-px bg-amber-300/50"
               initial={{ scaleX: 0, opacity: 0 }}
               animate={isInView ? { scaleX: 1, opacity: 0.7 } : {}}
               transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
@@ -77,7 +77,7 @@ export default function Seat() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-8 max-w-2xl mx-auto"
+              className="max-w-2xl mx-auto"
           >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
