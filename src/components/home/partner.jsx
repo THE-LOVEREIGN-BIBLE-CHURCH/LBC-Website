@@ -25,7 +25,7 @@ export default function Partner() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-4xl bg-black/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-gray-800">
+      <div className="w-full max-w-4xl bg-black/50 backdrop-blur-sm rounded-2xl  shadow-xl border border-gray-800">
         <div className="flex flex-col md:flex-row">
           {/* Information Section */}
           <div className="bg-gradient-to-br from-purple-900/40 to-black p-8 md:w-2/5 flex flex-col justify-center">

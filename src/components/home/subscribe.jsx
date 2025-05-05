@@ -23,7 +23,15 @@ export default function Subscribe() {
   }
 
   return (
-    <div className="relative z-40 bg-transparent transform -translate-y-36">
+      <div
+          className="relative transform z-40"
+          style={{
+            backgroundImage: "url('/assets/img/backgroundImages/Divider.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+      >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +39,7 @@ export default function Subscribe() {
         className="w-[85vw] md:w-[75vw] lg:w-[65vw] xl:w-[60vw] mx-auto relative overflow-hidden rounded-xl shadow-xl"
         style={{
           minHeight: "240px",
-          height: "auto", // Allow height to grow based on content
+          height: "auto",
         }}
       >
         {/* Dark gradient background - modified to be more transparent */}

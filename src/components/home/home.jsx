@@ -97,7 +97,7 @@ export default function Home() {
 
   return (
       <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
-        {/* Background Images with improved transitions */}
+
         <AnimatePresence mode="wait">
           <motion.div
               key={currentImageIndex}
@@ -110,11 +110,12 @@ export default function Home() {
           />
         </AnimatePresence>
 
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-black/20 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70 z-20"></div>
+        {/* Enhanced dark overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Content - Positioned left for desktop, bottom right for mobile */}
+        {/* Enhanced gradient with stronger black at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/90 z-20"></div>
+
         <div
             className={`absolute z-30 flex flex-col  ${
                 isMobile
