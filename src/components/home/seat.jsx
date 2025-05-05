@@ -67,8 +67,7 @@ export default function Seat() {
                 transition={{ duration: 1, delay: 0.5 }}
                 className="text-m md:text-base leading-relaxed text-white/80 font-bold"
             >
-              At Lovereign Bible Church, we want to stand with you as you discover more about God's grace, grow in His
-              knowledge, and serve His will.
+              Discover more about God
             </motion.p>
           </motion.div>
 
