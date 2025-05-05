@@ -4,6 +4,19 @@ import { Link } from "react-router-dom"
 const  logo = '/assets/img/logo.png'
 
 export default function Footer() {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    //const email = formData.get("email");
+
+    alert(`Thank you ${name} for subscribing to our newsletter!`);
+
+  };
+
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-slate-950 text-slate-300 py-6">
       <div className="container mx-auto px-4 md:px-6">
@@ -161,10 +174,11 @@ export default function Footer() {
               NEWSLETTER
             </h3>
             <p className="text-slate-300 text-sm">Stay updated with our latest sermons and events</p>
-            <form className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div className="relative">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your name"
                   className="w-full px-4 py-2.5 bg-slate-800/80 border border-slate-700 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 />
@@ -172,6 +186,7 @@ export default function Footer() {
               <div className="relative">
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your email address"
                   className="w-full px-4 py-2.5 bg-slate-800/80 border border-slate-700 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 />
