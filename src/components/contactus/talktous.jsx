@@ -23,8 +23,14 @@ const ContactPage = () => {
   })
 
   const [formErrors, setFormErrors] = useState({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState({ contact: false, partnership: false })
+  const [isSubmitting, setIsSubmitting] = useState({
+    contact: false,
+    partnership: false
+  })
+  const [submitSuccess, setSubmitSuccess] = useState({
+    contact: false,
+    partnership: false
+  })
 
   const handleChange = (e, formType) => {
     const { name, value } = e.target
@@ -55,7 +61,8 @@ const ContactPage = () => {
     setFormErrors(errors)
 
     if (Object.keys(errors).length === 0) {
-      setIsSubmitting(true)
+      // Set only the specific form's submitting state
+      setIsSubmitting(prev => ({ ...prev, [type]: true }))
 
       const templateParams =
           type === "contact"
@@ -81,7 +88,6 @@ const ContactPage = () => {
           )
           .then(
               () => {
-                alert("Thank you! Your message has been sent.")
                 if (type === "contact") {
                   setFormData({ name: "", email: "", phone: "", message: "" })
                   setSubmitSuccess((prev) => ({ ...prev, contact: true }))
@@ -89,16 +95,18 @@ const ContactPage = () => {
                   setPartnershipData({ firstName: "", telephone: "", city: "", category: "" })
                   setSubmitSuccess((prev) => ({ ...prev, partnership: true }))
                 }
-                setIsSubmitting(false)
+                // Reset only the specific form's submitting state
+                setIsSubmitting(prev => ({ ...prev, [type]: false }))
 
                 setTimeout(() => {
-                  setSubmitSuccess({ contact: false, partnership: false })
+                  setSubmitSuccess(prev => ({ ...prev, [type]: false }))
                 }, 3000)
               },
               (error) => {
                 console.error("Error sending email:", error)
                 alert("An error occurred. Please try again.")
-                setIsSubmitting(false)
+                // Reset only the specific form's submitting state
+                setIsSubmitting(prev => ({ ...prev, [type]: false }))
               },
           )
     }
@@ -313,10 +321,10 @@ const ContactPage = () => {
 
                   <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting.contact}
                       className="w-full py-3 px-6 text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-500 rounded-lg hover:from-purple-500 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-900/30"
                   >
-                    {isSubmitting ? (
+                    {isSubmitting.contact ? (
                         <>
                           <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
                           <span>Sending...</span>
@@ -329,7 +337,7 @@ const ContactPage = () => {
                     )}
                   </button>
 
-                  {submitSuccess && (
+                  {submitSuccess.contact && (
                       <div className="bg-green-900/30 border border-green-800 text-green-300 px-4 py-2 rounded-lg text-sm">
                         Your message has been sent successfully!
                       </div>
@@ -413,13 +421,13 @@ const ContactPage = () => {
 
                   <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting.partnership}
                       className="w-full py-3 px-6 text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 shadow-lg shadow-purple-900/30 mt-4"
                   >
-                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                    {isSubmitting.partnership ? "SUBMITTING..." : "SUBMIT"}
                   </button>
 
-                  {submitSuccess && (
+                  {submitSuccess.partnership && (
                       <div className="bg-green-900/30 border border-green-800 text-green-300 px-4 py-2 rounded-lg text-sm">
                         Your partnership request has been submitted!
                       </div>
