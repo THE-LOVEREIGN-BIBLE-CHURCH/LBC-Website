@@ -34,7 +34,7 @@ export default function Books() {
           title: "Church Systems and Strutures For Growth",
           image: bookImage2,
           description:
-              "Discover the divine gifts bestowed upon believers and how to recognize and nurture them in your spiritual journey. Pastor John Winfred provides practical guidance on developing your spiritual gifts.",
+              "Church Systems and Structures for Growth equips church leaders with 13 essential systems to strengthen governance, develop leaders, and drive sustainable ministry growth. Rooted in biblical principles and real ministry experience, it offers practical tools for building a thriving church. Ideal for pastors, administrators, and anyone preparing for ministry.",
           price: "$18.99",
           pages: 280,
           year: 2025,
