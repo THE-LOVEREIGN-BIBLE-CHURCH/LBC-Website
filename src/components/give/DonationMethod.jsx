@@ -33,7 +33,7 @@ const DonationMethods = ({ className = "", textClassName = "" }) => {
       borderColor: "border-yellow-800/30",
       details: [
         { label: "Momo Pay ID", value: "276822" },
-        { label: "Account Name", value: "Lovereign Bible Church" },
+        { label: "Account Name", value: "LOVEREIGN BIBLE CHURCH" },
         { label: "Phone", value: "024 237 1411" },
       ],
       instructions: "Open your MTN MoMo app, select 'Pay' and enter our MoMo Pay ID or phone number.",
@@ -46,7 +46,7 @@ const DonationMethods = ({ className = "", textClassName = "" }) => {
       bgColor: "bg-red-950/40",
       borderColor: "border-red-800/30",
       details: [
-        { label: "Account Name", value: "Lovereign Bible Church" },
+        { label: "Account Name", value: "LOVEREIGN BIBLE CHURCH" },
         { label: "Phone", value: "050 658 7666" },
       ],
       instructions: "Dial *110# on your Telecel line, select 'Send Money' and enter our phone number.",
@@ -59,7 +59,7 @@ const DonationMethods = ({ className = "", textClassName = "" }) => {
       bgColor: "bg-blue-950/40",
       borderColor: "border-blue-800/30",
       details: [
-        { label: "Account Name", value: "Lovereign Bible Church" },
+        { label: "Account Name", value: "LOVEREIGN BIBLE CHURCH" },
         { label: "Phone", value: "057 441 0001" },
       ],
       instructions: "Open your AT Money app, select 'Transfer' and enter our phone number.",
@@ -94,7 +94,7 @@ const DonationMethods = ({ className = "", textClassName = "" }) => {
         { label: "Bank", value: "ECOBANK" },
         { label: "Account Name", value: "Lovereign Bible Church" },
         { label: "Account", value: "1441000860595" },
-        { label: "Branch", value: "High Street, Accra" },
+        // { label: "Branch", value: "High Street, Accra" },
       ],
       instructions:
           "For local transfers, please include 'Donation' in the reference field. Transfers are usually processed within 24 hours.",

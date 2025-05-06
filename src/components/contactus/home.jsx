@@ -86,7 +86,7 @@ export default function Home() {
           >
   
             <a
-              href="mailto:info@lovereignbiblechurch.org"
+              href="mailto:Info@lovereignbiblechurch.org"
               className="bg-transparent border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-full flex items-center gap-2 transition-all duration-300"
             >
               <Mail size={18} />

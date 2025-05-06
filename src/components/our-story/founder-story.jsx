@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import {NavLink} from "react-router-dom";
 
 const belief = '/assets/img/beli.jpg'
 const founderStorymobile = '/assets/img/backgroundImages/thefounderstorymobile1.jpg'
@@ -76,7 +77,7 @@ const FounderStory = () => {
 
   // Split text into words and characters for animation
   const text =
-    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 13th December 2013. Starting as a small gathering and growing into a thriving place of worship, today it continues to fulfill its mission of bringing hope, healing, and transformation through Christ."
+    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 1st December 2013. Starting as a small gathering and growing into a thriving place of worship, today it continues to fulfill its mission of bringing hope, healing, and transformation through Christ."
   const words = text.split(" ")
 
   // Dynamically select background image based on screen size
@@ -167,6 +168,7 @@ const FounderStory = () => {
         </motion.div>
 
         {/* Call-to-Action Button with enhanced animation */}
+        <NavLink to="/founder">
         <motion.button
           className="mt-10 md:mt-16 px-8 py-2.5 border border-purple-300/30 text-purple-100 rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-purple-900/20 transition-all duration-300"
           initial={{ opacity: 0, y: 20 }}
@@ -183,6 +185,7 @@ const FounderStory = () => {
         >
           Learn More
         </motion.button>
+        </NavLink>
       </div>
 
       {/* Subtle scroll indicator */}

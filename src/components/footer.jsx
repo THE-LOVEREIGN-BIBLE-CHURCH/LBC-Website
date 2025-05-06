@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="space-y-3 text-slate-300 text-sm pl-1">
               <p className="flex items-center gap-2 hover:text-blue-400 transition-colors">
                 <Phone size={16} className="text-blue-500" />
-                <span>+233 55 227 4948</span>
+                <span>+233 24 686 5124</span>
               </p>
               <a
                 href="mailto:info@Lovereign.org"

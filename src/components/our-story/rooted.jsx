@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import {NavLink} from "react-router-dom";
 const bigLogobg = '/public/assets/img/large.png'
 const gradientBg= '/public/assets/img/layoutblur.svg'
 
@@ -102,6 +103,7 @@ const Rooted = () => {
           </motion.p>
 
           <motion.div variants={fadeInUp} custom={3} className="pt-4">
+            <NavLink to="/give">
             <motion.button
               className="px-8 py-2.5 border border-white/20 text-white rounded-full text-xs tracking-widest uppercase font-light hover:bg-white/5 transition-all duration-300"
               whileHover={{
@@ -113,6 +115,7 @@ const Rooted = () => {
             >
               Join Us
             </motion.button>
+            </NavLink>
           </motion.div>
         </motion.div>
       </div>

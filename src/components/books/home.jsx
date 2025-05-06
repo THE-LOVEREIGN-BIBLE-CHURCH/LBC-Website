@@ -27,9 +27,9 @@ export default function BooksByFounder() {
           image: bookImage1,
           description:
             "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
-          price: "$15.99",
-          pages: 220,
-          year: 2018,
+          price: "coming soon",
+          pages: "200+",
+          year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book"],
         },
@@ -39,9 +39,9 @@ export default function BooksByFounder() {
           image: bookImage2,
           description:
             "Discover the divine gifts bestowed upon believers and how to recognize and nurture them in your spiritual journey. Pastor John Winfred provides practical guidance on developing your spiritual gifts.",
-          price: "$18.99",
-          pages: 280,
-          year: 2020,
+          price: "coming soon",
+          pages: "200+",
+          year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book", "Audiobook"],
         },
@@ -51,9 +51,9 @@ export default function BooksByFounder() {
           image: bookImage3,
           description:
             "A comprehensive guide to understanding the various aspects of ministry work and how to effectively serve in your calling. This book offers wisdom for both new and experienced ministers.",
-          price: "$19.99",
-          pages: 310,
-          year: 2022,
+          price: "coming soon",
+          pages: "200+",
+          year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book"],
         },
@@ -155,7 +155,7 @@ export default function BooksByFounder() {
       >
         <div className="flex items-center justify-center md:justify-start mb-3">
           <div className="h-0.5 w-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-3"></div>
-          <span className="text-blue-300 uppercase tracking-wider text-xs font-medium">Published Works</span>
+          <span className="text-blue-300 uppercase tracking-wider text-xs font-medium">Coming Soon</span>
         </div>
 
         <h1 className="text-white text-xl sm:text-2xl md:text-3xl leading-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">

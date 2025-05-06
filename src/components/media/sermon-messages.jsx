@@ -35,7 +35,7 @@ const podbeanMessages = [
         id: "pb4",
         title: "The Secrets to Prosperity",
         date: "MArch 20, 2025",
-        duration: "106015",
+        duration: "106:15",
         image: "/assets/img/messages_thumbnail/secrets_to_prosperity.jpeg",
         url: "https://lovereignbiblechurch.podbean.com/e/the-secret-to-prosperity-pastor-john-winfred/",
     },
