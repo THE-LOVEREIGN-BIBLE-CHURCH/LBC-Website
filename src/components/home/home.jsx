@@ -12,9 +12,9 @@ const desktopImage2 = "/assets/img/backgroundImages/homedesktopbg2.png"
 
 // Constants
 const PHRASES = [
-  "The best place to be is Lovereign Bible Church",
-  "We believe and live by the word of God.",
-  "Making a people ready for God",
+  "Your model church",
+  "Your place to shine",
+  "Keep shining",
 ]
 
 const TITLES = ["Welcome Home", "Lovereign Bible Church"]

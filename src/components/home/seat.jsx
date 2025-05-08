@@ -77,7 +77,7 @@ export default function Seat() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="max-w-2xl mx-auto"
+              className="max-w-4xl mx-auto w-full"
           >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -111,48 +111,60 @@ export default function Seat() {
 
             {/* Enhanced service times breakdown */}
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-8 px-4 md:px-6"
                 initial={{ opacity: 0 }}
                 animate={statsInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 1.8 }}
             >
               <motion.div
-                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
+                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-4 md:p-6 lg:p-8 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3"></div>
-                <h3 className="text-amber-200 text-center font-medium mb-2">Sunday</h3>
-                <div className="space-y-2 text-center text-white text-sm">
-                  <p>8:00 AM - First Service</p>
-                  <p>11:30 AM - Second Service</p>
-                  <p>5:00 PM - Evening Feast</p>
+                <div className="flex items-center justify-center mb-4">
+                </div>
+                <h3 className="text-amber-200 text-center font-medium text-lg md:text-xl lg:text-2xl mb-4">Sunday</h3>
+                <div className="space-y-3 text-center text-white text-sm md:text-base lg:text-lg">
+                  <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                    8:00 AM - First Service
+                  </p>
+                  <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                    11:30 AM - Second Service
+                  </p>
+                  <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                    5:00 PM - Evening Feast
+                  </p>
                 </div>
               </motion.div>
 
               <motion.div
-                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
+                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-4 md:p-6 lg:p-8 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3"></div>
-                <h3 className="text-amber-200 text-center font-medium mb-2">Wednesday</h3>
-                <div className="space-y-2 text-center text-white/80 text-sm">
-                  <p>6:00 PM Each Night- Midweek Service</p>
+                <div className="flex items-center justify-center mb-4">
+                </div>
+                <h3 className="text-amber-200 text-center font-medium text-lg md:text-xl lg:text-2xl mb-4">Wednesday</h3>
+                <div className="space-y-3 text-center text-white/90 text-sm md:text-base lg:text-lg">
+                  <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                    6:00 PM - Midweek Service
+                  </p>
                 </div>
               </motion.div>
 
               <motion.div
-                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-5 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
+                  className="bg-black/30 backdrop-blur-sm border border-amber-300/10 rounded-lg p-4 md:p-6 lg:p-8 transform transition-all duration-300 hover:border-amber-300/30 hover:bg-black/40"
                   whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-center mb-3"></div>
-                <h3 className="text-amber-200 text-center font-medium mb-2">Friday</h3>
-                <div className="space-y-2 text-center text-white/80 text-sm">
-                  <p>6:00 PM Each Night- Supernatural Encounter Night</p>
+                <div className="flex items-center justify-center mb-4">
+                </div>
+                <h3 className="text-amber-200 text-center font-medium text-lg md:text-xl lg:text-2xl mb-4">Friday</h3>
+                <div className="space-y-3 text-center text-white/90 text-sm md:text-base lg:text-lg">
+                  <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                    6:00 PM - Supernatural Encounter
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
           </motion.div>
-
 
           {/* Floating elements for visual interest */}
           {[...Array(5)].map((_, index) => (

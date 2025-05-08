@@ -9,26 +9,30 @@ const youtube = "/assets/img/youtube.svg"
 const podbean = "/assets/img/podbean.svg"
 const tiktok = "/assets/img/tiktok.png"
 const instagram = "/assets/img/instagram.png"
+const twitter = "/assets/img/twitter.png";
+const facebook = "/assets/img/facebook.png";
 
 function Podcast() {
-  const containerRef = useRef(null)
-  const statsRef = useRef(null)
-  const platformsRef = useRef(null)
+  const containerRef = useRef(null);
+  const statsRef = useRef(null);
+  const platformsRef = useRef(null);
 
-  const isInView = useInView(containerRef, { once: false, amount: 0.2 })
-  const statsInView = useInView(statsRef, { once: false, amount: 0.5 })
-  const platformsInView = useInView(platformsRef, { once: false, amount: 0.3 })
+  const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+  const statsInView = useInView(statsRef, { once: false, amount: 0.5 });
+  const platformsInView = useInView(platformsRef, { once: false, amount: 0.3 });
 
   // Platform data with URLs
   const platforms = [
-    { name: "YouTube", icon: youtube, url: "https://youtube.com" },
-    { name: "Podbean", icon: podbean, url: "https://podbean.com" },
+    { name: "YouTube", icon: youtube, url: "https://youtube.com/@lovereignbiblechurch" },
+    { name: "Podbean", icon: podbean, url: "https://lovereignbiblechurch.podbean.com/" },
     { name: "TikTok", icon: tiktok, url: "https://www.tiktok.com/@lovereignbiblechurch" },
     { name: "Instagram", icon: instagram, url: "https://www.instagram.com/lovereignbiblechurch/" },
-  ]
+    { name: "Twitter", icon: twitter, url: "https://x.com/lovereignchurch" },
+    { name: "Facebook", icon: facebook, url: "https://facebook.com/@lovereignbiblechurch" },
+  ];
 
   return (
-      <motion.div ref={containerRef} className="relative w-full overflow-hidden z-20 bg-transparent ">
+      <motion.div ref={containerRef} className="relative w-full overflow-hidden z-20 bg-transparent">
         {/* Subtle texture overlay */}
         {/* Content */}
         <div className="relative z-20 container mx-auto px-6 md:px-8 lg:px-16 xl:px-24 max-w-5xl">
@@ -141,7 +145,8 @@ function Podcast() {
           </div>
         </div>
       </motion.div>
-  )
+  );
 }
 
-export default Podcast
+export default Podcast;
+

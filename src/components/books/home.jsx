@@ -138,7 +138,7 @@ export default function BooksByFounder() {
   console.log("URL search params:", location.search);
 
   return (
-    <div className="bg-gradient-to-b from-[#295264] to-[#152745] min-h-screen flex flex-col items-center justify-center px-3 md:px-6 py-24 relative overflow-hidden">
+    <div className="bg-transparent min-h-screen flex flex-col items-center justify-center px-3 md:px-6 py-24 relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-10 w-40 h-40 rounded-full bg-blue-500/10 blur-3xl"></div>
