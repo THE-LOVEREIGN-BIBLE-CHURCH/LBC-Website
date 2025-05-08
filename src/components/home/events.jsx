@@ -10,15 +10,14 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 const ellipse = "/assets/img/half-bg.png"
-const red_potizo = "/assets/img/flyers/red_potizo.png"
-const sen = "/assets/img/flyers/sen.jpeg"
 const midweek = "/assets/img/flyers/midweek.jpeg"
 const sunday = "/assets/img/flyers/sunday.jpeg"
+const friday = "/assets/img/flyers/sen.jpeg"
 
 const Events = () => {
   const [loading, setLoading] = useState(true)
   const eventsRef = useRef()
-  const isInView = useInView(eventsRef, { once: false })
+  useInView(eventsRef, { once: false });
   const prevRef = useRef(null)
   const nextRef = useRef(null)
 
@@ -42,7 +41,7 @@ const Events = () => {
       phone: "0242371411",
     },
     {
-      image: sunday,
+      image: friday,
       title: "Supernatural Encounter",
       date: "This Friday",
       time: "6:00PM GMT",

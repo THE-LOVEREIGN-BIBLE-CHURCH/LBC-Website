@@ -144,7 +144,7 @@ const FounderStory = () => {
           animate={isInView ? "visible" : "hidden"}
           className="text-4xl md:text-6xl font-light tracking-wider text-white drop-shadow-sm"
         >
-          <span className="font-light">Founder</span>{" "}
+          <span className="font-light">Founder's</span>{" "}
           <span className="text-purple-200 italic font-extralight">Story</span>
         </motion.h1>
 

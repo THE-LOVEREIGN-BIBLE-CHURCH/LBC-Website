@@ -9,22 +9,21 @@ import Podcast from '../components/home/podcast-home';
 import Seat from '../components/home/seat'; 
 import Announce from '../components/home/announcements';
 import Footer from '../components/footer';
-import Layout from '../components/layout';
 
 
 function HomePage() {
     return (
          <div className="bg-black overflow-x-hidden font-instrument">
-        <Home />
-        <Subscribe />
-        <Belief />
-        <Seat />
-        <Podcast />
-        <Events />
-        <Testimony />
-        <Partner />
-        <Announce /> 
-        <Footer />
+             <Home />
+             <Subscribe />
+             <Announce />
+             <Belief />
+             <Seat />
+             <Podcast />
+             <Events />
+             <Testimony />
+             <Partner />
+             <Footer />
       </div> 
     );
   }

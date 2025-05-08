@@ -13,22 +13,31 @@ import "swiper/css/effect-cards"
 const bookLaunch = "/assets/img/flyers/trilogy.jpeg"
 const businessmen = "/assets/img/flyers/businessmen.jpeg"
 const wordexplosion = "/assets/img/flyers/wordexplosion.jpeg"
+const newEvent1 = "/assets/img/flyers/newEvent.jpeg"
 
 export default function Announce() {
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const headerRef = useRef(null)
-  const isHeaderInView = useInView(headerRef, { once: false })
+  useInView(headerRef, { once: false });
   const prevRef = useRef(null)
   const nextRef = useRef(null)
 
   // Default events with placeholder image
   const defaultEvents = [
     {
+      image: newEvent1,
+      title: "Business Plan Workshop",
+      date: "12th May, 2025",
+      time: "7:00PM GMT",
+      description: "",
+      phone: "024 713 9612",
+    },
+    {
       image: businessmen,
-      title: "Business Exploits",
-      date: "5th May 2025",
-      time: "6:00PM GMT",
+      title: "Apostolic Encounter",
+      date: "22nd - 23rd May 2025",
+      time: "6:00PM GMT Each Night",
       description: "",
       phone: "024 713 9612",
     },
@@ -125,7 +134,7 @@ export default function Announce() {
   // Loading skeleton
   if (loading) {
     return (
-        <div className="relative text-white font-instrument z-40 px-4 bg-slate-950">
+        <div className="relative text-white font-instrument z-40 px-4 bg-black">
           <div className="max-w-7xl mx-auto">
             {/* Header skeleton */}
             <div className="w-3/4 h-12 bg-gray-800 rounded-lg mx-auto mb-12 animate-pulse"></div>
@@ -153,7 +162,7 @@ export default function Announce() {
   }
 
   return (
-      <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-slate-950 to-black">
+      <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-black to-slate-950">
         {/* Subtle texture overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-[0.03] z-10"></div>
 
@@ -216,7 +225,7 @@ export default function Announce() {
                 dynamicBullets: true,
               }}
               autoplay={{
-                delay: 5000,
+                delay: 3000,
                 disableOnInteraction: true,
               }}
               onBeforeInit={(swiper) => {

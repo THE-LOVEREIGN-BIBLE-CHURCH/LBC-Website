@@ -42,7 +42,7 @@ export default function Footer() {
                 className="flex items-center gap-2 hover:text-blue-400 transition-colors"
               >
                 <Mail size={16} className="text-blue-500" />
-                <span>info@Lovereign.org</span>
+                <span>info@lovereignbiblechurch.org</span>
               </a>
               <Link to="/contact-us" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
                 <MapPin size={16} className="text-blue-500" />

@@ -13,7 +13,7 @@ export default function NavBar() {
   const location = useLocation()
   const navRef = useRef(null)
 
-  const navItems = ["Home", "Our Story", "Founder", "Books", "Media", "Give", "Contact Us"]
+  const navItems = ["Home", "Our Story", "Church Branches", "Founder", "Books", "Media", "Give", "Contact Us"]
 
   const formatLink = (item) => `/${item.toLowerCase().replace(/\s+/g, "-")}`
 

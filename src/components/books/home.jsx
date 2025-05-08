@@ -11,7 +11,7 @@ const bookImage2 = '/assets/img/systems_structures.jpg'
 const bookImage3 = '/assets/img/work_of_ministry.jpg'
 
 export default function BooksByFounder() {
-  const [books, setBooks] = useState([]) 
+  const [books, setBooks] = useState([])
   const [activeBook, setActiveBook] = useState(null)
   const scrollRef = useRef(null)
   const location = useLocation()
@@ -27,7 +27,7 @@ export default function BooksByFounder() {
           image: bookImage1,
           description:
             "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
-          price: "coming soon",
+          price: "$10",
           pages: "200+",
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
@@ -39,7 +39,7 @@ export default function BooksByFounder() {
           image: bookImage2,
           description:
             "Church Systems and Structures for Growth Unlock the keys to training leaders, strengthening church governance, and driving effective growth in the ministry.Drawing deeply from biblical principles, observations of thriving ministries, denominations, as well as personal experience ministering to pastors and leaders, this bookintroduces 13 essential systems and structures thatempower churches to flourish. Perfect for equipping ministry leaders and enhancing organizational excellence in the church. This resource offers practical strategies to ensure your church operates with purpose clarity, and lasting impact. Whether you're a church founder, pastor, church administrator, ministry trainer or someone preparing to step into ministry, \"Church Systems and Structures for Growth\" is your ultimate guide to building a well-organized and enduring ministry.",
-          price: "coming soon",
+          price: "$20",
           pages: "327+",
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
@@ -51,7 +51,7 @@ export default function BooksByFounder() {
           image: bookImage3,
           description:
             "A comprehensive guide to understanding the various aspects of ministry work and how to effectively serve in your calling. This book offers wisdom for both new and experienced ministers.",
-          price: "coming soon",
+          price: "$10",
           pages: "200+",
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
@@ -59,11 +59,11 @@ export default function BooksByFounder() {
         },
       ]
       setBooks(placeholderBooks)
-      
+
       // Process URL parameters without setTimeout for better reliability
       const params = new URLSearchParams(location.search);
       const bookId = params.get('id');
-      
+
       if (bookId) {
         const selectedBook = placeholderBooks.find(book => book.id === parseInt(bookId));
         if (selectedBook) {
@@ -77,7 +77,7 @@ export default function BooksByFounder() {
         setActiveBook(placeholderBooks[0]);
       }
     };
-    
+
     fetchBooks();
   }, [location.search]); // Make sure to re-run when URL changes
 
@@ -96,7 +96,7 @@ export default function BooksByFounder() {
     if (activeBook) {
       const params = new URLSearchParams(location.search);
       const currentBookId = params.get('id');
-      
+
       // Only update URL if the book ID has actually changed
       if (!currentBookId || parseInt(currentBookId) !== activeBook.id) {
         navigate(`/books?id=${activeBook.id}`, { replace: true });

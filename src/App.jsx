@@ -9,6 +9,7 @@ import Media from './pages/media_page';
 import Contact from './pages/contact_us_page';
 import ScrollToTop from './hooks/scrollToTop';
 import BooksByFounder from './pages/books';
+import ChurchBranches from "./pages/church_branches.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/media" element={<Media/>} />
           <Route path="/give" element={<Give/>} />
           <Route path="/contact-us" element={<Contact/>} />
+          <Route path="/church-branches" element={<ChurchBranches />} />
         </Routes>
       </Layout>
         

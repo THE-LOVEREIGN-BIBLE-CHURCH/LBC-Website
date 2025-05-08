@@ -63,7 +63,7 @@ export default function ChurchLeadership() {
     { name: "Pastor", pastor: "Michael Oduro", location: "Accra", image: PastorMichaelOduro },
     { name: "Pastor", pastor: "Charles Fiadjoe", location: "Koforidua", image: ChiefElderCharlesFiadjoe },
     { name: "Pastor", pastor: "Prosper Asamoah", location: "Pantang", image: CEElderProsperAsamoah },
-    { name: "Pastor", pastor: "Herbert", location: "Tantra", image: CEHerbertTogbey },
+    { name: "Pastor", pastor: "Herbert Togbe", location: "Tantra", image: CEHerbertTogbey },
     { name: "Pastor", pastor: "Michael Agbadji", location: "Bole", image: noPicture },
     { name: "Pastor", pastor: "Terrick Naador", location: "East Legon", image: CETerrickNaador },
     { name: "Pastor", pastor: "Abraham Tetteh", location: "Kumasi", image: PastorAbrahamTetteh },
@@ -74,7 +74,7 @@ export default function ChurchLeadership() {
     { name: "Pastor", pastor: "Charles", location: "Korle-Bu", image: PastorCharles },
     { name: "Chief Elder", pastor: "Deladem Amekudzi", location: "Headquarters", image: CEDelademAmekudzi },
     { name: "Pastor", pastor: "Benjamin Quayson", location: "Tema", image: PastorBenjaminQuayson },
-    { name: "Pastor", pastor: "Kingsley", location: "Abelenkpe", image: ShepherdKingsleyTetteh },
+    { name: "Pastor", pastor: "Kingsley Tetteh", location: "Abelenkpe", image: ShepherdKingsleyTetteh },
     { name: "Pastor", pastor: "Frank Tetteh", location: "Sunyani", image: FrankTettehJunior },
   ]
 
