@@ -97,25 +97,6 @@ const branchesData = [
     },
   },
   {
-    id: 4,
-    name: "Accra Church",
-    pastor: {
-      name: "Pastor Michael Oduro",
-      photo: PastorMichaelOduro,
-    },
-    location: "Graphic Road, Opposite First Allied Savings and Loans Limited",
-    contact: "+233 55 234 5678",
-    services: {
-      tuesday: { time: "7:00 PM - 8:30 PM" },
-      friday: { time: "7:00 PM - 8:30 PM" },
-      sunday: {
-        morning: { time: "9:00 AM - 11:30 AM" },
-        afternoon: { time: "12:30 AM - 2:30 PM" },
-        evening: null,
-      },
-    },
-  },
-  {
     id: 5,
     name: "Accra Church",
     pastor: {

@@ -28,6 +28,18 @@ export default function Announce() {
   useInView(headerRef, { once: false });
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+
+      // Initialize and update navigation
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, [swiperRef.current, prevRef.current, nextRef.current]);
 
   // Default events with placeholder image
   const defaultEvents = [
@@ -89,8 +101,17 @@ export default function Announce() {
     fetchEvents();
   }, []);
 
-  // Animation variants
+  // Initialize navigation buttons after Swiper is mounted
+  useEffect(() => {
+    if (swiperRef.current && prevRef.current && nextRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, [loading]);
 
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -160,7 +181,7 @@ export default function Announce() {
   }
 
   return (
-    <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-black to-slate-950">
+    <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-black via-slate-900 to-black">
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-[0.03] z-10"></div>
 
@@ -215,7 +236,7 @@ export default function Announce() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-5xl mx-auto"
+        className="max-w-5xl mx-auto swiper-container"
       >
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectCards]}
@@ -229,21 +250,24 @@ export default function Announce() {
           }}
           autoplay={{
             delay: 3000,
-            disableOnInteraction: true, // Stops autoplay on user swipe
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
           }}
           slidesPerView={1}
           spaceBetween={10}
           grabCursor={true}
-          allowTouchMove={true} // Ensures swipe is enabled
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           className="pb-16"
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 10 },
-            768: { slidesPerView: 3, spaceBetween: 15 },
+            768: { slidesPerView: 2, spaceBetween: 15 },
             1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
         >
           {events.map((event, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="touch-swiper-slide">
               <motion.div
                 variants={cardVariants}
                 className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
@@ -254,6 +278,7 @@ export default function Announce() {
                     src={event.image || "/placeholder.svg"}
                     alt={event.title}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    draggable="false"
                   />
                 </div>
 
@@ -299,6 +324,8 @@ export default function Announce() {
           ))}
         </Swiper>
       </motion.div>
+
+      {/* Add CSS to ensure touch swiping works properly */}
     </div>
   );
 }

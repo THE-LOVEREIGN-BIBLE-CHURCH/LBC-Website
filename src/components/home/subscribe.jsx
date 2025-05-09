@@ -1,37 +1,37 @@
-"use client"
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-const sub = "/assets/img/backgroundImages/subscribe.jpg"
-import { ArrowRight, Bell } from "lucide-react"
+"use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+const sub = "/assets/img/backgroundImages/subscribe.jpg";
+import { ArrowRight, Bell } from "lucide-react";
 
 export default function Subscribe() {
-  const navigate = useNavigate()
-  const [showText, setShowText] = useState(false)
+  const navigate = useNavigate();
+  const [showText, setShowText] = useState(false);
 
   // Toggle text visibility every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowText((prev) => !prev)
-    }, 4000)
+      setShowText((prev) => !prev);
+    }, 4000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubscribeClick = () => {
-    navigate("/media")
-  }
+    navigate("/media");
+  };
 
   return (
-      <div
-          className="relative transform z-40"
-          style={{
-            backgroundImage: "url('/assets/img/backgroundImages/Divider.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-      >
+    <div
+      className="relative transform z-30"
+      style={{
+        backgroundImage: "url('/assets/img/backgroundImages/Divider.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Subscribe() {
         }}
       >
         {/* Dark gradient background - modified to be more transparent */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-gray-900/90 to-zinc-900/90 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-gray-900/90 to-zinc-900/90 ">
           {/* Subtle animated overlay */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-emerald-900/10 to-teal-900/10"
@@ -70,8 +70,8 @@ export default function Subscribe() {
               transition={{ duration: 0.4, delay: 0.2 }}
             >
               <h1 className="text-white text-xl sm:text-2xl lg:text-3xl font-light tracking-tight">
-                This is <span className="font-normal italic">Church</span>, This is{" "}
-                <span className="font-normal italic">Home</span>!
+                This is <span className="font-normal italic">Church</span>, This
+                is <span className="font-normal italic">Home</span>!
               </h1>
 
               <motion.div
@@ -82,7 +82,8 @@ export default function Subscribe() {
               />
 
               <p className="text-sm md:text-base leading-relaxed text-white/80 font-light max-w-sm">
-                From anywhere in the world, join our online service experience and be part of our growing community.
+                From anywhere in the world, join our online service experience
+                and be part of our growing community.
               </p>
             </motion.div>
           </div>
@@ -156,5 +157,5 @@ export default function Subscribe() {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
