@@ -1,411 +1,479 @@
-"use client"
-import { Search, MapPin, ChevronLeft, ChevronRight, Info, Clock, User, MapPinned, Phone } from "lucide-react"
-import {useState} from "react";
-const CEElderEssienNana = "/assets/img/church_leaders/CEELderEssienNana.jpg"
-const CEElderProsperAsamoah = "/assets/img/church_leaders/CEELderProsperAsamoah.jpg"
-const CEFredAgyemang = "/assets/img/church_leaders/CEFredAgyemang.jpg"
-const CEPeterHaginWealth = "/assets/img/church_leaders/CEPeterHagin-Wealth.jpg"
-const ChiefElderCharlesFiadjoe = "/assets/img/church_leaders/ChiefElderCharlesFiadjoe.jpg"
-const FrankTettehJunior = "/assets/img/church_leaders/FrankTettehJunior.jpg"
-const PastorAbrahamTetteh = "/assets/img/church_leaders/PastorAbrahamTetteh.jpg"
-const PastorCharles = "/assets/img/church_leaders/PastorCharles.jpg"
-const PastorEmmanuelFiifiRobert = "/assets/img/church_leaders/PastorEmmanuelFiifiRobert.jpg"
-const PastorEmmanuelYartey = "/assets/img/church_leaders/PastorEmmanuelYartey.jpg"
-const PastorMichaelOduro = "/assets/img/church_leaders/PastorMichaelOduro.jpg"
-const PastorBenjaminQuayson = "/assets/img/church_leaders/pastorBenjaminQuayson.jpg"
-const PastorMosesFrimpong = "/assets/img/church_leaders/PastorMosesFrimpong.jpg"
-const PastorVitalis = "/assets/img/church_leaders/PastorVitalis.jpg"
-const CEHerbertTogbey = "/assets/img/church_leaders/CEHerbertTogbey.jpg"
-const ShepherdKingsleyTetteh = "/assets/img/church_leaders/PastorKingsleyTetteh.jpg"
-const CETerrickNaador = "/assets/img/church_leaders/CETerrick.jpg"
-const noPicture = "/assets/img/church_leaders/noPic.png"
+"use client";
+import {
+  Search,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  User,
+  MapPinned,
+  Phone,
+  X,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+const CEElderEssienNana = "/assets/img/church_leaders/CEELderEssienNana.jpg";
+const CEElderProsperAsamoah =
+  "/assets/img/church_leaders/CEELderProsperAsamoah.jpg";
+const CEFredAgyemang = "/assets/img/church_leaders/CEFredAgyemang.jpg";
+const CEPeterHaginWealth = "/assets/img/church_leaders/CEPeterHagin-Wealth.jpg";
+const ChiefElderCharlesFiadjoe =
+  "/assets/img/church_leaders/ChiefElderCharlesFiadjoe.jpg";
+const FrankTettehJunior = "/assets/img/church_leaders/FrankTettehJunior.jpg";
+const PastorAbrahamTetteh =
+  "/assets/img/church_leaders/PastorAbrahamTetteh.jpg";
+const PastorCharles = "/assets/img/church_leaders/PastorCharles.jpg";
+const PastorEmmanuelFiifiRobert =
+  "/assets/img/church_leaders/PastorEmmanuelFiifiRobert.jpg";
+const PastorEmmanuelYartey =
+  "/assets/img/church_leaders/PastorEmmanuelYartey.jpg";
+const PastorMichaelOduro = "/assets/img/church_leaders/PastorMichaelOduro.jpg";
+const PastorBenjaminQuayson =
+  "/assets/img/church_leaders/pastorBenjaminQuayson.jpg";
+const PastorMosesFrimpong =
+  "/assets/img/church_leaders/PastorMosesFrimpong.jpg";
+const PastorVitalis = "/assets/img/church_leaders/PastorVitalis.jpg";
+const CEHerbertTogbey = "/assets/img/church_leaders/CEHerbertTogbey.jpg";
+const ShepherdKingsleyTetteh =
+  "/assets/img/church_leaders/PastorKingsleyTetteh.jpg";
+const CETerrickNaador = "/assets/img/church_leaders/CETerrick.jpg";
+const noPicture = "/assets/img/church_leaders/noPic.png";
 
 const branchesData = [
-    {
-        id: 1,
-        name: "Ho Church",
-        pastor: {
-            name: "Pastor Emmanuel Fiifi Robertson",
-            photo: PastorEmmanuelFiifiRobert,
-        },
-        location: "",
-        contact: "",
-        services: {
-            tuesday: { time: "6:00 PM - 8:30 PM" },
-            friday: { time: "6:00 PM - 8:30 PM" },
-            sunday: {
-                morning: { time: "8:00 AM - 10:30 AM" },
-                afternoon: { time: "10:40 PM - 12:30 PM" },
-                evening: { time: "6:00 PM - 8:30 PM" },
-            },
-        },
-    },
-{
-    id: 2,
-        name: "Abeka Church",
+  {
+    id: 1,
+    name: "Ho Church",
     pastor: {
-    name: "Pastor Emmanuel Yartey",
-        photo: PastorEmmanuelYartey,
-},
-    location: "Abeka Free Pipe Junction",
-        contact: "+233 54 121 2641",
+      name: "Pastor Emmanuel Fiifi Robertson",
+      photo: PastorEmmanuelFiifiRobert,
+    },
+    location: "",
+    contact: "",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-{
-    id: 3,
-        name: "Sowutuom Church",
+  },
+  {
+    id: 2,
+    name: "Abeka Church",
     pastor: {
-    name: "Pastor Moses Frimpong",
-        photo: PastorMosesFrimpong,
-},
-    location: "Sowutuom, Adjacent Pentecost University",
-        contact: "+233 59 802 3269",
+      name: "Pastor Emmanuel Yartey",
+      photo: PastorEmmanuelYartey,
+    },
+    location: "Abeka Free Pipe Junction",
+    contact: "+233 54 121 2641",
     services: {
-    tuesday: { time: "7:00 PM - 9:00 PM" },
-    friday: { time: "6:00 PM - 8:00 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
+        morning: { time: "8:00 AM - 10:30 AM" },
+        afternoon: { time: "10:40 PM - 12:30 PM" },
+        evening: { time: "6:00 PM - 8:30 PM" },
+      },
+    },
+  },
+  {
+    id: 3,
+    name: "Sowutuom Church",
+    pastor: {
+      name: "Pastor Moses Frimpong",
+      photo: PastorMosesFrimpong,
+    },
+    location: "Sowutuom, Adjacent Pentecost University",
+    contact: "+233 59 802 3269",
+    services: {
+      tuesday: { time: "7:00 PM - 9:00 PM" },
+      friday: { time: "6:00 PM - 8:00 PM" },
+      sunday: {
         morning: { time: "11:30 AM - 12:30 AM" },
         afternoon: { time: "12:30 PM - 2:30 PM" },
         evening: null,
+      },
     },
-},
-},
-{
+  },
+  {
     id: 4,
-        name: "Accra Church",
+    name: "Accra Church",
     pastor: {
-    name: "Pastor Michael Oduro",
-        photo: PastorMichaelOduro,
-},
-    location: "Graphic Road, Opposite First Allied Savings and Loans Limited",
-        contact: "+233 55 234 5678",
-    services: {
-    tuesday: { time: "7:00 PM - 8:30 PM" },
-    friday: { time: "7:00 PM - 8:30 PM" },
-    sunday: {
-        morning: { time: "9:00 AM - 11:30 AM" },
-        afternoon: null,
-            evening:null,
+      name: "Pastor Michael Oduro",
+      photo: PastorMichaelOduro,
     },
-},
-},
-{
-    id: 5,
-        name: "Koforidua Church",
-    pastor: {
-    name: "Chief Elder Charles Phillips Fiadjoe",
-        photo: ChiefElderCharlesFiadjoe,
-},
-    location: "Koforidua Technical University, Getfund Hall",
-        contact: "",
+    location: "Graphic Road, Opposite First Allied Savings and Loans Limited",
+    contact: "+233 55 234 5678",
     services: {
-    tuesday: { time: "6:00 PM - 8:00 PM" },
-    friday: null,
-        sunday: {
+      tuesday: { time: "7:00 PM - 8:30 PM" },
+      friday: { time: "7:00 PM - 8:30 PM" },
+      sunday: {
+        morning: { time: "9:00 AM - 11:30 AM" },
+        afternoon: { time: "12:30 AM - 2:30 PM" },
+        evening: null,
+      },
+    },
+  },
+  {
+    id: 5,
+    name: "Accra Church",
+    pastor: {
+      name: "Pastor Michael Oduro",
+      photo: PastorMichaelOduro,
+    },
+    location: "Graphic Road, Opposite First Allied Savings and Loans Limited",
+    contact: "+233 55 234 5678",
+    services: {
+      tuesday: { time: "7:00 PM - 8:30 PM" },
+      friday: { time: "7:00 PM - 8:30 PM" },
+      sunday: {
+        morning: { time: "9:00 AM - 11:30 AM" },
+        afternoon: { time: "12:30 AM - 2:30 PM" },
+        evening: null,
+      },
+    },
+  },
+  {
+    id: 6,
+    name: "Koforidua Church",
+    pastor: {
+      name: "Chief Elder Charles Phillips Fiadjoe",
+      photo: ChiefElderCharlesFiadjoe,
+    },
+    location: "Koforidua Technical University, Getfund Hall",
+    contact: "",
+    services: {
+      tuesday: { time: "6:00 PM - 8:00 PM" },
+      friday: null,
+      sunday: {
         morning: { time: "2:00 PM - 4:30 PM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 6,
-        name: "Pantang Church",
+  },
+  {
+    id: 7,
+    name: "Pantang Church",
     pastor: {
-    name: "Chief Elder Prosper Asamoah Mensah",
-        photo: CEElderProsperAsamoah,
-},
+      name: "Chief Elder Prosper Asamoah Mensah",
+      photo: CEElderProsperAsamoah,
+    },
     location: "Royal First GAte,Pantang",
-        contact: "+233 54 739 0354",
+    contact: "+233 54 739 0354",
     services: {
-    tuesday: { time: "6:00 PM - 8:00 PM" },
-    friday: null,
-        sunday: {
+      tuesday: { time: "6:00 PM - 8:00 PM" },
+      friday: null,
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 7,
-        name: "Tantra Church",
+  },
+  {
+    id: 8,
+    name: "Tantra Church",
     pastor: {
-    name: "Pastor Herbert Togbe",
-        photo: CEHerbertTogbey,
-},
+      name: "Pastor Herbert Togbe",
+      photo: CEHerbertTogbey,
+    },
     location: "789 West Boulevard, Westside Area",
-        contact: "+233 50 123 4567",
+    contact: "+233 50 123 4567",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-{
-    id: 8,
-        name: "Bole Church",
+  },
+  {
+    id: 9,
+    name: "Bole Church",
     pastor: {
-    name: "Pastor Michael Agbadji",
-        photo: noPicture,
-},
+      name: "Pastor Michael Agbadji",
+      photo: noPicture,
+    },
     location: "Bole Resource Center for Ghana Federation of Disabled (P W D)",
-        contact: "+233 24 094 6964",
+    contact: "+233 24 094 6964",
     services: {
-    tuesday: null,
-        friday: { time: "7:00 PM - 8:00 PM" },
-    sunday: {
+      tuesday: null,
+      friday: { time: "7:00 PM - 8:00 PM" },
+      sunday: {
         morning: { time: "9:00 AM - 11:00 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 9,
-        name: "East Legon Church",
+  },
+  {
+    id: 10,
+    name: "East Legon Church",
     pastor: {
-    name: "Pastor Terrick Naador",
-        photo: CETerrickNaador,
-},
+      name: "Pastor Terrick Naador",
+      photo: CETerrickNaador,
+    },
     location: "",
-        contact: "",
+    contact: "",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-{
-    id: 10,
-        name: "Kumasi Church",
+  },
+  {
+    id: 11,
+    name: "Kumasi Church",
     pastor: {
-    name: "Pastor Abraham Tetteh",
-        photo: PastorAbrahamTetteh,
-},
+      name: "Pastor Abraham Tetteh",
+      photo: PastorAbrahamTetteh,
+    },
     location: "Delisa Hostel - Ayeduase - Kumasi",
-        contact: "+233 59 895 8903",
+    contact: "+233 59 895 8903",
     services: {
-    tuesday: { time: "7:00 PM - 9:00 PM" },
-    friday: { time: "7:00 PM - 9:00 PM" },
-    sunday: {
+      tuesday: { time: "7:00 PM - 9:00 PM" },
+      friday: { time: "7:00 PM - 9:00 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 11:00 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 11,
-        name: "Cape Coast Church",
+  },
+  {
+    id: 12,
+    name: "Cape Coast Church",
     pastor: {
-    name: "Pastor Essien Nana",
-        photo: CEElderEssienNana,
-},
+      name: "Pastor Essien Nana",
+      photo: CEElderEssienNana,
+    },
     location: "Adjacent Saabahawk Hostel - UCC",
-        contact: "+233 25 711 9791",
+    contact: "+233 25 711 9791",
     services: {
-    tuesday: { time: "7:30 PM - 9:30 PM" },
-    friday: { time: "7:30 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "7:30 PM - 9:30 PM" },
+      friday: { time: "7:30 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:30 AM - 10:30 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 12,
-        name: "Winneba Church",
+  },
+  {
+    id: 13,
+    name: "Winneba Church",
     pastor: {
-    name: "Pastor Vitalis Kanyei",
-        photo: PastorVitalis,
-},
+      name: "Pastor Vitalis Kanyei",
+      photo: PastorVitalis,
+    },
     location: "",
-        contact: "+233 54 325 6343",
+    contact: "+233 54 325 6343",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-{
-    id: 13,
-        name: "UPSA Church",
+  },
+  {
+    id: 14,
+    name: "UPSA Church",
     pastor: {
-    name: "Pastor Peter Hagin-Wealth",
-        photo: CEPeterHaginWealth,
-},
+      name: "Pastor Peter Hagin-Wealth",
+      photo: CEPeterHaginWealth,
+    },
     location: "Madina Rawlings Circle",
-        contact: "+233 53 073 0728",
+    contact: "+233 53 073 0728",
     services: {
-    tuesday: { time: "7:00 PM - 9:00 PM" },
-    friday: { time: "6:30 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "7:00 PM - 9:00 PM" },
+      friday: { time: "6:30 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "9:00 AM - 11:00 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 14,
-        name: "Haatso Church",
+  },
+  {
+    id: 15,
+    name: "Haatso Church",
     pastor: {
-    name: "Pastor Frederick Agyemang",
-        photo: CEFredAgyemang,
-},
+      name: "Pastor Frederick Agyemang",
+      photo: CEFredAgyemang,
+    },
     location: "Haatso-Atomic Main Road",
-        contact: "+233 59 896 9699",
+    contact: "+233 59 896 9699",
     services: {
-    tuesday: { time: "7:00 PM - 9:00 PM" },
-    friday: { time: "7:00 PM - 9:00 PM" },
-    sunday: {
+      tuesday: { time: "7:00 PM - 9:00 PM" },
+      friday: { time: "7:00 PM - 9:00 PM" },
+      sunday: {
         morning: { time: "9:00 AM - 12:00 PM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 15,
-        name: "Korle-Bu Church",
+  },
+  {
+    id: 16,
+    name: "Korle-Bu Church",
     pastor: {
-    name: "Pastor Charles Yekple ",
-        photo: PastorCharles,
-},
+      name: "Pastor Charles Yekple ",
+      photo: PastorCharles,
+    },
     location: "",
-        contact: "",
+    contact: "",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-{
-    id: 16,
-        name: "Tema Church",
+  },
+  {
+    id: 17,
+    name: "Tema Church",
     pastor: {
-    name: "Pastor Benjamin Quayson",
-        photo: PastorBenjaminQuayson,
-},
+      name: "Pastor Benjamin Quayson",
+      photo: PastorBenjaminQuayson,
+    },
     location: "Community 4, Near passport office",
-        contact: "+233 24 563 3885",
+    contact: "+233 24 563 3885",
     services: {
-    tuesday: { time: "7:00 PM - 9:000 PM" },
-    friday: { time: "7:00 PM - 9:00 PM" },
-    sunday: {
+      tuesday: { time: "7:00 PM - 9:000 PM" },
+      friday: { time: "7:00 PM - 9:00 PM" },
+      sunday: {
         morning: { time: "8:30 AM - 10:30 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 17,
-        name: "Abelenkpe Church",
+  },
+  {
+    id: 18,
+    name: "Abelenkpe Church",
     pastor: {
-    name: "Pastor Kingsley Tetteh",
-        photo: ShepherdKingsleyTetteh,
-},
-    contact:"+ 233 54 475 1612",
-        location: "Abelenkpe, Adjacent Santa Market",
+      name: "Pastor Kingsley Tetteh",
+      photo: ShepherdKingsleyTetteh,
+    },
+    contact: "+ 233 54 475 1612",
+    location: "Abelenkpe, Adjacent Santa Market",
     services: {
-    tuesday: { time: "7:00 PM - 9:00 PM" },
-    friday: { time: "7:00 PM - 9:00 PM" },
-    sunday: {
+      tuesday: { time: "7:00 PM - 9:00 PM" },
+      friday: { time: "7:00 PM - 9:00 PM" },
+      sunday: {
         morning: { time: "9:00 AM - 11:30 AM" },
         afternoon: null,
-            evening: null,
+        evening: null,
+      },
     },
-},
-},
-{
-    id: 18,
-        name: "Sunyani Church",
+  },
+  {
+    id: 19,
+    name: "Sunyani Church",
     pastor: {
-    name: "Pastor Frank Tetteh",
-        photo: FrankTettehJunior,
-},
-    location: "",
-        contact: "",
+      name: "Pastor Frank Tetteh",
+      photo: FrankTettehJunior,
+    },
+    location:
+      " Executive Guest House (Opposite De-Ventas Hostel, Adjacent St. Vitus School)",
+    contact: "",
     services: {
-    tuesday: { time: "6:00 PM - 8:30 PM" },
-    friday: { time: "6:00 PM - 8:30 PM" },
-    sunday: {
+      tuesday: { time: "6:00 PM - 8:30 PM" },
+      friday: { time: "6:00 PM - 8:30 PM" },
+      sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
         afternoon: { time: "10:40 PM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
+      },
     },
-},
-},
-]
+  },
+];
 
 export default function BranchesPage() {
-    const [searchQuery, setSearchQuery
-    ] = useState("")
-    const [serviceFilter, setServiceFilter
-    ] = useState("all")
-    const [activeBranch, setActiveBranch
-    ] = useState(branchesData[0])
-    const [currentIndex, setCurrentIndex
-    ] = useState(0)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [serviceFilter, setServiceFilter] = useState("all");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   const filteredBranches = branchesData.filter((branch) => {
     // Search filter
     const matchesSearch =
       branch.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       branch.pastor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      branch.location.toLowerCase().includes(searchQuery.toLowerCase())
+      branch.location.toLowerCase().includes(searchQuery.toLowerCase());
 
     // Service filter
-    if (serviceFilter === "all") return matchesSearch
-    if (serviceFilter === "tuesday") return matchesSearch && branch.services.tuesday
-    if (serviceFilter === "friday") return matchesSearch && branch.services.friday
+    if (serviceFilter === "all") return matchesSearch;
+    if (serviceFilter === "tuesday")
+      return matchesSearch && branch.services.tuesday;
+    if (serviceFilter === "friday")
+      return matchesSearch && branch.services.friday;
     if (serviceFilter === "sunday") {
       return (
         matchesSearch &&
-        (branch.services.sunday.morning || branch.services.sunday.afternoon || branch.services.sunday.evening)
-      )
+        (branch.services.sunday.morning ||
+          branch.services.sunday.afternoon ||
+          branch.services.sunday.evening)
+      );
     }
 
-    return matchesSearch
-  })
+    return matchesSearch;
+  });
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 3 >= filteredBranches.length ? 0 : prevIndex + 3))
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 3 >= filteredBranches.length ? 0 : prevIndex + 3,
+    );
+  };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 3 < 0 ? Math.max(0, filteredBranches.length - 3) : prevIndex - 3))
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex - 3 < 0
+        ? Math.max(0, filteredBranches.length - 3)
+        : prevIndex - 3,
+    );
+  };
+
+  const handleBranchClick = (branch) => {
+    setSelectedBranch(branch);
+    setIsModalOpen(true);
+  };
 
   // Get the current visible branches
-  const visibleBranches = filteredBranches.slice(currentIndex, currentIndex + 3)
+  const visibleBranches = filteredBranches.slice(
+    currentIndex,
+    currentIndex + 12,
+  );
 
   return (
     <div className="bg-gradient-to-b from-[#0a0a0a] to-[#121212] min-h-screen flex flex-col items-center justify-center px-3 md:px-6 py-16 relative overflow-hidden">
@@ -420,7 +488,9 @@ export default function BranchesPage() {
       <div className="w-full max-w-6xl text-center md:text-left mb-8">
         <div className="flex items-center justify-center md:justify-start mb-3">
           <div className="h-0.5 w-12 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full mr-3"></div>
-          <span className="text-amber-400 uppercase tracking-wider text-xs font-medium">Find Your Community</span>
+          <span className="text-amber-400 uppercase tracking-wider text-xs font-medium">
+            Find Your Community
+          </span>
         </div>
 
         <h1 className="text-white text-xl sm:text-2xl md:text-3xl leading-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-white">
@@ -428,8 +498,8 @@ export default function BranchesPage() {
         </h1>
 
         <p className="text-amber-100/70 mt-4 max-w-xl mx-auto md:mx-0 text-sm">
-          Find a branch near you and join us for worship. Our branches are located throughout the city to serve you
-          better.
+          Find a branch near you and join us for worship. Our branches are
+          located throughout the city to serve you better.
         </p>
       </div>
 
@@ -452,40 +522,40 @@ export default function BranchesPage() {
             <div className="flex rounded-md overflow-hidden border border-white/10 shadow-sm backdrop-blur-sm">
               <button
                 className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
-        serviceFilter === "all"
-            ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
-            : "bg-white/5 text-gray-200 hover:bg-white/10"
-    }`}
+                  serviceFilter === "all"
+                    ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
+                    : "bg-white/5 text-gray-200 hover:bg-white/10"
+                }`}
                 onClick={() => setServiceFilter("all")}
               >
                 All
               </button>
               <button
                 className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
-        serviceFilter === "tuesday"
-            ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
-            : "bg-white/5 text-gray-200 hover:bg-white/10"
-    }`}
+                  serviceFilter === "tuesday"
+                    ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
+                    : "bg-white/5 text-gray-200 hover:bg-white/10"
+                }`}
                 onClick={() => setServiceFilter("tuesday")}
               >
                 Tuesday
               </button>
               <button
                 className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
-        serviceFilter === "friday"
-            ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
-            : "bg-white/5 text-gray-200 hover:bg-white/10"
-    }`}
+                  serviceFilter === "friday"
+                    ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
+                    : "bg-white/5 text-gray-200 hover:bg-white/10"
+                }`}
                 onClick={() => setServiceFilter("friday")}
               >
                 Friday
               </button>
               <button
                 className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
-        serviceFilter === "sunday"
-            ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
-            : "bg-white/5 text-gray-200 hover:bg-white/10"
-    }`}
+                  serviceFilter === "sunday"
+                    ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white"
+                    : "bg-white/5 text-gray-200 hover:bg-white/10"
+                }`}
                 onClick={() => setServiceFilter("sunday")}
               >
                 Sunday
@@ -518,43 +588,42 @@ export default function BranchesPage() {
         </div>
 
         <div className="relative overflow-hidden">
-          <div className="flex transition-transform duration-300 ease-in-out" style={{ transform: `translateX(0)` }}>
+          <div
+            className="flex transition-transform duration-300 ease-in-out"
+            style={{ transform: `translateX(0)` }}
+          >
             {visibleBranches.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {visibleBranches.map((branch) => (
                   <div
                     key={branch.id}
-                    className={`bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-white/10 group hover:border-amber-500/30 ${
-        activeBranch?.id === branch.id ? "ring-1 ring-amber-400 ring-offset-2 ring-offset-[#121212]" : ""
-    }`}
-                    onClick={() => setActiveBranch(branch)}
+                    className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-white/10 group hover:border-amber-500/30 cursor-pointer"
+                    onClick={() => handleBranchClick(branch)}
                   >
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 z-10 group-hover:opacity-80 transition-opacity duration-300"></div>
-
-                      {/* Increased image height */}
-                      <div className="h-60 bg-[#19222d] flex items-center justify-center">
-                        <img
-                          src={branch.pastor.photo || "/placeholder.svg"}
-                          alt={branch.pastor.name}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-
-                      <button className="absolute top-3 right-3 z-20 w-6 h-6 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/40">
-                        <Info size={12} className="text-white" />
-                      </button>
-
-                      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                        <h3 className="text-white text-lg font-bold">{branch.name}</h3>
-                        <p className="text-amber-200/80 text-xs mt-0.5">{branch.pastor.name}</p>
-                      </div>
-                    </div>
-
                     <div className="p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-12 h-12 rounded-full overflow-hidden bg-[#19222d] flex-shrink-0">
+                          <img
+                            src={branch.pastor.photo || noPicture}
+                            alt={branch.pastor.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-white text-lg font-bold">
+                            {branch.name}
+                          </h3>
+                          <p className="text-amber-200/80 text-xs mt-0.5">
+                            {branch.pastor.name}
+                          </p>
+                        </div>
+                      </div>
+
                       <div className="flex items-start gap-2">
                         <MapPin className="h-4 w-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                        <p className="text-gray-300 text-sm">{branch.location}</p>
+                        <p className="text-gray-300 text-sm">
+                          {branch.location || "Location not specified"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -562,7 +631,9 @@ export default function BranchesPage() {
               </div>
             ) : (
               <div className="text-center py-12 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 w-full">
-                <p className="text-amber-400">No branches found matching your search criteria.</p>
+                <p className="text-amber-400">
+                  No branches found matching your search criteria.
+                </p>
               </div>
             )}
           </div>
@@ -571,135 +642,179 @@ export default function BranchesPage() {
         {/* Pagination indicators */}
         {filteredBranches.length > 3 && (
           <div className="flex justify-center mt-6 gap-2">
-            {Array.from({ length: Math.ceil(filteredBranches.length / 3) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index * 3)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-        Math.floor(currentIndex / 3) === index ? "bg-amber-500" : "bg-white/30"
-    }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+            {Array.from({ length: Math.ceil(filteredBranches.length / 3) }).map(
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index * 3)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    Math.floor(currentIndex / 3) === index
+                      ? "bg-amber-500"
+                      : "bg-white/30"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ),
+            )}
           </div>
         )}
       </div>
 
-      {/* Branch Details Section with Icons */}
-      {activeBranch && (
-        <div className="w-full max-w-6xl mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h2 className="text-lg md:text-xl font-bold text-white mb-3">{activeBranch.name}</h2>
-              <p className="text-amber-100/70 text-sm mb-4">
-                Led by {activeBranch.pastor.name}, our {activeBranch.name} is dedicated to serving the community with
-                love and compassion.
-              </p>
-
-              <div className="grid grid-cols-1 gap-4 mb-4">
-                <div className="flex items-start gap-3">
-                  <MapPinned className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-amber-400 text-xs font-medium mb-1">Location</h4>
-                    <p className="text-white text-sm">{activeBranch.location}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <User className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-amber-400 text-xs font-medium mb-1">Pastor</h4>
-                    <p className="text-white text-sm">{activeBranch.pastor.name}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-amber-400 text-xs font-medium mb-1">Contact</h4>
-                    <p className="text-white text-sm">{activeBranch.contact || "No contact information available"}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mb-5">
-                <div className="flex items-start gap-3 mb-2">
-                  <Clock className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <h4 className="text-amber-400 text-sm font-medium">Service Schedule</h4>
-                </div>
-
-                <div className="space-y-2 pl-8">
-                  {activeBranch.services.tuesday ? (
-                    <div className="flex items-center">
-                      <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
-                      <p className="text-white text-sm">
-                        <span className="font-medium">Tuesday:</span> {activeBranch.services.tuesday.time}
-                      </p>
-                    </div>
-                  ) : null}
-
-                  {activeBranch.services.friday ? (
-                    <div className="flex items-center">
-                      <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
-                      <p className="text-white text-sm">
-                        <span className="font-medium">Friday:</span> {activeBranch.services.friday.time}
-                      </p>
-                    </div>
-                  ) : null}
-
-                  {activeBranch.services.sunday.morning && (
-                    <div className="flex items-center">
-                      <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
-                      <p className="text-white text-sm">
-                        <span className="font-medium">Sunday Morning:</span> {activeBranch.services.sunday.morning.time}
-                      </p>
-                    </div>
-                  )}
-
-                  {activeBranch.services.sunday.afternoon && (
-                    <div className="flex items-center">
-                      <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
-                      <p className="text-white text-sm">
-                        <span className="font-medium">Sunday Afternoon:</span>{" "}
-                        {activeBranch.services.sunday.afternoon.time}
-                      </p>
-                    </div>
-                  )}
-
-                  {activeBranch.services.sunday.evening && (
-                    <div className="flex items-center">
-                      <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
-                      <p className="text-white text-sm">
-                        <span className="font-medium">Sunday Evening:</span> {activeBranch.services.sunday.evening.time}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                <a
-                  href={`tel:${activeBranch.contact}`}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 text-white text-xs rounded-full transition-colors"
-                >
-                  <span>Call Branch</span>
-                </a>
-              </div>
+      {/* Details Modal */}
+      {isModalOpen && selectedBranch && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#121212] border border-white/10 rounded-lg w-full max-w-2xl max-h-[90vh] overflow-auto">
+            <div className="sticky top-0 bg-[#121212] p-4 border-b border-white/10 flex justify-between items-center">
+              <h2 className="text-lg font-bold text-white">
+                {selectedBranch.name}
+              </h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+                aria-label="Close modal"
+              >
+                <X size={18} className="text-white" />
+              </button>
             </div>
 
-            <div className="flex justify-center items-center">
-              <div className="relative max-w-[250px]">
-                <div className="absolute -inset-3 bg-gradient-to-r from-amber-500/20 to-amber-700/20 rounded-lg blur-lg opacity-70"></div>
-                <img
-                  src={activeBranch.pastor.photo || "/placeholder.svg"}
-                  alt={activeBranch.pastor.name}
-                  className="relative z-10 rounded-lg shadow-xl max-h-[300px] object-contain"
-                />
+            <div className="p-4 md:p-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-amber-100/70 text-sm mb-4">
+                    Led by {selectedBranch.pastor.name}, our{" "}
+                    {selectedBranch.name} is dedicated to serving the community
+                    with love and compassion.
+                  </p>
+
+                  <div className="grid grid-cols-1 gap-4 mb-4">
+                    <div className="flex items-start gap-3">
+                      <MapPinned className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-amber-400 text-xs font-medium mb-1">
+                          Location
+                        </h4>
+                        <p className="text-white text-sm">
+                          {selectedBranch.location || "Location not specified"}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <User className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-amber-400 text-xs font-medium mb-1">
+                          Pastor
+                        </h4>
+                        <p className="text-white text-sm">
+                          {selectedBranch.pastor.name}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Phone className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-amber-400 text-xs font-medium mb-1">
+                          Contact
+                        </h4>
+                        <p className="text-white text-sm">
+                          {selectedBranch.contact ||
+                            "No contact information available"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-5">
+                    <div className="flex items-start gap-3 mb-2">
+                      <Clock className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <h4 className="text-amber-400 text-sm font-medium">
+                        Service Schedule
+                      </h4>
+                    </div>
+
+                    <div className="space-y-2 pl-8">
+                      {selectedBranch.services.tuesday ? (
+                        <div className="flex items-center">
+                          <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
+                          <p className="text-white text-sm">
+                            <span className="font-medium">Tuesday:</span>{" "}
+                            {selectedBranch.services.tuesday.time}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {selectedBranch.services.friday ? (
+                        <div className="flex items-center">
+                          <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
+                          <p className="text-white text-sm">
+                            <span className="font-medium">Friday:</span>{" "}
+                            {selectedBranch.services.friday.time}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {selectedBranch.services.sunday.morning && (
+                        <div className="flex items-center">
+                          <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
+                          <p className="text-white text-sm">
+                            <span className="font-medium">Sunday Morning:</span>{" "}
+                            {selectedBranch.services.sunday.morning.time}
+                          </p>
+                        </div>
+                      )}
+
+                      {selectedBranch.services.sunday.afternoon && (
+                        <div className="flex items-center">
+                          <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
+                          <p className="text-white text-sm">
+                            <span className="font-medium">
+                              Sunday Afternoon:
+                            </span>{" "}
+                            {selectedBranch.services.sunday.afternoon.time}
+                          </p>
+                        </div>
+                      )}
+
+                      {selectedBranch.services.sunday.evening && (
+                        <div className="flex items-center">
+                          <span className="w-1 h-1 bg-amber-400 rounded-full mr-1.5"></span>
+                          <p className="text-white text-sm">
+                            <span className="font-medium">Sunday Evening:</span>{" "}
+                            {selectedBranch.services.sunday.evening.time}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {selectedBranch.contact && (
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={`tel:${selectedBranch.contact}`}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 text-white text-xs rounded-full transition-colors"
+                      >
+                        <span>Call Branch</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex justify-center items-center">
+                  <div className="relative max-w-[250px]">
+                    <div className="absolute -inset-3 bg-gradient-to-r from-amber-500/20 to-amber-700/20 rounded-lg blur-lg opacity-70"></div>
+                    <img
+                      src={selectedBranch.pastor.photo || "/placeholder.svg"}
+                      alt={selectedBranch.pastor.name}
+                      className="relative z-10 rounded-lg shadow-xl max-h-[300px] object-contain"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
