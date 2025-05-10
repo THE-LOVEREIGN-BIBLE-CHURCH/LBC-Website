@@ -426,7 +426,7 @@ const branchesData = [
 export default function BranchesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [serviceFilter, setServiceFilter] = useState("all");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBranch, setSelectedBranch] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -470,30 +470,31 @@ export default function BranchesPage() {
     return matchesSearch;
   });
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 3 >= filteredBranches.length ? 0 : prevIndex + 3,
-    );
+  // Calculate total pages
+  const branchesPerPage = 9;
+  const totalPages = Math.ceil(filteredBranches.length / branchesPerPage);
+
+  const nextPage = () => {
+    setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex - 3 < 0
-        ? Math.max(0, filteredBranches.length - 3)
-        : prevIndex - 3,
-    );
+  const prevPage = () => {
+    setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages);
   };
+
+  const goToPage = (pageIndex) => {
+    setCurrentPage(pageIndex);
+  };
+
+  // Get the current page branches
+  const startIndex = currentPage * branchesPerPage;
+  const endIndex = startIndex + branchesPerPage;
+  const visibleBranches = filteredBranches.slice(startIndex, endIndex);
 
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);
     setIsModalOpen(true);
   };
-
-  // Get the current visible branches
-  const visibleBranches = filteredBranches.slice(
-    currentIndex,
-    currentIndex + 12,
-  );
 
   return (
     <div className="bg-gradient-to-b from-[#0a0a0a] to-[#121212] min-h-screen flex flex-col items-center justify-center px-3 md:px-6 py-16 relative overflow-hidden">
@@ -591,14 +592,16 @@ export default function BranchesPage() {
           <h2 className="text-white text-lg font-medium">Branch Locations</h2>
           <div className="flex gap-2">
             <button
-              onClick={prevSlide}
+              onClick={prevPage}
+              disabled={currentPage === 0}
               className="w-8 h-8 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full shadow-md hover:bg-white/20 transition border border-white/20"
               aria-label="Previous branches"
             >
               <ChevronLeft className="text-white text-xs" size={16} />
             </button>
             <button
-              onClick={nextSlide}
+              onClick={nextPage}
+              disabled={currentPage === totalPages - 1 || totalPages === 0}
               className="w-8 h-8 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-full shadow-md hover:bg-white/20 transition border border-white/20"
               aria-label="Next branches"
             >
@@ -660,22 +663,18 @@ export default function BranchesPage() {
         </div>
 
         {/* Pagination indicators */}
-        {filteredBranches.length > 3 && (
+        {totalPages > 1 && (
           <div className="flex justify-center mt-6 gap-2">
-            {Array.from({ length: Math.ceil(filteredBranches.length / 3) }).map(
-              (_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index * 3)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    Math.floor(currentIndex / 3) === index
-                      ? "bg-amber-500"
-                      : "bg-white/30"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ),
-            )}
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToPage(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  currentPage === index ? "bg-amber-500" : "bg-white/30"
+                }`}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
           </div>
         )}
       </div>
