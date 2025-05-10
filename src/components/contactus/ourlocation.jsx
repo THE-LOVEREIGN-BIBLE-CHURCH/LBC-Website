@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 import "leaflet/dist/leaflet.css";
-import LocationMap from "../../components/locationMap"
-
-
+import LocationMap from "../../components/locationMap";
 
 const OurLocation = () => {
   return (
@@ -21,20 +19,23 @@ const OurLocation = () => {
                 <strong>Landmark:</strong> Near PUMA Filling Station
               </p>
               <p className="text-gray-200">
-                <strong>Available Hours:</strong> 
-                <br />Mon-Fri: 9:00 AM - 5:00 PM
-                <br />Sat: 10:00 AM - 2:00 PM
-                <br />Sun: 00:00 AM - 11:59 PM
+                <strong>Available Hours:</strong>
+                <br />
+                Tue - Fri: 10:00 AM - 5:00 PM
+                <br />
+                Sat: 10:00 AM - 3:00 PM
+                <br />
+                Sun: 08:00 AM - 11:59 PM
               </p>
             </div>
           </div>
 
-
           <div className="rounded-xl overflow-hidden">
-          <div className=" w-full h-full " id="bigBox1Child2">
-              <div
-                className="w-full h-72 bg-[#F2F9FC] flex justify-center"
-              ><div id="mapid" className="w-full h-[100%] z-0"><LocationMap latitude={5.639626} longitude={-0.219699} /></div>
+            <div className=" w-full h-full " id="bigBox1Child2">
+              <div className="w-full h-72 bg-[#F2F9FC] flex justify-center">
+                <div id="mapid" className="w-full h-[100%] z-0">
+                  <LocationMap latitude={5.639626} longitude={-0.219699} />
+                </div>
               </div>
             </div>
           </div>

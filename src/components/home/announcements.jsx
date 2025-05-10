@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectCards } from "swiper/modules";
 import { motion, useInView } from "framer-motion";
@@ -30,16 +30,22 @@ export default function Announce() {
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
 
-  useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
+  // Initialize navigation when swiper is ready
+  const handleSwiperInit = useCallback((swiper) => {
+    swiperRef.current = swiper;
 
-      // Initialize and update navigation
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
+    // Setup navigation after swiper is initialized
+    if (
+      swiper.params.navigation &&
+      typeof swiper.params.navigation !== "boolean"
+    ) {
+      const navigation = swiper.params.navigation;
+      navigation.prevEl = prevRef.current;
+      navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
     }
-  }, [swiperRef.current, prevRef.current, nextRef.current]);
+  }, []);
 
   // Default events with placeholder image
   const defaultEvents = [
@@ -52,17 +58,17 @@ export default function Announce() {
       phone: "024 237 1411",
     },
     {
-      image: businessmen,
-      title: "Apostolic Encounter",
-      date: "22nd - 23rd May 2025",
+      image: wordexplosion,
+      title: "Word Explosion Conference",
+      date: "14th - 15th May 2025",
       time: "6:00PM GMT Each Night",
       description: "",
       phone: "024 237 1411",
     },
     {
-      image: wordexplosion,
-      title: "Word Explosion Conference",
-      date: "14th - 15th May 2025",
+      image: businessmen,
+      title: "Apostolic Encounter",
+      date: "22nd - 23rd May 2025",
       time: "6:00PM GMT Each Night",
       description: "",
       phone: "024 237 1411",
@@ -85,12 +91,6 @@ export default function Announce() {
           setEvents(defaultEvents);
           setLoading(false);
         }, 1000);
-
-        // Uncomment for real API implementation
-        // const response = await fetch("YOUR_API_ENDPOINT")
-        // const data = await response.json()
-        // setEvents(data)
-        // setLoading(false)
       } catch (error) {
         console.error("Error fetching events:", error);
         setEvents(defaultEvents);
@@ -100,16 +100,6 @@ export default function Announce() {
 
     fetchEvents();
   }, []);
-
-  // Initialize navigation buttons after Swiper is mounted
-  useEffect(() => {
-    if (swiperRef.current && prevRef.current && nextRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
-    }
-  }, [loading]);
 
   // Animation variants
   const containerVariants = {
@@ -147,7 +137,6 @@ export default function Announce() {
     },
   };
 
-  // Loading skeleton
   if (loading) {
     return (
       <div className="relative text-white font-instrument z-40 px-4 bg-black">
@@ -253,18 +242,25 @@ export default function Announce() {
             disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }}
+          grabCursor={true} // Enable manual swiping
           slidesPerView={1}
           spaceBetween={10}
-          grabCursor={true}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
+          onSwiper={handleSwiperInit}
+          onInit={handleSwiperInit} // Additional initialization handler
           className="pb-16"
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 10 },
             768: { slidesPerView: 2, spaceBetween: 15 },
             1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
+          // Enable touch events for mobile swiping
+          touchEventsTarget="container"
+          simulateTouch={true}
+          touchRatio={1}
+          touchAngle={45}
+          shortSwipes={true}
+          longSwipes={true}
+          followFinger={true}
         >
           {events.map((event, index) => (
             <SwiperSlide key={index} className="touch-swiper-slide">
@@ -324,8 +320,6 @@ export default function Announce() {
           ))}
         </Swiper>
       </motion.div>
-
-      {/* Add CSS to ensure touch swiping works properly */}
     </div>
   );
 }
