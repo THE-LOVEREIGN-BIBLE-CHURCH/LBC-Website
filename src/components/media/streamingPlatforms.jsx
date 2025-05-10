@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Youtube, Podcast, Video } from "lucide-react"
-import { motion } from "framer-motion"
+import { Youtube, Podcast, Video, Facebook, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 
 const StreamingPlatforms = () => {
   // Animation variants
@@ -13,7 +13,7 @@ const StreamingPlatforms = () => {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -25,13 +25,14 @@ const StreamingPlatforms = () => {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const platforms = [
     {
       name: "YouTube",
       icon: <Youtube className="text-red-500" size={24} />,
-      description: "Watch our latest content, interviews, and behind-the-scenes footage on YouTube.",
+      description:
+        "Watch our latest content, interviews, and behind-the-scenes footage on YouTube.",
       cta: "Subscribe Now",
       ctaIcon: <Youtube size={14} />,
       url: "https://www.youtube.com/@lovereignbiblechurch",
@@ -45,12 +46,14 @@ const StreamingPlatforms = () => {
     {
       name: "Podbean",
       icon: <Podcast className="text-blue-500" size={24} />,
-      description: "Listen to our podcasts and audio content on Podbean. Available anytime, anywhere.",
+      description:
+        "Listen to our podcasts and audio content on Podbean. Available anytime, anywhere.",
       cta: "Listen Now",
       ctaIcon: <Podcast size={14} />,
       url: "https://lovereignbiblechurch.podbean.com/",
       color: "blue",
-      gradient: "from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600",
+      gradient:
+        "from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600",
       iconBg: "bg-blue-500/10",
       hoverText: "text-blue-400",
       shadow: "shadow-blue-500/20 hover:shadow-blue-500/40",
@@ -59,18 +62,52 @@ const StreamingPlatforms = () => {
     {
       name: "TikTok",
       icon: <Video className="text-pink-500" size={24} />,
-      description: "Catch our short-form videos, quick insights, and engaging content on TikTok.",
+      description:
+        "Catch our short-form videos, quick insights, and engaging content on TikTok.",
       cta: "Follow Now",
       ctaIcon: <Video size={14} />,
       url: "https://www.tiktok.com/@lovereignbiblechurch",
       color: "pink",
-      gradient: "from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-600",
+      gradient:
+        "from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-600",
       iconBg: "bg-pink-500/10",
       hoverText: "text-pink-400",
       shadow: "shadow-pink-500/20 hover:shadow-pink-500/40",
       blobRotate: "rotate-6",
     },
-  ]
+    {
+      name: "Facebook",
+      icon: <Facebook className="text-blue-600" size={24} />,
+      description:
+        "Join us on Facebook and engage with us. Available anytime, anywhere.",
+      cta: "Join Now",
+      ctaIcon: <Facebook size={14} />,
+      url: "https://facebook.com/lovereignbiblechurch",
+      color: "blue",
+      gradient:
+        "from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600",
+      iconBg: "bg-blue-500/10",
+      hoverText: "text-blue-400",
+      shadow: "shadow-blue-500/20 hover:shadow-blue-500/40",
+      blobRotate: "-rotate-12",
+    },
+    {
+      name: "Twitter (now X)",
+      icon: <Twitter className="text-blue-400" size={24} />,
+      description:
+        "Catch our short-form videos, quick insights, and engaging content on X.",
+      cta: "Follow Now",
+      ctaIcon: <Twitter size={14} />,
+      url: "https://x.com/lovereignchurch",
+      color: "blue",
+      gradient:
+        "from-blue-500 to-blue-400 hover:from-blue-400 hover:to-blue-500",
+      iconBg: "bg-blue-400/10",
+      hoverText: "text-blue-300",
+      shadow: "shadow-blue-400/20 hover:shadow-blue-400/40",
+      blobRotate: "rotate-6",
+    },
+  ];
 
   return (
     <div className="py-12 bg-black text-white relative overflow-hidden">
@@ -130,7 +167,8 @@ const StreamingPlatforms = () => {
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-base font-light">
-            Connect with us across multiple platforms and never miss our latest content
+            Connect with us across multiple platforms and never miss our latest
+            content
           </p>
         </motion.div>
 
@@ -264,8 +302,7 @@ const StreamingPlatforms = () => {
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StreamingPlatforms
-
+export default StreamingPlatforms;
