@@ -27,10 +27,10 @@ const ContactMethods = () => {
   return (
     <div className=" text-white py-12 flex flex-col items-center relative z-20 mt-16">
       <div className="container max-w-2xl mx-auto px-4">
-      <h1 className="text-[10vw] sm:text-[8vw] lg:text-[6vw] font-extrabold text-center pt-8 bg-gradient-to-b from-white via-white/50 to-transparent bg-clip-text text-transparent">
-  Get In Touch
-</h1>
-              <div className="flex flex-col md:flex-row md:justify-between md:space-x-6 text-center space-y-6 md:space-y-0">
+        <h1 className="text-[10vw] sm:text-[8vw] lg:text-[6vw] font-extrabold text-center pt-8 bg-gradient-to-b from-white via-white/50 to-transparent bg-clip-text text-transparent">
+          Get In Touch
+        </h1>
+        <div className="flex flex-col md:flex-row md:justify-between md:space-x-6 text-center space-y-6 md:space-y-0">
           <div className="flex flex-col items-center">
             <Phone className="text-green-500 mb-2" size={30} />
             <h3 className="text-lg font-medium">Phone</h3>
@@ -40,8 +40,10 @@ const ContactMethods = () => {
           <div className="flex flex-col items-center">
             <Mail className="text-blue-500 mb-2" size={30} />
             <h3 className="text-lg font-medium">Email</h3>
-            <p className="text-sm text-gray-400">info@LBC.com</p>
-            <p className="text-sm text-gray-400">contact@LBC.com</p>
+            <p className="text-sm text-gray-400">
+              info@lovereignbiblechurch.org
+            </p>
+            <p className="text-sm text-gray-400">lbcwebsite2@gmail.com</p>
           </div>
 
           <div className="flex flex-col items-center">

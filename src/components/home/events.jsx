@@ -1,25 +1,31 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Autoplay } from "swiper/modules"
-import { motion, useInView } from "framer-motion"
-import { Calendar, Clock, Phone, ChevronLeft, ChevronRight } from "lucide-react"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { motion, useInView } from "framer-motion";
+import {
+  Calendar,
+  Clock,
+  Phone,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const ellipse = "/assets/img/half-bg.png"
-const midweek = "/assets/img/flyers/midweek.jpeg"
-const sunday = "/assets/img/flyers/sunday.jpeg"
-const friday = "/assets/img/flyers/sen.jpeg"
+const ellipse = "/assets/img/half-bg.png";
+const midweek = "/assets/img/flyers/midweek.jpeg";
+const sunday = "/assets/img/flyers/sunday.jpeg";
+const friday = "/assets/img/flyers/sen.jpeg";
 
 const Events = () => {
-  const [loading, setLoading] = useState(true)
-  const eventsRef = useRef()
+  const [loading, setLoading] = useState(true);
+  const eventsRef = useRef();
   useInView(eventsRef, { once: false });
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   const events = [
     {
@@ -27,37 +33,34 @@ const Events = () => {
       title: "Sunday Service",
       date: "This Sunday",
       time: "8AM, 10:3OAM, 5PM",
-      description:
-        "",
-      phone: "0242371411",
+      description: "",
+      phone: "024 2371 411",
     },
     {
       image: midweek,
       title: "Midweek Service",
       date: "This Wednesday",
       time: "6:00PM GMT",
-      description:
-        "",
-      phone: "0242371411",
+      description: "",
+      phone: "024 2371 411",
     },
     {
       image: friday,
       title: "Supernatural Encounter",
       date: "This Friday",
       time: "6:00PM GMT",
-      description:
-        "",
-      phone: "0242371433",
+      description: "",
+      phone: "024 237 1411",
     },
-  ]
+  ];
 
   useEffect(() => {
     // Simulate loading
     const timer = setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Animation variants
   const headerVariants = {
@@ -70,7 +73,7 @@ const Events = () => {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,7 +84,7 @@ const Events = () => {
         delayChildren: 0.3,
       },
     },
-  }
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -93,7 +96,7 @@ const Events = () => {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const bigTextVariants = {
     hidden: { opacity: 0, scale: 0.9 },
@@ -105,7 +108,7 @@ const Events = () => {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   // Loading skeleton
   if (loading) {
@@ -121,7 +124,10 @@ const Events = () => {
           {/* Cards skeleton */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-800/50 rounded-xl p-6 animate-pulse">
+              <div
+                key={i}
+                className="bg-gray-800/50 rounded-xl p-6 animate-pulse"
+              >
                 <div className="w-full h-48 bg-gray-700 rounded-lg mb-4"></div>
                 <div className="w-3/4 h-6 bg-gray-700 rounded mb-4 mx-auto"></div>
                 <div className="flex justify-center gap-4 mb-4">
@@ -134,7 +140,7 @@ const Events = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -199,7 +205,12 @@ const Events = () => {
       </div>
 
       {/* Swiper Component */}
-      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-5xl mx-auto">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-5xl mx-auto"
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation={{
@@ -216,9 +227,9 @@ const Events = () => {
           }}
           onBeforeInit={(swiper) => {
             // @ts-ignore
-            swiper.params.navigation.prevEl = prevRef.current
+            swiper.params.navigation.prevEl = prevRef.current;
             // @ts-ignore
-            swiper.params.navigation.nextEl = nextRef.current
+            swiper.params.navigation.nextEl = nextRef.current;
           }}
           slidesPerView={1}
           spaceBetween={10}
@@ -246,7 +257,9 @@ const Events = () => {
                 </div>
 
                 <div className="p-6 flex-grow flex flex-col">
-                  <h2 className="text-2xl font-bold text-white mb-4">{event.title}</h2>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    {event.title}
+                  </h2>
 
                   <div className="flex flex-col space-y-2 mb-4">
                     <div className="flex items-center text-teal-300">
@@ -259,7 +272,9 @@ const Events = () => {
                     </div>
                   </div>
 
-                  <p className="text-slate-300 text-sm mb-4 flex-grow">{event.description}</p>
+                  <p className="text-slate-300 text-sm mb-4 flex-grow">
+                    {event.description}
+                  </p>
 
                   <div className="mt-auto pt-4 border-t border-slate-700/30">
                     <div className="flex items-center justify-between">
@@ -282,7 +297,7 @@ const Events = () => {
         </Swiper>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default Events
+export default Events;

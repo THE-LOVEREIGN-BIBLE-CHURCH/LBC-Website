@@ -11,9 +11,8 @@ import {
   X,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-const CEElderEssienNana = "/assets/img/church_leaders/CEELderEssienNana.jpg";
-const CEElderProsperAsamoah =
-  "/assets/img/church_leaders/CEELderProsperAsamoah.jpg";
+const CEElderEssienNana = "/assets/img/church_leaders/pastoressien.png";
+const CEElderProsperAsamoah = "/assets/img/church_leaders/pastorprosper.jpeg";
 const CEFredAgyemang = "/assets/img/church_leaders/CEFredAgyemang.jpg";
 const CEPeterHaginWealth = "/assets/img/church_leaders/CEPeterHagin-Wealth.jpg";
 const ChiefElderCharlesFiadjoe =
@@ -37,11 +36,13 @@ const ShepherdKingsleyTetteh =
   "/assets/img/church_leaders/PastorKingsleyTetteh.jpg";
 const CETerrickNaador = "/assets/img/church_leaders/CETerrick.jpg";
 const noPicture = "/assets/img/church_leaders/noPic.png";
+const PastorMichaelAgbadze =
+  "/assets/img/church_leaders/PastorMicahelAgbadze.png";
 
 const branchesData = [
   {
     id: 1,
-    name: "Ho Church",
+    name: "Ho S Church",
     pastor: {
       name: "Pastor Emmanuel Fiifi Robertson",
       photo: PastorEmmanuelFiifiRobert,
@@ -60,7 +61,7 @@ const branchesData = [
   },
   {
     id: 2,
-    name: "Abeka Church",
+    name: "Abeka S Church",
     pastor: {
       name: "Pastor Emmanuel Yartey",
       photo: PastorEmmanuelYartey,
@@ -79,7 +80,7 @@ const branchesData = [
   },
   {
     id: 3,
-    name: "Sowutuom Church",
+    name: "Sowutuom F Church",
     pastor: {
       name: "Pastor Moses Frimpong",
       photo: PastorMosesFrimpong,
@@ -98,13 +99,13 @@ const branchesData = [
   },
   {
     id: 5,
-    name: "Accra Church",
+    name: "Adabraka F Church",
     pastor: {
       name: "Pastor Michael Oduro",
       photo: PastorMichaelOduro,
     },
     location: "Graphic Road, Opposite First Allied Savings and Loans Limited",
-    contact: "+233 55 234 5678",
+    contact: "+233 24 937 7622",
     services: {
       tuesday: { time: "7:00 PM - 8:30 PM" },
       friday: { time: "7:00 PM - 8:30 PM" },
@@ -117,7 +118,7 @@ const branchesData = [
   },
   {
     id: 6,
-    name: "Koforidua Church",
+    name: "Koforidua F Church",
     pastor: {
       name: "Chief Elder Charles Phillips Fiadjoe",
       photo: ChiefElderCharlesFiadjoe,
@@ -136,7 +137,7 @@ const branchesData = [
   },
   {
     id: 7,
-    name: "Pantang Church",
+    name: "Pantang F Church",
     pastor: {
       name: "Chief Elder Prosper Asamoah Mensah",
       photo: CEElderProsperAsamoah,
@@ -155,13 +156,13 @@ const branchesData = [
   },
   {
     id: 8,
-    name: "Tantra Church",
+    name: "Tantra F Church",
     pastor: {
       name: "Pastor Herbert Togbe",
       photo: CEHerbertTogbey,
     },
-    location: "789 West Boulevard, Westside Area",
-    contact: "+233 50 123 4567",
+    location: "",
+    contact: "",
     services: {
       tuesday: { time: "6:00 PM - 8:30 PM" },
       friday: { time: "6:00 PM - 8:30 PM" },
@@ -173,11 +174,30 @@ const branchesData = [
     },
   },
   {
-    id: 9,
-    name: "Bole Church",
+    id: 20,
+    name: "North Legon F Church",
     pastor: {
-      name: "Pastor Michael Agbadji",
-      photo: noPicture,
+      name: "Chief Elder Charles Phillips Fiadjoe",
+      photo: ChiefElderCharlesFiadjoe,
+    },
+    location: "Unity Citizens University College",
+    contact: "",
+    services: {
+      tuesday: { time: "6:30 PM - 8:30 PM" },
+      friday: { time: "6:30 PM - 8:30 PM" },
+      sunday: {
+        morning: { time: "9:00 AM - 12:00 PM" },
+        afternoon: null,
+        evening: null,
+      },
+    },
+  },
+  {
+    id: 9,
+    name: "Bole F Church",
+    pastor: {
+      name: "Pastor Michael Winfred Wilson Agbadze",
+      photo: PastorMichaelAgbadze,
     },
     location: "Bole Resource Center for Ghana Federation of Disabled (P W D)",
     contact: "+233 24 094 6964",
@@ -193,7 +213,7 @@ const branchesData = [
   },
   {
     id: 10,
-    name: "East Legon Church",
+    name: "East Legon F Church",
     pastor: {
       name: "Pastor Terrick Naador",
       photo: CETerrickNaador,
@@ -212,7 +232,7 @@ const branchesData = [
   },
   {
     id: 11,
-    name: "Kumasi Church",
+    name: "Kumasi F Church",
     pastor: {
       name: "Pastor Abraham Tetteh",
       photo: PastorAbrahamTetteh,
@@ -231,7 +251,7 @@ const branchesData = [
   },
   {
     id: 12,
-    name: "Cape Coast Church",
+    name: "Cape Coast F Church",
     pastor: {
       name: "Pastor Essien Nana",
       photo: CEElderEssienNana,
@@ -250,7 +270,7 @@ const branchesData = [
   },
   {
     id: 13,
-    name: "Winneba Church",
+    name: "Winneba F Church",
     pastor: {
       name: "Pastor Vitalis Kanyei",
       photo: PastorVitalis,
@@ -269,7 +289,7 @@ const branchesData = [
   },
   {
     id: 14,
-    name: "UPSA Church",
+    name: "UPSA F Church",
     pastor: {
       name: "Pastor Peter Hagin-Wealth",
       photo: CEPeterHaginWealth,
@@ -288,7 +308,7 @@ const branchesData = [
   },
   {
     id: 15,
-    name: "Haatso Church",
+    name: "Haatso F Church",
     pastor: {
       name: "Pastor Frederick Agyemang",
       photo: CEFredAgyemang,
@@ -307,26 +327,26 @@ const branchesData = [
   },
   {
     id: 16,
-    name: "Korle-Bu Church",
+    name: "Korle-Bu F Church",
     pastor: {
       name: "Pastor Charles Yekple ",
       photo: PastorCharles,
     },
-    location: "",
-    contact: "",
+    location: "Korle-Bu (Plaza opp. Ndafa Park",
+    contact: "+233 079 0930",
     services: {
-      tuesday: { time: "6:00 PM - 8:30 PM" },
-      friday: { time: "6:00 PM - 8:30 PM" },
+      tuesday: null,
+      friday: { time: "7:00 PM - 8:00 PM" },
       sunday: {
-        morning: { time: "8:00 AM - 10:30 AM" },
-        afternoon: { time: "10:40 PM - 12:30 PM" },
-        evening: { time: "6:00 PM - 8:30 PM" },
+        morning: { time: "9:00 AM - 11:00 AM" },
+        afternoon: null,
+        evening: null,
       },
     },
   },
   {
     id: 17,
-    name: "Tema Church",
+    name: "Tema F Church",
     pastor: {
       name: "Pastor Benjamin Quayson",
       photo: PastorBenjaminQuayson,
@@ -345,7 +365,7 @@ const branchesData = [
   },
   {
     id: 18,
-    name: "Abelenkpe Church",
+    name: "Abelenkpe F Church",
     pastor: {
       name: "Pastor Kingsley Tetteh",
       photo: ShepherdKingsleyTetteh,
@@ -363,8 +383,27 @@ const branchesData = [
     },
   },
   {
+    id: 5,
+    name: "Legon F Church",
+    pastor: {
+      name: "Elder RAphael Addai",
+      photo: noPicture,
+    },
+    location: "Legon Main Campus",
+    contact: "+233 24 678 9543",
+    services: {
+      tuesday: { time: "7:30 PM - 9:30 PM" },
+      friday: null,
+      sunday: {
+        morning: { time: "8:30 AM - 10:30 AM" },
+        afternoon: null,
+        evening: null,
+      },
+    },
+  },
+  {
     id: 19,
-    name: "Sunyani Church",
+    name: "Sunyani F Church",
     pastor: {
       name: "Pastor Frank Tetteh",
       photo: FrankTettehJunior,

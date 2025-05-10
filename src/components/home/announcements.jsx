@@ -49,7 +49,7 @@ export default function Announce() {
       date: "12th May, 2025",
       time: "7:00PM GMT",
       description: "",
-      phone: "024 713 9612",
+      phone: "024 237 1411",
     },
     {
       image: businessmen,
@@ -57,7 +57,7 @@ export default function Announce() {
       date: "22nd - 23rd May 2025",
       time: "6:00PM GMT Each Night",
       description: "",
-      phone: "024 713 9612",
+      phone: "024 237 1411",
     },
     {
       image: wordexplosion,
@@ -65,7 +65,7 @@ export default function Announce() {
       date: "14th - 15th May 2025",
       time: "6:00PM GMT Each Night",
       description: "",
-      phone: "024 713 9612",
+      phone: "024 237 1411",
     },
     {
       image: bookLaunch,
@@ -73,7 +73,7 @@ export default function Announce() {
       date: "8th June 2025",
       time: "2:00PM GMT",
       description: "",
-      phone: "024 713 9612",
+      phone: "024 237 1411",
     },
   ];
 

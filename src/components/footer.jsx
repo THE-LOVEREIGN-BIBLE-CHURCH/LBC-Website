@@ -1,10 +1,17 @@
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
-import { Link } from "react-router-dom"
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+  Youtube,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-const  logo = '/assets/img/logo.png'
+const logo = "/assets/img/logo.png";
 
 export default function Footer() {
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -14,7 +21,6 @@ export default function Footer() {
     //const email = formData.get("email");
 
     alert(`Thank you ${name} for subscribing to our newsletter!`);
-
   };
 
   return (
@@ -25,7 +31,11 @@ export default function Footer() {
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
               <div className="w-8 h-8 bg-blue-500/10 rounded-full p-1 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                <img src={logo || "/placeholder.svg"} alt="Lovereign Bible Church" className="w-6 h-6 object-contain" />
+                <img
+                  src={logo || "/placeholder.svg"}
+                  alt="Lovereign Bible Church"
+                  className="w-6 h-6 object-contain"
+                />
               </div>
               <span className="text-white font-semibold text-sm tracking-wide group-hover:text-blue-400 transition-colors">
                 LOVEREIGN BIBLE CHURCH
@@ -35,7 +45,7 @@ export default function Footer() {
             <div className="space-y-3 text-slate-300 text-sm pl-1">
               <p className="flex items-center gap-2 hover:text-blue-400 transition-colors">
                 <Phone size={16} className="text-blue-500" />
-                <span>+233 24 686 5124</span>
+                <span>+233 24 237 1411</span>
               </p>
               <a
                 href="mailto:info@Lovereign.org"
@@ -44,7 +54,10 @@ export default function Footer() {
                 <Mail size={16} className="text-blue-500" />
                 <span>info@lovereignbiblechurch.org</span>
               </a>
-              <Link to="/contact-us" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+              <Link
+                to="/contact-us"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
+              >
                 <MapPin size={16} className="text-blue-500" />
                 <span>Christian Village, Achimota</span>
               </Link>
@@ -173,7 +186,9 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-sm tracking-wider border-b border-blue-500/30 pb-2 inline-block">
               NEWSLETTER
             </h3>
-            <p className="text-slate-300 text-sm">Stay updated with our latest sermons and events</p>
+            <p className="text-slate-300 text-sm">
+              Stay updated with our latest sermons and events
+            </p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="relative">
                 <input
@@ -204,9 +219,12 @@ export default function Footer() {
         <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700/50 to-transparent my-6"></div>
 
         <div className="text-center text-slate-400 text-sm">
-          <p>Lovereign Bible Church - © {new Date().getFullYear()} All rights reserved</p>
+          <p>
+            Lovereign Bible Church - © {new Date().getFullYear()} All rights
+            reserved
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
