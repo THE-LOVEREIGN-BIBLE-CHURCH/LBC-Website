@@ -30,7 +30,7 @@ export default function Seat() {
   return (
     <motion.div
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden -mt-20"
+      className="relative h-screen w-full overflow-hidden -mt-20 z-30"
       style={{ opacity }}
     >
       {/* Background image with parallax */}
