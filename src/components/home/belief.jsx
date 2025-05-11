@@ -115,7 +115,7 @@ export default function Belief() {
           <p className="text-sm md:text-base leading-relaxed text-white/80 font-light">
             The Church is characterized by amazing testimonies of supernatural
             experiences. We are passionate about church planting, working for
-            the Lord by serving in His House.
+            the Lord and serving in His House.
           </p>
         </motion.div>
       </div>

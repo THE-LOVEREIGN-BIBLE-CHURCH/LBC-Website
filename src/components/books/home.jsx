@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import { ShoppingCart, Download, ExternalLink, Info } from 'lucide-react'
-import { useLocation, useNavigate, Link } from "react-router-dom"
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ShoppingCart, Download, ExternalLink, Info } from "lucide-react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
-const bookImage1 = '/assets/img/giftsandcallings.jpg'
-const bookImage2 = '/assets/img/systems_structures.jpg'
-const bookImage3 = '/assets/img/work_of_ministry.jpg'
+const bookImage1 = "/assets/img/giftsandcallings.jpg";
+const bookImage2 = "/assets/img/systems_structures.jpg";
+const bookImage3 = "/assets/img/work_of_ministry.jpg";
 
 export default function BooksByFounder() {
-  const [books, setBooks] = useState([])
-  const [activeBook, setActiveBook] = useState(null)
-  const scrollRef = useRef(null)
-  const location = useLocation()
-  const navigate = useNavigate()
+  const [books, setBooks] = useState([]);
+  const [activeBook, setActiveBook] = useState(null);
+  const scrollRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Simulate API call with book information
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function BooksByFounder() {
       const placeholderBooks = [
         {
           id: 1,
-          title: "The Gifts and Callings of God",
+          title: "The Gifts and Calling of God",
           image: bookImage1,
           description:
             "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
@@ -35,10 +35,10 @@ export default function BooksByFounder() {
         },
         {
           id: 2,
-          title: "Church Systems and Strutures For Growth",
+          title: "Church Systems and Structures For Growth",
           image: bookImage2,
           description:
-            "Church Systems and Structures for Growth Unlock the keys to training leaders, strengthening church governance, and driving effective growth in the ministry.Drawing deeply from biblical principles, observations of thriving ministries, denominations, as well as personal experience ministering to pastors and leaders, this bookintroduces 13 essential systems and structures thatempower churches to flourish. Perfect for equipping ministry leaders and enhancing organizational excellence in the church. This resource offers practical strategies to ensure your church operates with purpose clarity, and lasting impact. Whether you're a church founder, pastor, church administrator, ministry trainer or someone preparing to step into ministry, \"Church Systems and Structures for Growth\" is your ultimate guide to building a well-organized and enduring ministry.",
+            'Church Systems and Structures for Growth Unlock the keys to training leaders, strengthening church governance, and driving effective growth in the ministry.Drawing deeply from biblical principles, observations of thriving ministries, denominations, as well as personal experience ministering to pastors and leaders, this bookintroduces 13 essential systems and structures thatempower churches to flourish. Perfect for equipping ministry leaders and enhancing organizational excellence in the church. This resource offers practical strategies to ensure your church operates with purpose clarity, and lasting impact. Whether you\'re a church founder, pastor, church administrator, ministry trainer or someone preparing to step into ministry, "Church Systems and Structures for Growth" is your ultimate guide to building a well-organized and enduring ministry.',
           price: "$20",
           pages: "327+",
           year: 2025,
@@ -57,15 +57,17 @@ export default function BooksByFounder() {
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book"],
         },
-      ]
-      setBooks(placeholderBooks)
+      ];
+      setBooks(placeholderBooks);
 
       // Process URL parameters without setTimeout for better reliability
       const params = new URLSearchParams(location.search);
-      const bookId = params.get('id');
+      const bookId = params.get("id");
 
       if (bookId) {
-        const selectedBook = placeholderBooks.find(book => book.id === parseInt(bookId));
+        const selectedBook = placeholderBooks.find(
+          (book) => book.id === parseInt(bookId),
+        );
         if (selectedBook) {
           setActiveBook(selectedBook);
         } else {
@@ -86,16 +88,16 @@ export default function BooksByFounder() {
       scrollRef.current.scrollBy({
         left: direction === "left" ? -200 : 200,
         behavior: "smooth",
-      })
+      });
     }
-  }
+  };
 
   // Update URL when active book changes, but only if it's a user-initiated change
   // not from the URL parsing itself
   useEffect(() => {
     if (activeBook) {
       const params = new URLSearchParams(location.search);
-      const currentBookId = params.get('id');
+      const currentBookId = params.get("id");
 
       // Only update URL if the book ID has actually changed
       if (!currentBookId || parseInt(currentBookId) !== activeBook.id) {
@@ -113,7 +115,7 @@ export default function BooksByFounder() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -122,7 +124,7 @@ export default function BooksByFounder() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   const detailsVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -131,7 +133,7 @@ export default function BooksByFounder() {
       y: 0,
       transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
     },
-  }
+  };
 
   // Added logging to debug book selection
   console.log("Active book:", activeBook);
@@ -155,7 +157,9 @@ export default function BooksByFounder() {
       >
         <div className="flex items-center justify-center md:justify-start mb-3">
           <div className="h-0.5 w-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-3"></div>
-          <span className="text-blue-300 uppercase tracking-wider text-xs font-medium">Coming Soon</span>
+          <span className="text-blue-300 uppercase tracking-wider text-xs font-medium">
+            Coming Soon
+          </span>
         </div>
 
         <h1 className="text-white text-xl sm:text-2xl md:text-3xl leading-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
@@ -163,8 +167,8 @@ export default function BooksByFounder() {
         </h1>
 
         <p className="text-blue-100/80 mt-4 max-w-xl mx-auto md:mx-0 text-sm">
-          Explore spiritual wisdom and guidance through these transformative books that have touched thousands of lives
-          around the world.
+          Explore spiritual wisdom and guidance through these transformative
+          books that have touched thousands of lives around the world.
         </p>
 
         <div className="flex justify-center md:justify-start gap-2 mt-5">
@@ -217,7 +221,9 @@ export default function BooksByFounder() {
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
-                  <h3 className="text-white text-base font-bold">{book.title}</h3>
+                  <h3 className="text-white text-base font-bold">
+                    {book.title}
+                  </h3>
                   <p className="text-blue-200 text-xs mt-0.5">
                     {book.year} • {book.pages} pages
                   </p>
@@ -235,8 +241,8 @@ export default function BooksByFounder() {
                 <button
                   className="absolute top-3 right-3 z-20 w-6 h-6 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/40"
                   onClick={(e) => {
-                    e.stopPropagation()
-                    setActiveBook(book)
+                    e.stopPropagation();
+                    setActiveBook(book);
                   }}
                 >
                   <Info size={12} className="text-white" />
@@ -260,30 +266,48 @@ export default function BooksByFounder() {
           >
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h2 className="text-lg md:text-xl font-bold text-white mb-3">{activeBook.title}</h2>
-                <p className="text-blue-100/90 text-sm mb-4">{activeBook.description}</p>
+                <h2 className="text-lg md:text-xl font-bold text-white mb-3">
+                  {activeBook.title}
+                </h2>
+                <p className="text-blue-100/90 text-sm mb-4">
+                  {activeBook.description}
+                </p>
 
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Price</h4>
-                    <p className="text-white text-sm font-semibold">{activeBook.price}</p>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Price
+                    </h4>
+                    <p className="text-white text-sm font-semibold">
+                      {activeBook.price}
+                    </p>
                   </div>
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Published</h4>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Published
+                    </h4>
                     <p className="text-white text-sm">{activeBook.year}</p>
                   </div>
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Pages</h4>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Pages
+                    </h4>
                     <p className="text-white text-sm">{activeBook.pages}</p>
                   </div>
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Formats</h4>
-                    <p className="text-white text-sm">{activeBook.formats.join(", ")}</p>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Formats
+                    </h4>
+                    <p className="text-white text-sm">
+                      {activeBook.formats.join(", ")}
+                    </p>
                   </div>
                 </div>
 
                 <div className="mb-5">
-                  <h4 className="text-blue-300 text-xs font-medium mb-1">Where to Buy</h4>
+                  <h4 className="text-blue-300 text-xs font-medium mb-1">
+                    Where to Buy
+                  </h4>
                   <ul className="text-white text-sm space-y-0.5">
                     {activeBook.availableAt.map((place, i) => (
                       <li key={i} className="flex items-center">
@@ -327,5 +351,5 @@ export default function BooksByFounder() {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

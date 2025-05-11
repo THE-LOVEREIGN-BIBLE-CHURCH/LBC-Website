@@ -1,19 +1,26 @@
-"use client"
-import { useState } from "react"
-import { Youtube, Video, Play, Loader2 } from "lucide-react"
+"use client";
+import { useState } from "react";
+import { Youtube, Video, Play, Loader2 } from "lucide-react";
 
 const VideoPlatforms = () => {
-  const [activeVideo, setActiveVideo] = useState(null)
+  const [activeVideo, setActiveVideo] = useState(null);
 
   const handlePlay = (videoId) => {
-    setActiveVideo(videoId)
-  }
+    setActiveVideo(videoId);
+  };
 
-  const isVideoPlaying = (videoId) => activeVideo === videoId
+  const isVideoPlaying = (videoId) => activeVideo === videoId;
 
   // Enhanced platform card with global playback control
-  const PlatformCard = ({ icon: Icon, color, title, description, src, videoId }) => {
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const PlatformCard = ({
+    icon: Icon,
+    color,
+    title,
+    description,
+    src,
+    videoId,
+  }) => {
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     const colorClasses = {
       red: {
@@ -28,9 +35,9 @@ const VideoPlatforms = () => {
         shadow: "shadow-pink-500/20",
         gradient: "from-pink-600 to-pink-500",
       },
-    }
+    };
 
-    const colorClass = colorClasses[color]
+    const colorClass = colorClasses[color];
 
     return (
       <div
@@ -43,7 +50,9 @@ const VideoPlatforms = () => {
           <div className="aspect-video overflow-hidden relative">
             <iframe
               src={`${src}${
-                isVideoPlaying(videoId) ? "?autoplay=1" : "?controls=0&showinfo=0&rel=0&modestbranding=1&mute=1"
+                isVideoPlaying(videoId)
+                  ? "?autoplay=1"
+                  : "?controls=0&showinfo=0&rel=0&modestbranding=1&mute=1"
               }`}
               className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
                 isVideoLoaded ? "opacity-100" : "opacity-0"
@@ -56,7 +65,9 @@ const VideoPlatforms = () => {
             {/* Enhanced Loading State */}
             {!isVideoLoaded && (
               <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/60 flex flex-col items-center justify-center">
-                <Loader2 className={`w-10 h-10 ${colorClass.text} animate-spin mb-2`} />
+                <Loader2
+                  className={`w-10 h-10 ${colorClass.text} animate-spin mb-2`}
+                />
                 <div className="text-sm text-white/80">Loading preview...</div>
               </div>
             )}
@@ -85,19 +96,25 @@ const VideoPlatforms = () => {
         {/* Content Section */}
         <div className="p-6">
           <div className="flex items-center mb-4">
-            <div className={`w-10 h-10 rounded-full ${colorClass.bg}/10 flex items-center justify-center mr-3`}>
+            <div
+              className={`w-10 h-10 rounded-full ${colorClass.bg}/10 flex items-center justify-center mr-3`}
+            >
               <Icon className={`${colorClass.text} w-5 h-5`} />
             </div>
-            <h3 className={`text-xl font-bold text-white transition-colors duration-300`}>
+            <h3
+              className={`text-xl font-bold text-white transition-colors duration-300`}
+            >
               {title}
             </h3>
           </div>
 
-          <p className="text-gray-400 text-sm mb-5 line-clamp-3">{description}</p>
+          <p className="text-gray-400 text-sm mb-5 line-clamp-3">
+            {description}
+          </p>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="py-16 bg-black text-white relative overflow-hidden">
@@ -114,7 +131,8 @@ const VideoPlatforms = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full mb-6"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Experience our sermons, teachings, and inspirational content across different platforms
+            Experience our sermons, teachings, and inspirational content across
+            different platforms
           </p>
         </div>
 
@@ -123,7 +141,7 @@ const VideoPlatforms = () => {
             icon={Youtube}
             color="red"
             title="YouTube Videos"
-            description="Explore our full-length sermons, teachings, and church events on YouTube. Dive deeper into God's word through our comprehensive video content."
+            description="Explore our full-length sermons, teachings, and church events on YouTube. Dive deeper into God's word through our video content."
             src="https://www.youtube.com/embed/qAL4h2SgtPo"
             videoId="youtube"
           />
@@ -132,14 +150,14 @@ const VideoPlatforms = () => {
             icon={Video}
             color="pink"
             title="TikTok Videos"
-            description="Quick insights, short teachings, and inspiring moments on TikTok. Perfect for spiritual encouragement throughout your day."
+            description="Quick insights, short teachings, and inspiring moments on TikTok,perfect for spiritual encouragement throughout your day."
             src="https://www.tiktok.com/embed/7467645060943727877"
             videoId="tiktok"
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VideoPlatforms
+export default VideoPlatforms;

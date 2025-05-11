@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Facebook, Instagram, Twitter, Quote, ArrowRight } from "lucide-react"
-const pjw = '/assets/img/pjw.svg' // Image for Reverend John Winfred
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Facebook, Instagram, Twitter, Quote, ArrowRight } from "lucide-react";
+const pjw = "/assets/img/pjw.svg"; // Image for Reverend John Winfred
 
 export default function AboutFounder() {
-  const ref = useRef(null)
+  const ref = useRef(null);
   const isInView = useInView(ref, {
     once: false,
     amount: 0.2,
-  })
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -21,7 +21,7 @@ export default function AboutFounder() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const titleVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -33,7 +33,7 @@ export default function AboutFounder() {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const contentVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -45,7 +45,7 @@ export default function AboutFounder() {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.9, rotate: -2 },
@@ -58,7 +58,7 @@ export default function AboutFounder() {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-  }
+  };
 
   const decorationVariants = {
     hidden: { opacity: 0 },
@@ -69,7 +69,7 @@ export default function AboutFounder() {
         duration: 1.2,
       },
     },
-  }
+  };
 
   const socialVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -81,7 +81,7 @@ export default function AboutFounder() {
         delay: 0.8,
       },
     },
-  }
+  };
 
   const buttonVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -100,7 +100,7 @@ export default function AboutFounder() {
         duration: 0.3,
       },
     },
-  }
+  };
 
   return (
     <div
@@ -139,52 +139,84 @@ export default function AboutFounder() {
       >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Text Content */}
-          <motion.div className="text-left order-2 lg:order-1" variants={contentVariants}>
+          <motion.div
+            className="text-left order-2 lg:order-1"
+            variants={contentVariants}
+          >
             <motion.div className="mb-6 inline-block" variants={titleVariants}>
               <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-6"></div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
                 Reverend
                 <br />
-                <span className="text-5xl md:text-6xl lg:text-7xl">John Winfred</span>
+                <span className="text-5xl md:text-6xl lg:text-7xl">
+                  John Winfred
+                </span>
               </h2>
             </motion.div>
 
-            <motion.div className="space-y-6 text-lg text-gray-300 leading-relaxed" variants={contentVariants}>
+            <motion.div
+              className="space-y-6 text-lg text-gray-300 leading-relaxed"
+              variants={contentVariants}
+            >
               <p>
-              Rev. John Winfred is a proficient Pastor, preacher and teacher of the word of God. He is a highly sought after minister of God's word on most university campuses in Ghana. His ministrations are characterized by consummate revelations in the Body of Christ, soul winning the work of the ministry, Bible doctrine and shepherding (discipleship/discipling) the flock of God. 
+                Rev. John Winfred is a proficient Pastor, preacher and teacher
+                of the word of God. He is a highly sought after minister of
+                God's word on most university campuses in Ghana. His
+                ministrations are characterized by consummate revelations in the
+                Body of Christ, soul winning the work of the ministry, Bible
+                doctrine and shepherding (discipleship/discipling) the flock of
+                God.
               </p>
 
               <p>
-              He is the founder and Senior Pastor of Lovereign Bible church. He oversees a network of branches of Lovereign Bible Church.
+                He is the founder and Senior Pastor of Lovereign Bible church.
+                He oversees a network of branches of Lovereign Bible Church.
               </p>
 
               <blockquote className="border-l-4 border-blue-500 pl-4 my-6 italic text-white">
-                "Faith is taking the first step even when you don't see the whole staircase."
+                "Faith is taking the first step even when you don't see the
+                whole staircase."
               </blockquote>
 
               <p>
-              He is also the founder of young ministers’ international (YMNI), a growing fellowship and a network of young ministers of the gospel. He has been appointed as a board member of the “Healing Jesus Campaign”, an international evangelist network of pastors, headed by the renowned Healing Evangelist, Mega Church Pastor and Teacher, Bishop Dag Heward Mills. He is also appointed a member of the Ghana Charismatic Bishops’ Conference.
+                He is also the founder of the Young Ministers’ Network
+                International (YMNI), a growing fellowship and a network of
+                young ministers of the gospel. He is as a board member of the
+                “Healing Jesus Campaign”, an international evangelist network of
+                pastors, headed by the renowned Healing Evangelist, Mega Church
+                Pastor and Teacher, Bishop Dag Heward Mills. He is also a member
+                of the Ghana Charismatic Bishops’ Conference.
               </p>
               <p>
-              He is also the founder of young ministers’ international (YMNI), a growing fellowship and a network of young ministers of the gospel. He has been appointed as a board member of the “Healing Jesus Campaign”, an international evangelist network of pastors, headed by the renowned Healing Evangelist, Mega Church Pastor and Teacher, Bishop Dag Heward Mills. He is also appointed a member of the Ghana Charismatic Bishops’ Conference.
-              </p>
-              <p>
-              His aim is to prepare Gods people and arm them with an excellent Bible based belief, guiding them to fulfil their divine mandate. Rev. John Winfred is blessed with so many sons and daughters in the ministry all over the world and He is married to Dr. Anita Winfred and they are blessed with two children.
+                His aim is to prepare Gods people and arm them with an excellent
+                Bible based belief, guiding them to fulfil their divine mandate.
+                Rev. John Winfred is blessed with so many sons and daughters in
+                the ministry all over the world. He is married to Dr. Anita
+                Winfred and they are blessed with two children.
               </p>
             </motion.div>
 
-            <motion.div className="mt-10" variants={buttonVariants} whileHover="hover">
+            <motion.div
+              className="mt-10"
+              variants={buttonVariants}
+              whileHover="hover"
+            >
               <a
                 href="#"
                 className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 group"
               >
                 <span>Read Full Biography</span>
-                <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  size={16}
+                  className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                />
               </a>
             </motion.div>
 
             <motion.div className="mt-12" variants={socialVariants}>
-              <p className="text-white/80 mb-4 font-medium">Follow Reverend John Winfred</p>
+              <p className="text-white/80 mb-4 font-medium">
+                Follow Reverend John Winfred
+              </p>
               <div className="flex gap-6">
                 <a
                   href="#"
@@ -212,7 +244,10 @@ export default function AboutFounder() {
           </motion.div>
 
           {/* Right Column - Image */}
-          <motion.div className="relative flex justify-center items-center order-1 lg:order-2" variants={imageVariants}>
+          <motion.div
+            className="relative flex justify-center items-center order-1 lg:order-2"
+            variants={imageVariants}
+          >
             <div className="relative">
               {/* Image Frame */}
               <motion.div
@@ -267,6 +302,5 @@ export default function AboutFounder() {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
-

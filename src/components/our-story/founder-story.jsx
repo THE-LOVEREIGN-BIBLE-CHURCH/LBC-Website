@@ -1,44 +1,49 @@
-"use client"
+"use client";
 
-import React, { useRef, useState, useEffect } from "react"
-import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import {NavLink} from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
-const belief = '/assets/img/beli.jpg'
-const founderStorymobile = '/assets/img/backgroundImages/thefounderstorymobile1.jpg'
-const founderdesktop1 = '/assets/img/backgroundImages/thefounderdesktop2.jpg'
+const belief = "/assets/img/beli.jpg";
+const founderStorymobile =
+  "/assets/img/backgroundImages/thefounderstorymobile1.jpg";
+const founderdesktop1 = "/assets/img/backgroundImages/thefounderdesktop2.jpg";
 
 const FounderStory = () => {
-  const containerRef = useRef(null)
-  const textRef = useRef(null)
-  const isInView = useInView(containerRef, { once: false, amount: 0.2 })
-  const textInView = useInView(textRef, { once: false, amount: 0.5 })
-  const [isMobile, setIsMobile] = useState(false)
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+  const textInView = useInView(textRef, { once: false, amount: 0.5 });
+  const [isMobile, setIsMobile] = useState(false);
 
   // Check if mobile on mount and when window resizes
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
     // Initial check
-    checkIfMobile()
+    checkIfMobile();
 
     // Add event listener for window resize
-    window.addEventListener("resize", checkIfMobile)
+    window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkIfMobile)
-  }, [])
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  })
+  });
 
   // Parallax effect for background
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.6, 1, 1, 0.6])
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.8, 1],
+    [0.6, 1, 1, 0.6],
+  );
 
   // Text animation variants
   const titleVariants = {
@@ -51,7 +56,7 @@ const FounderStory = () => {
         ease: [0.25, 0.1, 0.25, 1],
       },
     },
-  }
+  };
 
   // Staggered text animation for paragraph
   const textVariants = {
@@ -64,7 +69,7 @@ const FounderStory = () => {
         duration: 0.5,
       },
     },
-  }
+  };
 
   const letterVariants = {
     hidden: { opacity: 0, y: 10 },
@@ -73,18 +78,22 @@ const FounderStory = () => {
       y: 0,
       transition: { duration: 0.3 },
     },
-  }
+  };
 
   // Split text into words and characters for animation
   const text =
-    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 1st December 2013. Starting as a small gathering and growing into a thriving place of worship, today it continues to fulfill its mission of bringing hope, healing, and transformation through Christ."
-  const words = text.split(" ")
+    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 1st December 2013. What started as a small gathering grew into a thriving place of worship and today continues to fulfil it's mission pf bringing hope,healing and transformation through Christ.";
+  const words = text.split(" ");
 
   // Dynamically select background image based on screen size
-  const backgroundImage = isMobile ? founderStorymobile : founderdesktop1
+  const backgroundImage = isMobile ? founderStorymobile : founderdesktop1;
 
   return (
-    <motion.div ref={containerRef} className="relative h-screen w-full overflow-hidden" style={{ opacity }}>
+    <motion.div
+      ref={containerRef}
+      className="relative h-screen w-full overflow-hidden"
+      style={{ opacity }}
+    >
       {/* Background image with parallax */}
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
@@ -169,22 +178,22 @@ const FounderStory = () => {
 
         {/* Call-to-Action Button with enhanced animation */}
         <NavLink to="/founder">
-        <motion.button
-          className="mt-10 md:mt-16 px-8 py-2.5 border border-purple-300/30 text-purple-100 rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-purple-900/20 transition-all duration-300"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: "rgba(139, 92, 246, 0.15)",
-            borderColor: "rgba(139, 92, 246, 0.5)",
-            boxShadow: "0 0 15px rgba(139, 92, 246, 0.3)",
-            transition: { duration: 0.2 },
-          }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Learn More
-        </motion.button>
+          <motion.button
+            className="mt-10 md:mt-16 px-8 py-2.5 border border-purple-300/30 text-purple-100 rounded-full text-xs md:text-sm tracking-widest uppercase font-light hover:bg-purple-900/20 transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "rgba(139, 92, 246, 0.15)",
+              borderColor: "rgba(139, 92, 246, 0.5)",
+              boxShadow: "0 0 15px rgba(139, 92, 246, 0.3)",
+              transition: { duration: 0.2 },
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Learn More
+          </motion.button>
         </NavLink>
       </div>
 
@@ -199,7 +208,11 @@ const FounderStory = () => {
           className="w-5 h-9 border border-white/30 rounded-full flex justify-center p-1"
           initial={{ opacity: 0.5 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+          transition={{
+            duration: 1.5,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
         >
           <motion.div
             className="w-1 h-1.5 bg-white/70 rounded-full"
@@ -229,8 +242,7 @@ const FounderStory = () => {
         </motion.p>
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default FounderStory
-
+export default FounderStory;

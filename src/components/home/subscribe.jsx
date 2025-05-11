@@ -82,8 +82,8 @@ export default function Subscribe() {
               />
 
               <p className="text-sm md:text-base leading-relaxed text-white/80 font-light max-w-sm">
-                From anywhere in the world, join our online service experience
-                and be part of our growing community.
+                From anywhere in the world, you can join our online service
+                experience and be part of our growing community.
               </p>
             </motion.div>
           </div>

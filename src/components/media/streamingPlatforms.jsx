@@ -32,7 +32,7 @@ const StreamingPlatforms = () => {
       name: "YouTube",
       icon: <Youtube className="text-red-500" size={24} />,
       description:
-        "Watch our latest content, interviews, and behind-the-scenes footage on YouTube.",
+        "Watch our latest content, interviews, and behind-the-scenes footages on YouTube.",
       cta: "Subscribe Now",
       ctaIcon: <Youtube size={14} />,
       url: "https://www.youtube.com/@lovereignbiblechurch",
@@ -167,8 +167,8 @@ const StreamingPlatforms = () => {
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-base font-light">
-            Connect with us across multiple platforms and never miss our latest
-            content
+            Connect with us across multiple platforms so you never miss out on
+            our latest content
           </p>
         </motion.div>
 

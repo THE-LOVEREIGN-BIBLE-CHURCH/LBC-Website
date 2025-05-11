@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, EffectCards } from "swiper/modules";
-import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import Slider from "react-slick";
+import { motion } from "framer-motion";
 import {
   Calendar,
   Clock,
@@ -11,94 +10,52 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-cards";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const bookLaunch = "/assets/img/flyers/trilogy.jpeg";
-const businessmen = "/assets/img/flyers/businessmen.jpeg";
-const wordexplosion = "/assets/img/flyers/wordexplosion.jpeg";
-const newEvent1 = "/assets/img/flyers/newEvent.jpeg";
+const events = [
+  {
+    image: "/assets/img/flyers/newEvent.jpeg",
+    title: "Business Plan Workshop",
+    date: "12th May, 2025",
+    time: "7:00PM GMT",
+    description: "",
+    phone: "024 237 1411",
+  },
+  {
+    image: "/assets/img/flyers/wordexplosion.jpeg",
+    title: "Word Explosion Conference",
+    date: "14th - 15th May 2025",
+    time: "6:00PM GMT Each Night",
+    description: "",
+    phone: "024 237 1411",
+  },
+  {
+    image: "/assets/img/flyers/businessmen.jpeg",
+    title: "Apostolic Encounter",
+    date: "22nd - 23rd May 2025",
+    time: "6:00PM GMT Each Night",
+    description: "",
+    phone: "024 237 1411",
+  },
+  {
+    image: "/assets/img/flyers/trilogy.jpeg",
+    title: "The Triology",
+    date: "8th June 2025",
+    time: "2:00PM GMT",
+    description: "",
+    phone: "024 237 1411",
+  },
+];
 
 export default function Announce() {
-  const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const headerRef = useRef(null);
-  useInView(headerRef, { once: false });
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const swiperRef = useRef(null);
-
-  // Initialize navigation when swiper is ready
-  const handleSwiperInit = useCallback((swiper) => {
-    swiperRef.current = swiper;
-
-    // Setup navigation after swiper is initialized
-    if (
-      swiper.params.navigation &&
-      typeof swiper.params.navigation !== "boolean"
-    ) {
-      const navigation = swiper.params.navigation;
-      navigation.prevEl = prevRef.current;
-      navigation.nextEl = nextRef.current;
-      swiper.navigation.init();
-      swiper.navigation.update();
-    }
-  }, []);
-
-  // Default events with placeholder image
-  const defaultEvents = [
-    {
-      image: newEvent1,
-      title: "Business Plan Workshop",
-      date: "12th May, 2025",
-      time: "7:00PM GMT",
-      description: "",
-      phone: "024 237 1411",
-    },
-    {
-      image: wordexplosion,
-      title: "Word Explosion Conference",
-      date: "14th - 15th May 2025",
-      time: "6:00PM GMT Each Night",
-      description: "",
-      phone: "024 237 1411",
-    },
-    {
-      image: businessmen,
-      title: "Apostolic Encounter",
-      date: "22nd - 23rd May 2025",
-      time: "6:00PM GMT Each Night",
-      description: "",
-      phone: "024 237 1411",
-    },
-    {
-      image: bookLaunch,
-      title: "The Triology",
-      date: "8th June 2025",
-      time: "2:00PM GMT",
-      description: "",
-      phone: "024 237 1411",
-    },
-  ];
+  const sliderRef = useRef(null);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        // Simulate API call with timeout
-        setTimeout(() => {
-          setEvents(defaultEvents);
-          setLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error("Error fetching events:", error);
-        setEvents(defaultEvents);
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   // Animation variants
@@ -169,6 +126,82 @@ export default function Announce() {
     );
   }
 
+  // Custom arrow components for Slick
+  const PrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 -ml-4 md:ml-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={20} />
+      </button>
+    );
+  };
+
+  const NextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 -mr-4 md:mr-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={20} />
+      </button>
+    );
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    swipe: true,
+    swipeToSlide: true,
+    touchMove: true,
+    touchThreshold: 5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          swipe: true,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipe: true,
+          swipeToSlide: true,
+          touchThreshold: 3,
+        },
+      },
+    ],
+    customPaging: (i) => (
+      <div className="w-3 h-3 mx-1 rounded-full bg-slate-600 hover:bg-teal-500 transition-colors duration-200"></div>
+    ),
+    dotsClass: "slick-dots custom-dots",
+  };
+
   return (
     <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-black via-slate-900 to-black">
       {/* Subtle texture overlay */}
@@ -192,134 +225,135 @@ export default function Announce() {
               UPCOMING EVENTS
             </h2>
             <p className="text-sm md:text-base text-slate-400 max-w-3xl mx-auto">
-              Join us for these special gatherings and be part of our community
+              Join us for these special gatherings and connect with our
+              community
             </p>
           </div>
         </div>
       </motion.div>
 
-      {/* Swiper Navigation Buttons */}
-      <div className="relative max-w-5xl mx-auto">
-        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 -ml-4 md:ml-0">
-          <button
-            ref={prevRef}
-            className="bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft size={20} />
-          </button>
-        </div>
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 -mr-4 md:mr-0">
-          <button
-            ref={nextRef}
-            className="bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
-            aria-label="Next slide"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      </div>
-
-      {/* Swiper Component */}
+      {/* Slider Component */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-5xl mx-auto swiper-container"
+        className="max-w-5xl mx-auto"
       >
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay, EffectCards]}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: true,
-            pauseOnMouseEnter: true,
-          }}
-          grabCursor={true} // Enable manual swiping
-          slidesPerView={1}
-          spaceBetween={10}
-          onSwiper={handleSwiperInit}
-          onInit={handleSwiperInit} // Additional initialization handler
-          className="pb-16"
-          breakpoints={{
-            640: { slidesPerView: 1, spaceBetween: 10 },
-            768: { slidesPerView: 2, spaceBetween: 15 },
-            1024: { slidesPerView: 3, spaceBetween: 20 },
-          }}
-          // Enable touch events for mobile swiping
-          touchEventsTarget="container"
-          simulateTouch={true}
-          touchRatio={1}
-          touchAngle={45}
-          shortSwipes={true}
-          longSwipes={true}
-          followFinger={true}
-        >
-          {events.map((event, index) => (
-            <SwiperSlide key={index} className="touch-swiper-slide">
-              <motion.div
-                variants={cardVariants}
-                className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
-                  <img
-                    src={event.image || "/placeholder.svg"}
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                    draggable="false"
-                  />
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col">
-                  <h2 className="text-2xl font-bold text-white mb-4">
-                    {event.title}
-                  </h2>
-
-                  <div className="flex flex-col space-y-2 mb-4">
-                    <div className="flex items-center text-teal-300">
-                      <Calendar size={16} className="mr-2" />
-                      <span className="text-sm">{event.date}</span>
-                    </div>
-                    <div className="flex items-center text-teal-300/80">
-                      <Clock size={16} className="mr-2" />
-                      <span className="text-sm">{event.time}</span>
-                    </div>
+        <div className="relative pb-16 touch-slider-container">
+          <Slider ref={sliderRef} {...settings} className="event-slider">
+            {events.map((event, index) => (
+              <div key={index} className="px-2">
+                <motion.div
+                  variants={cardVariants}
+                  className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
+                    <img
+                      src={event.image || "/placeholder.svg"}
+                      alt={event.title}
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      draggable="false"
+                    />
                   </div>
 
-                  <p className="text-slate-300 text-sm mb-4 flex-grow">
-                    {event.description}
-                  </p>
+                  <div className="p-6 flex-grow flex flex-col">
+                    <h2 className="text-2xl font-bold text-white mb-4">
+                      {event.title}
+                    </h2>
 
-                  <div className="mt-auto pt-4 border-t border-slate-700/30">
-                    <div className="flex items-center justify-between">
-                      <a
-                        href={`tel:${event.phone}`}
-                        className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
-                      >
-                        <Phone size={16} className="mr-2" />
-                        <span>{event.phone}</span>
-                      </a>
-                      <a href={`tel:${event.phone}`}>
-                        <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
-                          Call Now
-                        </button>
-                      </a>
+                    <div className="flex flex-col space-y-2 mb-4">
+                      <div className="flex items-center text-teal-300">
+                        <Calendar size={16} className="mr-2" />
+                        <span className="text-sm">{event.date}</span>
+                      </div>
+                      <div className="flex items-center text-teal-300/80">
+                        <Clock size={16} className="mr-2" />
+                        <span className="text-sm">{event.time}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-slate-300 text-sm mb-4 flex-grow">
+                      {event.description}
+                    </p>
+
+                    <div className="mt-auto pt-4 border-t border-slate-700/30">
+                      <div className="flex items-center justify-between">
+                        <a
+                          href={`tel:${event.phone}`}
+                          className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
+                        >
+                          <Phone size={16} className="mr-2" />
+                          <span>{event.phone}</span>
+                        </a>
+                        <a href={`tel:${event.phone}`}>
+                          <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
+                            Call Now
+                          </button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                </motion.div>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </motion.div>
+
+      {/* Custom CSS for Slick */}
+      <style jsx global>{`
+        .event-slider .slick-dots {
+          bottom: -30px;
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .event-slider .slick-dots li {
+          margin: 0;
+          width: auto;
+          height: auto;
+        }
+
+        .event-slider .slick-dots li.slick-active div {
+          background-color: rgb(20 184 166);
+          transform: scale(1.2);
+        }
+
+        .event-slider .slick-track {
+          display: flex !important;
+        }
+
+        .event-slider .slick-slide {
+          height: inherit !important;
+          display: flex !important;
+        }
+
+        .event-slider .slick-slide > div {
+          display: flex;
+          height: 100%;
+          width: 100%;
+        }
+
+        /* Improve touch handling */
+        .event-slider .slick-list {
+          touch-action: pan-y;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Ensure slides are properly sized for touch */
+        @media (max-width: 640px) {
+          .event-slider .slick-slide {
+            pointer-events: auto !important;
+          }
+
+          .event-slider .slick-track {
+            touch-action: pan-y;
+          }
+        }
+      `}</style>
     </div>
   );
 }
