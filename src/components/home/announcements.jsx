@@ -53,12 +53,6 @@ export default function Announce() {
   const [loading, setLoading] = useState(true);
   const sliderRef = useRef(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -95,35 +89,67 @@ export default function Announce() {
     },
   };
 
+  // Combined useEffect for both loading state and touch event handling
+  useEffect(() => {
+    // Set loading state to false after 1 second
+    const loadingTimer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    // Handle touch events once loading is complete and slider is initialized
+    if (!loading && sliderRef.current) {
+      const slickTrack = sliderRef.current.innerSlider?.list?.querySelector('.slick-track');
+
+      if (slickTrack) {
+        // Function to handle touch events by enabling native touch on the slider
+        const enableTouch = () => {
+          if (sliderRef.current && sliderRef.current.innerSlider) {
+            sliderRef.current.innerSlider.enableTouchMove();
+          }
+        };
+
+        slickTrack.addEventListener('touchstart', enableTouch, { passive: true });
+
+        // Clean up event listener when component unmounts
+        return () => {
+          slickTrack.removeEventListener('touchstart', enableTouch);
+          clearTimeout(loadingTimer);
+        };
+      }
+    }
+
+    return () => clearTimeout(loadingTimer);
+  }, [loading]); // Run when loading state changes
+
   if (loading) {
     return (
-      <div className="relative text-white font-instrument z-40 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          {/* Header skeleton */}
-          <div className="w-3/4 h-12 bg-gray-800 rounded-lg mx-auto mb-12 animate-pulse"></div>
+        <div className="relative text-white font-instrument z-40 px-4 bg-black">
+          <div className="max-w-7xl mx-auto">
+            {/* Header skeleton */}
+            <div className="w-3/4 h-12 bg-gray-800 rounded-lg mx-auto mb-12 animate-pulse"></div>
 
-          {/* Big text skeleton */}
-          <div className="w-full h-20 bg-gray-800/70 rounded-lg mb-12 animate-pulse"></div>
+            {/* Big text skeleton */}
+            <div className="w-full h-20 bg-gray-800/70 rounded-lg mb-12 animate-pulse"></div>
 
-          {/* Cards skeleton */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="bg-gray-800/50 rounded-xl p-6 animate-pulse"
-              >
-                <div className="w-full h-48 bg-gray-700 rounded-lg mb-4"></div>
-                <div className="w-3/4 h-6 bg-gray-700 rounded mb-4 mx-auto"></div>
-                <div className="flex justify-center gap-4 mb-4">
-                  <div className="w-24 h-4 bg-gray-700 rounded"></div>
-                  <div className="w-24 h-4 bg-gray-700 rounded"></div>
-                </div>
-                <div className="w-full h-20 bg-gray-700 rounded"></div>
-              </div>
-            ))}
+            {/* Cards skeleton */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                  <div
+                      key={i}
+                      className="bg-gray-800/50 rounded-xl p-6 animate-pulse"
+                  >
+                    <div className="w-full h-48 bg-gray-700 rounded-lg mb-4"></div>
+                    <div className="w-3/4 h-6 bg-gray-700 rounded mb-4 mx-auto"></div>
+                    <div className="flex justify-center gap-4 mb-4">
+                      <div className="w-24 h-4 bg-gray-700 rounded"></div>
+                      <div className="w-24 h-4 bg-gray-700 rounded"></div>
+                    </div>
+                    <div className="w-full h-20 bg-gray-700 rounded"></div>
+                  </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 
@@ -131,26 +157,26 @@ export default function Announce() {
   const PrevArrow = (props) => {
     const { onClick } = props;
     return (
-      <button
-        onClick={onClick}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 -ml-4 md:ml-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={20} />
-      </button>
+        <button
+            onClick={onClick}
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 -ml-4 md:ml-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
+            aria-label="Previous slide"
+        >
+          <ChevronLeft size={20} />
+        </button>
     );
   };
 
   const NextArrow = (props) => {
     const { onClick } = props;
     return (
-      <button
-        onClick={onClick}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 -mr-4 md:mr-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={20} />
-      </button>
+        <button
+            onClick={onClick}
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 -mr-4 md:mr-0 bg-slate-800/80 hover:bg-slate-700 text-white p-3 rounded-full backdrop-blur-sm border border-slate-700/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 hidden md:block"
+            aria-label="Next slide"
+        >
+          <ChevronRight size={20} />
+        </button>
     );
   };
 
@@ -168,8 +194,10 @@ export default function Announce() {
     swipe: true,
     swipeToSlide: true,
     touchMove: true,
-    touchThreshold: 1, // Adjusted for better sensitivity
-    cssEase: "ease-in-out", // Added for smoother touch interactions
+    touchThreshold: 5, // Increased from 1 to 5 for better touch sensitivity
+    cssEase: "cubic-bezier(0.23, 1, 0.32, 1)", // Using more pronounced easing
+    useCSS: true, // Ensure CSS transitions are used
+    useTransform: true, // Use CSS3 transforms
     responsive: [
       {
         breakpoint: 1024,
@@ -183,10 +211,13 @@ export default function Announce() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          dots: true,
+          arrows: false, // Hide arrows on mobile
           swipe: true,
           swipeToSlide: true,
-          touchThreshold: 2,
           touchMove: true,
+          touchThreshold: 10, // Even more sensitive on tablets
+          draggable: true, // Ensure draggable behavior
         },
       },
       {
@@ -194,117 +225,157 @@ export default function Announce() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
+          arrows: false, // Hide arrows on mobile
           swipe: true,
           swipeToSlide: true,
-          touchThreshold: 2,
           touchMove: true,
+          touchThreshold: 15, // Very sensitive on mobile
+          draggable: true, // Ensure draggable behavior
+          speed: 300, // Faster transition for mobile
         },
       },
     ],
     customPaging: (i) => (
-      <div className="w-3 h-3 mx-1 rounded-full bg-slate-600 hover:bg-teal-500 transition-colors duration-200"></div>
+        <div className="w-3 h-3 mx-1 rounded-full bg-slate-600 hover:bg-teal-500 transition-colors duration-200"></div>
     ),
     dotsClass: "slick-dots custom-dots",
   };
 
+
+
   return (
-    <div className="relative text-white font-instrument z-40 py-16 px-4 bg-gradient-to-b from-black via-slate-900 to-black -mt-48">
-      {/* Subtle texture overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-[0.03] z-10"></div>
+      <div className="relative text-white font-instrument z-10 py-16 px-4 bg-gradient-to-b from-black via-slate-900 to-black -mt-64">
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-[0.03] z-10"></div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-        <div className="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-teal-500/5 blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-teal-500/5 blur-3xl"></div>
-      </div>
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-teal-500/5 blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-teal-500/5 blur-3xl"></div>
+        </div>
 
-      <motion.div
-        variants={bigTextVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative max-w-5xl mx-auto mb-12 text-center"
-      >
-        <div className="relative">
-          <div className="relative py-6 px-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-white to-teal-300 mb-2">
-              UPCOMING EVENTS
-            </h2>
-            <p className="text-sm md:text-base text-slate-400 max-w-3xl mx-auto">
-              Join us for these special gatherings and connect with our
-              community
-            </p>
+        <motion.div
+            variants={bigTextVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative max-w-5xl mx-auto mb-12 text-center"
+        >
+          <div className="relative">
+            <div className="relative py-6 px-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-white to-teal-300 mb-2">
+                UPCOMING EVENTS
+              </h2>
+              <p className="text-sm md:text-base text-slate-400 max-w-3xl mx-auto">
+                Join us for these special gatherings and connect with our
+                community
+              </p>
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Slider Component */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="max-w-5xl mx-auto"
-      >
-        <div className="relative pb-16 touch-slider-container">
-          <Slider ref={sliderRef} {...settings} className="event-slider">
-            {events.map((event, index) => (
-              <div key={index} className="px-2">
-                <motion.div
-                  variants={cardVariants}
-                  className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
-                    <img
-                      src={event.image || "/placeholder.svg"}
-                      alt={event.title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                      draggable="false"
-                    />
+        {/* Slider Component */}
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-5xl mx-auto"
+        >
+          <div className="relative pb-16 touch-pan-y touch-slider-container">
+            <Slider ref={sliderRef} {...settings} className="event-slider">
+              {events.map((event, index) => (
+                  <div key={index} className="px-2">
+                    <motion.div
+                        variants={cardVariants}
+                        className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
+                    >
+                      <div className="relative h-48 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
+                        <img
+                            src={event.image || "/placeholder.svg"}
+                            alt={event.title}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                            draggable="false"
+                        />
+                      </div>
+
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h2 className="text-2xl font-bold text-white mb-4">
+                          {event.title}
+                        </h2>
+
+                        <div className="flex flex-col space-y-2 mb-4">
+                          <div className="flex items-center text-teal-300">
+                            <Calendar size={16} className="mr-2" />
+                            <span className="text-sm">{event.date}</span>
+                          </div>
+                          <div className="flex items-center text-teal-300/80">
+                            <Clock size={16} className="mr-2" />
+                            <span className="text-sm">{event.time}</span>
+                          </div>
+                        </div>
+
+                        <p className="text-slate-300 text-sm mb-4 flex-grow">
+                          {event.description}
+                        </p>
+
+                        <div className="mt-auto pt-4 border-t border-slate-700/30">
+                          <div className="flex items-center justify-between">
+                            <a
+                                href={`tel:${event.phone}`}
+                                className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
+                            >
+                              <Phone size={16} className="mr-2" />
+                              <span>{event.phone}</span>
+                            </a>
+                            <a href={`tel:${event.phone}`}>
+                              <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
+                                Call Now
+                              </button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
+              ))}
+            </Slider>
+          </div>
+        </motion.div>
 
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h2 className="text-2xl font-bold text-white mb-4">
-                      {event.title}
-                    </h2>
+        {/* Add global CSS for touch issues */}
+        <style jsx global>{`
+          .slick-list {
+            overflow: visible !important;
+            overflow-x: clip !important;
+            touch-action: pan-y !important;
+          }
 
-                    <div className="flex flex-col space-y-2 mb-4">
-                      <div className="flex items-center text-teal-300">
-                        <Calendar size={16} className="mr-2" />
-                        <span className="text-sm">{event.date}</span>
-                      </div>
-                      <div className="flex items-center text-teal-300/80">
-                        <Clock size={16} className="mr-2" />
-                        <span className="text-sm">{event.time}</span>
-                      </div>
-                    </div>
+          .slick-track {
+            display: flex !important;
+            touch-action: pan-x pan-y !important;
+          }
 
-                    <p className="text-slate-300 text-sm mb-4 flex-grow">
-                      {event.description}
-                    </p>
+          .slick-slide {
+            height: auto !important;
+            pointer-events: auto !important;
+          }
 
-                    <div className="mt-auto pt-4 border-t border-slate-700/30">
-                      <div className="flex items-center justify-between">
-                        <a
-                          href={`tel:${event.phone}`}
-                          className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
-                        >
-                          <Phone size={16} className="mr-2" />
-                          <span>{event.phone}</span>
-                        </a>
-                        <a href={`tel:${event.phone}`}>
-                          <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
-                            Call Now
-                          </button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </motion.div>
-    </div>
+          @media (max-width: 640px) {
+            .slick-slide {
+              pointer-events: auto !important;
+              user-select: none !important;
+            }
+
+            .event-slider {
+              cursor: grab !important;
+            }
+
+            .event-slider:active {
+              cursor: grabbing !important;
+            }
+          }
+        `}</style>
+      </div>
   );
 }
