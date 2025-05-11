@@ -220,6 +220,60 @@ li, svg{
   }
 }
 
+.event-slider .slick-list {
+  pointer-events: auto !important;
+}
+
+.event-slider .slick-dots {
+  bottom: -30px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-slider .slick-dots li {
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+.event-slider .slick-dots li.slick-active div {
+  background-color: rgb(20 184 166);
+  transform: scale(1.2);
+}
+
+.event-slider .slick-track {
+  display: flex !important;
+}
+
+.event-slider .slick-slide {
+  height: inherit !important;
+  display: flex !important;
+}
+
+.event-slider .slick-slide > div {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Improve touch handling */
+.event-slider .slick-list {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure slides are properly sized for touch */
+@media (max-width: 640px) {
+  .event-slider .slick-slide {
+    pointer-events: auto !important;
+  }
+
+  .event-slider .slick-track {
+    touch-action: pan-y;
+  }
+}
 
 .animate-slide-bottom {
   animation: slideInFromBottom 1s ease-out forwards;

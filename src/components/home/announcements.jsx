@@ -1,5 +1,6 @@
 "use client";
 
+import "../../App.css";
 import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
@@ -167,7 +168,8 @@ export default function Announce() {
     swipe: true,
     swipeToSlide: true,
     touchMove: true,
-    touchThreshold: 5,
+    touchThreshold: 1, // Adjusted for better sensitivity
+    cssEase: "ease-in-out", // Added for smoother touch interactions
     responsive: [
       {
         breakpoint: 1024,
@@ -183,6 +185,8 @@ export default function Announce() {
           slidesToScroll: 1,
           swipe: true,
           swipeToSlide: true,
+          touchThreshold: 2,
+          touchMove: true,
         },
       },
       {
@@ -192,7 +196,8 @@ export default function Announce() {
           slidesToScroll: 1,
           swipe: true,
           swipeToSlide: true,
-          touchThreshold: 3,
+          touchThreshold: 2,
+          touchMove: true,
         },
       },
     ],
@@ -300,60 +305,6 @@ export default function Announce() {
           </Slider>
         </div>
       </motion.div>
-
-      {/* Custom CSS for Slick */}
-      <style jsx global>{`
-        .event-slider .slick-dots {
-          bottom: -30px;
-          display: flex !important;
-          justify-content: center;
-          align-items: center;
-          gap: 4px;
-        }
-
-        .event-slider .slick-dots li {
-          margin: 0;
-          width: auto;
-          height: auto;
-        }
-
-        .event-slider .slick-dots li.slick-active div {
-          background-color: rgb(20 184 166);
-          transform: scale(1.2);
-        }
-
-        .event-slider .slick-track {
-          display: flex !important;
-        }
-
-        .event-slider .slick-slide {
-          height: inherit !important;
-          display: flex !important;
-        }
-
-        .event-slider .slick-slide > div {
-          display: flex;
-          height: 100%;
-          width: 100%;
-        }
-
-        /* Improve touch handling */
-        .event-slider .slick-list {
-          touch-action: pan-y;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        /* Ensure slides are properly sized for touch */
-        @media (max-width: 640px) {
-          .event-slider .slick-slide {
-            pointer-events: auto !important;
-          }
-
-          .event-slider .slick-track {
-            touch-action: pan-y;
-          }
-        }
-      `}</style>
     </div>
   );
 }
