@@ -110,7 +110,7 @@ const StreamingPlatforms = () => {
   ];
 
   return (
-    <div className="py-12 bg-black text-white relative overflow-hidden">
+    <div className="py-12 text-white relative overflow-hidden">
       {/* Enhanced background elements with more fluid animations */}
       <div className="absolute inset-0 opacity-20">
         <motion.div

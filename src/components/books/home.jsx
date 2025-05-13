@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { ShoppingCart, Download, ExternalLink, Info } from "lucide-react";
+import { ShoppingCart, Download, Info } from "lucide-react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import SampleChapterModal from "../sampleChapterModal.jsx";
 
 const bookImage1 = "/assets/img/giftsandcallings.jpg";
 const bookImage2 = "/assets/img/systems_structures.jpg";
@@ -13,6 +14,7 @@ const bookImage3 = "/assets/img/work_of_ministry.jpg";
 export default function BooksByFounder() {
   const [books, setBooks] = useState([]);
   const [activeBook, setActiveBook] = useState(null);
+  const [showSampleChapter, setShowSampleChapter] = useState(false);
   const scrollRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ export default function BooksByFounder() {
 
       if (bookId) {
         const selectedBook = placeholderBooks.find(
-          (book) => book.id === parseInt(bookId),
+          (book) => book.id === Number.parseInt(bookId),
         );
         if (selectedBook) {
           setActiveBook(selectedBook);
@@ -100,7 +102,7 @@ export default function BooksByFounder() {
       const currentBookId = params.get("id");
 
       // Only update URL if the book ID has actually changed
-      if (!currentBookId || parseInt(currentBookId) !== activeBook.id) {
+      if (!currentBookId || Number.parseInt(currentBookId) !== activeBook.id) {
         navigate(`/books?id=${activeBook.id}`, { replace: true });
       }
     }
@@ -135,9 +137,11 @@ export default function BooksByFounder() {
     },
   };
 
-  // Added logging to debug book selection
-  console.log("Active book:", activeBook);
-  console.log("URL search params:", location.search);
+  // Function to open sample chapter modal
+  const openSampleChapter = (e) => {
+    e.preventDefault();
+    setShowSampleChapter(true);
+  };
 
   return (
     <div className="bg-transparent min-h-screen flex flex-col items-center justify-center px-3 md:px-6 py-24 relative overflow-hidden">
@@ -326,13 +330,16 @@ export default function BooksByFounder() {
                     <ShoppingCart size={12} />
                     <span>Purchase Online</span>
                   </Link>
-                  <Link
-                    to="#"
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full transition-colors border border-white/20"
+                  <button
+                    onClick={openSampleChapter}
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full transition-colors border border-white/20 group"
                   >
-                    <Download size={12} />
+                    <Download
+                      size={12}
+                      className="group-hover:animate-bounce"
+                    />
                     <span>Read Sample Chapter</span>
-                  </Link>
+                  </button>
                 </div>
               </div>
 
@@ -350,6 +357,13 @@ export default function BooksByFounder() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Sample Chapter Modal */}
+      <SampleChapterModal
+        isOpen={showSampleChapter}
+        onClose={() => setShowSampleChapter(false)}
+        book={activeBook}
+      />
     </div>
   );
 }

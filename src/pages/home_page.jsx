@@ -12,6 +12,16 @@ import Footer from "../components/footer";
 
 function HomePage() {
   return (
+    // <div
+    //   style={{
+    //     backgroundImage:
+    //       "url('/assets/img/backgroundImages/thefounderdesktop2.jpg')",
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //     backgroundRepeat: "no-repeat",
+    //     backgroundAttachment: "fixed",
+    //   }}
+    // >
     <div className="bg-black overflow-x-hidden font-instrument">
       <Home />
       <Announce />
@@ -24,6 +34,7 @@ function HomePage() {
       <Partner />
       <Footer />
     </div>
+    // </div>
   );
 }
 

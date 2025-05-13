@@ -94,21 +94,6 @@ const FounderStory = () => {
       className="relative h-screen w-full overflow-hidden"
       style={{ opacity }}
     >
-      {/* Background image with parallax */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${backgroundImage || belief})`,
-          y: bgY,
-        }}
-      />
-
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/70 z-10" />
-
-      {/* Subtle texture overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-10 z-10" />
-
       {/* Floating elements for visual interest */}
       {[...Array(3)].map((_, index) => (
         <motion.div
@@ -165,7 +150,7 @@ const FounderStory = () => {
           animate={textInView ? "visible" : "hidden"}
           className="mt-10 md:mt-16 max-w-3xl"
         >
-          <p className="text-sm md:text-base leading-relaxed text-white/80 font-light drop-shadow-sm">
+          <p className="text-sm md:text-base leading-relaxed text-white font-bold">
             {words.map((word, index) => (
               <React.Fragment key={index}>
                 <motion.span variants={letterVariants} className="inline-block">
