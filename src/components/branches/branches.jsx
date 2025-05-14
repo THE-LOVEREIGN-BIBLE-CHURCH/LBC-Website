@@ -82,7 +82,7 @@ const branchesData = [
     id: 3,
     name: "Sowutuom F Church",
     pastor: {
-      name: "Pastor Moses Frimpong",
+      name: "Pastor Moses Frimpong Boateng",
       photo: PastorMosesFrimpong,
     },
     location: "Sowutuom, Adjacent Pentecost University",
@@ -91,7 +91,7 @@ const branchesData = [
       tuesday: { time: "7:00 PM - 9:00 PM" },
       friday: { time: "6:00 PM - 8:00 PM" },
       sunday: {
-        morning: { time: "11:30 AM - 12:30 AM" },
+        morning: { time: "9:00 AM - 11:30 AM" },
         afternoon: { time: "12:30 PM - 2:30 PM" },
         evening: null,
       },
@@ -180,7 +180,7 @@ const branchesData = [
       name: "Chief Elder Charles Phillips Fiadjoe",
       photo: ChiefElderCharlesFiadjoe,
     },
-    location: "Unity Citizens University College",
+    location: "Unique Citizens University College",
     contact: "",
     services: {
       tuesday: { time: "6:30 PM - 8:30 PM" },

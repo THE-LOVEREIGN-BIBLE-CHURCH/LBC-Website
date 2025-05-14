@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/layout";
 import Home from "../components/our-story/home";
 import Rooted from "../components/our-story/rooted";
 import FounderStory from "../components/our-story/founder-story";
