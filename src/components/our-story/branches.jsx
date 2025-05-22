@@ -45,6 +45,7 @@ const CETerrickNaador = "/assets/img/church_leaders/CETerrick.jpg";
 const PastorMichaelAgbadze =
   "/assets/img/church_leaders/PastorMicahelAgbadze.png";
 const noPicture = "/assets/img/church_leaders/noPic.png";
+const ElderRaphaelAddai = "/assets/img/church_leaders/chiefElderRapheal.png";
 
 export default function ChurchLeadership() {
   const [branches, setBranches] = useState([]);
@@ -134,6 +135,36 @@ export default function ChurchLeadership() {
       image: PastorMichaelOduro,
     },
     {
+      name: "Pastor",
+      pastor: "Charles Yekple",
+      location: "Korle-Bu",
+      image: PastorCharles,
+    },
+    {
+      name: "Pastor",
+      pastor: "Abraham Tetteh",
+      location: "Kumasi",
+      image: PastorAbrahamTetteh,
+    },
+    {
+      name: "Pastor",
+      pastor: "Benjamin Quayson",
+      location: "Tema",
+      image: PastorBenjaminQuayson,
+    },
+    {
+      name: "Pastor",
+      pastor: "Vitalis Kanyerigbani",
+      location: "Winneba",
+      image: PastorVitalis,
+    },
+    {
+      name: "Pastor",
+      pastor: "Michael Agbadji",
+      location: "Bole",
+      image: PastorMichaelAgbadze,
+    },
+    {
       name: "Chief Elder",
       pastor: "Charles Phillips Fiadjoe",
       location: "Koforidua",
@@ -151,12 +182,7 @@ export default function ChurchLeadership() {
       location: "Tantra",
       image: CEHerbertTogbey,
     },
-    {
-      name: "Pastor",
-      pastor: "Michael Agbadji",
-      location: "Bole",
-      image: PastorMichaelAgbadze,
-    },
+
     {
       name: "Chief Elder",
       pastor: "Terrick Naador",
@@ -164,23 +190,12 @@ export default function ChurchLeadership() {
       image: CETerrickNaador,
     },
     {
-      name: "Pastor",
-      pastor: "Abraham Tetteh",
-      location: "Kumasi",
-      image: PastorAbrahamTetteh,
-    },
-    {
       name: "Chief Elder",
       pastor: "Essien Nana",
       location: "Cape Coast",
       image: CEElderEssienNana,
     },
-    {
-      name: "Pastor",
-      pastor: "Vitalis Kanyerigbani",
-      location: "Winneba",
-      image: PastorVitalis,
-    },
+
     {
       name: "Chief Elder",
       pastor: "Peter Hagin Wealth",
@@ -193,12 +208,7 @@ export default function ChurchLeadership() {
       location: "North Legon",
       image: CEFredAgyemang,
     },
-    {
-      name: "Pastor",
-      pastor: "Charles Yekple",
-      location: "Korle-Bu",
-      image: PastorCharles,
-    },
+
     {
       name: "Chief Elder",
       pastor: "Deladem Amekudzi",
@@ -206,22 +216,22 @@ export default function ChurchLeadership() {
       image: CEDelademAmekudzi,
     },
     {
-      name: "Pastor",
-      pastor: "Benjamin Quayson",
-      location: "Tema",
-      image: PastorBenjaminQuayson,
+      name: "Chief Elder",
+      pastor: "Frank Junior Tetteh",
+      location: "Sunyani",
+      image: FrankTettehJunior,
     },
     {
-      name: "Pastor",
+      name: "Elder",
+      pastor: "Raphael Addai",
+      location: "Legon",
+      image: ElderRaphaelAddai,
+    },
+    {
+      name: "Shepherd",
       pastor: "Kingsley Tetteh",
       location: "Abelenkpe",
       image: ShepherdKingsleyTetteh,
-    },
-    {
-      name: "Pastor",
-      pastor: "Frank Tetteh",
-      location: "Sunyani",
-      image: FrankTettehJunior,
     },
   ];
 
@@ -293,7 +303,7 @@ export default function ChurchLeadership() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 text-white">
+    <div className="min-h-screen bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 mb-60 text-white">
       <div ref={headerRef} className="max-w-5xl mx-auto text-center mb-10">
         <motion.h1
           initial={{ opacity: 0, y: -10 }}

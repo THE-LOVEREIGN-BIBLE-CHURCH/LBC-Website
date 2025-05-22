@@ -139,7 +139,7 @@ const MediaGallery = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Explore moments if faith, love and fellowship through our photo
+          Explore moments of faith, love and fellowship through our photo
           gallery. Each image tells a story of God's work in and through our
           vibrant church family.
         </motion.p>

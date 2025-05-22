@@ -82,7 +82,7 @@ const FounderStory = () => {
 
   // Split text into words and characters for animation
   const text =
-    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 1st December 2013. What started as a small gathering grew into a thriving place of worship and today continues to fulfil it's mission pf bringing hope,healing and transformation through Christ.";
+    "Pastor John Winfred received a divine calling to spread the Gospel and build a strong faith community. With prayer and dedication, the church was established on 1st December 2013. What started as a small gathering grew into a thriving place of worship and today continues to fulfil its mission 0f bringing hope, healing and transformation through Christ.";
   const words = text.split(" ");
 
   // Dynamically select background image based on screen size

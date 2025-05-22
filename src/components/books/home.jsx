@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { ShoppingCart, Download, Info } from "lucide-react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SampleChapterModal from "../sampleChapterModal.jsx";
+import PaymentInfoModal from "../payment-info-modal.jsx";
 
 const bookImage1 = "/assets/img/giftsandcallings.jpg";
 const bookImage2 = "/assets/img/systems_structures.jpg";
@@ -15,6 +16,7 @@ export default function BooksByFounder() {
   const [books, setBooks] = useState([]);
   const [activeBook, setActiveBook] = useState(null);
   const [showSampleChapter, setShowSampleChapter] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const scrollRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -141,6 +143,12 @@ export default function BooksByFounder() {
   const openSampleChapter = (e) => {
     e.preventDefault();
     setShowSampleChapter(true);
+  };
+
+  // Function to open payment modal
+  const openPaymentModal = (e) => {
+    e.preventDefault();
+    setShowPaymentModal(true);
   };
 
   return (
@@ -323,13 +331,13 @@ export default function BooksByFounder() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  <Link
-                    to="#"
+                  <button
+                    onClick={openPaymentModal}
                     className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-full transition-colors"
                   >
                     <ShoppingCart size={12} />
-                    <span>Purchase Online</span>
-                  </Link>
+                    <span>Purchase Now</span>
+                  </button>
                   <button
                     onClick={openSampleChapter}
                     className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full transition-colors border border-white/20 group"
@@ -363,6 +371,13 @@ export default function BooksByFounder() {
         isOpen={showSampleChapter}
         onClose={() => setShowSampleChapter(false)}
         book={activeBook}
+      />
+
+      {/* Payment Info Modal */}
+      <PaymentInfoModal
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        books={books}
       />
     </div>
   );

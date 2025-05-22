@@ -285,9 +285,9 @@ const Events = () => {
                         <Phone size={16} className="mr-2" />
                         <span>{event.phone}</span>
                       </a>
-                      <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
-                        Learn More
-                      </button>
+                      {/*<button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">*/}
+                      {/*  Learn More*/}
+                      {/*</button>*/}
                     </div>
                   </div>
                 </div>

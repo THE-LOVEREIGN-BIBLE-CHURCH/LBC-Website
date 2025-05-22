@@ -137,14 +137,23 @@ export default function Seat() {
                 Sunday
               </h3>
               <div className="space-y-3 text-center text-white text-sm md:text-base lg:text-lg">
-                <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
-                  8:00 AM - First Service
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  First Service
                 </p>
-                <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
-                  11:30 AM - Second Service
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  8:00 AM
                 </p>
-                <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
-                  5:00 PM - Evening Feast
+                <p className=" px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  Second Service
+                </p>
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  11:30 AM
+                </p>
+                <p className=" px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  Evening Feast
+                </p>
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  5:00 PM
                 </p>
               </div>
             </motion.div>
@@ -158,8 +167,11 @@ export default function Seat() {
                 Wednesday
               </h3>
               <div className="space-y-3 text-center text-white/90 text-sm md:text-base lg:text-lg">
-                <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
-                  6:00 PM - Midweek Service
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  Midweek Service
+                </p>
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  6:00 PM
                 </p>
               </div>
             </motion.div>
@@ -173,8 +185,11 @@ export default function Seat() {
                 Friday
               </h3>
               <div className="space-y-3 text-center text-white/90 text-sm md:text-base lg:text-lg">
-                <p className="py-1.5 px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
-                  6:00 PM - Supernatural Encounter
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  Supernatural Encounter
+                </p>
+                <p className="px-2 rounded-md bg-amber-900/10 hover:bg-amber-900/20 transition-colors">
+                  6:00 PM
                 </p>
               </div>
             </motion.div>

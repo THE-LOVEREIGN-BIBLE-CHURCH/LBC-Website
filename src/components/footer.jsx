@@ -43,10 +43,13 @@ export default function Footer() {
             </Link>
 
             <div className="space-y-3 text-slate-300 text-sm pl-1">
-              <p className="flex items-center gap-2 hover:text-blue-400 transition-colors">
-                <Phone size={16} className="text-blue-500" />
-                <span>+233 24 237 1411</span>
-              </p>
+              <a href="tel:0242371411">
+                <p className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                  <Phone size={16} className="text-blue-500" />
+                  <span>+233 24 237 1411</span>
+                </p>
+              </a>
+
               <a
                 href="mailto:info@Lovereign.org"
                 className="flex items-center gap-2 hover:text-blue-400 transition-colors"

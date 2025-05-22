@@ -38,6 +38,7 @@ const CETerrickNaador = "/assets/img/church_leaders/CETerrick.jpg";
 const noPicture = "/assets/img/church_leaders/noPic.png";
 const PastorMichaelAgbadze =
   "/assets/img/church_leaders/PastorMicahelAgbadze.png";
+const chiefElderRapheal = "/assets/img/church_leaders/chiefElderRapheal.png";
 
 const branchesData = [
   {
@@ -386,8 +387,8 @@ const branchesData = [
     id: 5,
     name: "Legon F Church",
     pastor: {
-      name: "Elder RAphael Addai",
-      photo: noPicture,
+      name: "Elder Raphael Addai",
+      photo: chiefElderRapheal,
     },
     location: "Legon Main Campus",
     contact: "+233 24 678 9543",

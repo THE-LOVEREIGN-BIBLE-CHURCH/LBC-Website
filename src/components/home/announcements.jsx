@@ -16,28 +16,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 const events = [
   {
-    image: "/assets/img/flyers/newEvent.jpeg",
-    title: "Business Plan Workshop",
-    date: "12th May, 2025",
-    time: "7:00PM GMT",
-    description: "",
-    phone: "024 237 1411",
-  },
-  {
-    image: "/assets/img/flyers/wordexplosion.jpeg",
-    title: "Word Explosion Conference",
-    date: "14th - 15th May 2025",
-    time: "6:00PM GMT Each Night",
-    description: "",
-    phone: "024 237 1411",
-  },
-  {
     image: "/assets/img/flyers/businessmen.jpeg",
     title: "Apostolic Encounter",
     date: "22nd - 23rd May 2025",
     time: "6:00PM GMT Each Night",
     description: "",
-    phone: "024 237 1411",
+    phone: "0242371411",
   },
   {
     image: "/assets/img/flyers/trilogy.jpeg",
@@ -45,7 +29,7 @@ const events = [
     date: "8th June 2025",
     time: "2:00PM GMT",
     description: "",
-    phone: "024 237 1411",
+    phone: "0242371411",
   },
 ];
 
@@ -155,38 +139,34 @@ export default function Announce() {
   };
 
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: events.length > 1,
+    infinite: events.length > 1,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: Math.min(3, events.length),
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: events.length > 3,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    swipe: true,
+    swipe: events.length > 1,
     swipeToSlide: true,
     touchMove: true,
-    touchThreshold: 1, // Adjusted for better sensitivity
-    cssEase: "ease-in-out", // Added for smoother touch interactions
+    touchThreshold: 1,
+    cssEase: "ease-in-out",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: Math.min(3, events.length),
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: Math.min(2, events.length),
           slidesToScroll: 1,
-          swipe: true,
-          swipeToSlide: true,
-          touchThreshold: 2,
-          touchMove: true,
         },
       },
       {
@@ -194,10 +174,6 @@ export default function Announce() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          swipe: true,
-          swipeToSlide: true,
-          touchThreshold: 2,
-          touchMove: true,
         },
       },
     ],
@@ -285,17 +261,22 @@ export default function Announce() {
                     <div className="mt-auto pt-4 border-t border-slate-700/30">
                       <div className="flex items-center justify-between">
                         <a
-                          href={`tel:${event.phone}`}
+                          href="tel:0242371411"
+                          onClick={(e) => e.stopPropagation()}
                           className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
                         >
                           <Phone size={16} className="mr-2" />
                           <span>{event.phone}</span>
                         </a>
-                        <a href={`tel:${event.phone}`}>
-                          <button className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors">
-                            Call Now
-                          </button>
-                        </a>
+                        <button
+                          onClick={(e) => {
+                            window.location.href = "tel:0242371411";
+                            e.stopPropagation();
+                          }}
+                          className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors"
+                        >
+                          Call Now
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -161,7 +161,10 @@ const ContactPage = () => {
                 color: "text-blue-500",
                 bgColor: "bg-blue-500/10",
                 title: "Email",
-                details: ["info@LBC.com", "contact@LBC.com"],
+                details: [
+                  "info@lovereignbiblechurch.org",
+                  "lbcwebsite2@gmail.com",
+                ],
               },
               {
                 icon: MapPin,
