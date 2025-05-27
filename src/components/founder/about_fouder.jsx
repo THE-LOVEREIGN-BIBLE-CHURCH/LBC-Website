@@ -196,44 +196,27 @@ export default function AboutFounder() {
               </p>
             </motion.div>
 
-            <motion.div
-              className="mt-10"
-              variants={buttonVariants}
-              whileHover="hover"
-            >
-              <a
-                href="#"
-                className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 group"
-              >
-                <span>Read Full Biography</span>
-                <ArrowRight
-                  size={16}
-                  className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </a>
-            </motion.div>
-
             <motion.div className="mt-12" variants={socialVariants}>
               <p className="text-white/80 mb-4 font-medium">
                 Follow Reverend John Winfred
               </p>
               <div className="flex gap-6">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/johnwinfred.nsiahantwi"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
                   aria-label="Facebook"
                 >
                   <Facebook size={18} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/john.winfred?igsh=ZHFsNzJiZnJnejNo"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
                   aria-label="Instagram"
                 >
                   <Instagram size={18} />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/pastorwinfred?s=11"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
                   aria-label="Twitter"
                 >

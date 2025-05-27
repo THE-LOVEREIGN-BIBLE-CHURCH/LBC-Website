@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 export default function SampleChapterModal({ isOpen, onClose, book }) {
   const [loading, setLoading] = useState(true);
 
-  // Simulate loading the chapter content
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(() => {
@@ -19,21 +18,26 @@ export default function SampleChapterModal({ isOpen, onClose, book }) {
     }
   }, [isOpen]);
 
-  // Sample chapter content for each book
   const getSampleContent = (bookId) => {
     const chapters = {
       1: {
-        title: "Chapter 1: Understanding Your Calling",
+        title: "Chapter 1: The Gifts and Calling of God",
         content: `
-          <h2>Understanding Your Calling</h2>
-          <p>The concept of calling is deeply rooted in scripture. In Romans 11:29, we read that "the gifts and the calling of God are irrevocable." This profound statement reveals something essential about God's character and His relationship with us.</p>
-          <p>When God calls you, it is not a temporary assignment or a fleeting interest. It is an eternal purpose that He has designed specifically for you. Your calling is woven into the very fabric of your being—your personality, your experiences, your talents, and even your struggles.</p>
-          <h3>Discovering Your Purpose</h3>
-          <p>Many believers struggle with identifying their calling. They wonder if they've missed God's plan or if they're currently walking in it. The truth is that discovering your calling is often a journey rather than a single moment of revelation.</p>
-          <p>Consider Moses, who spent forty years in the wilderness before encountering the burning bush. Or David, who was anointed as a young shepherd but didn't take the throne until many years later. God's timing is perfect, and the process of discovering your calling is itself part of your spiritual formation.</p>
-          <p>In the pages that follow, we will explore practical steps to discern, embrace, and fulfill the unique calling that God has placed on your life...</p>
-        `,
+    <h2>The Gifts and Calling of God</h2>
+    <p>God’s gifts and calling are irrevocable, yet many struggle to fully walk in them. Why do some ministers thrive while others falter? What separates a fruitful ministry from one that fades into obscurity? Ministry is deeply spiritual; without the supernatural element, it becomes a mere social gathering. The manifestation of gifts sustains true service, marking the beginning of a believer’s walk with God. The author establishes that every biblical calling was ultimately a call to build a nation, the church, the city of God, and His tabernacle among men.</p>
+    <p>In <strong>The Gifts and Calling of God</strong>, you will discover the many gifts given to believers, all working toward a singular purpose to build the church, the nation of God. This book explores the principles, characteristics, and signs that mark the receiving and manifestation of spiritual gifts, emphasizing their divine nature in establishing God’s nation, the church, the ground, and the pillar of truth.</p>
+    <p>Through biblical insights and practical wisdom, you will gain understanding of:</p>
+    <ul>
+      <li>1. How to identify and activate your God-given gifts.</li>
+      <li>2. The role of gifts in ministry growth and impact.</li>
+      <li>3. How to follow divine pathways and receive from those God sends your way.</li>
+      <li>4. The three major categories of gifts are those that serve in support, manifest divine power, and establish leadership, authority, and spiritual governance.</li>
+    </ul>
+    <p>Whether you are a seasoned minister, just beginning your journey, or simply seeking relevance in God’s house, this book will equip you with the knowledge, wisdom, and spiritual understanding needed to walk in your calling and divine assignment with confidence and impact.</p>
+    <p>Are you ready to embrace your calling and fulfill your ministry? <strong>The Gifts and Calling of God</strong> will show you the way.</p>
+  `,
       },
+
       2: {
         title: "Chapter 1: The Foundation of Church Systems",
         content: `
@@ -55,17 +59,15 @@ export default function SampleChapterModal({ isOpen, onClose, book }) {
         `,
       },
       3: {
-        title: "Chapter 1: The Sacred Call to Ministry",
+        title: "Chapter 1: The Work Of The Ministry",
         content: `
-          <h2>The Sacred Call to Ministry</h2>
-          <p>Ministry is not merely a profession—it is a sacred calling. In Ephesians 4:11-12, Paul writes, "And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ."</p>
-          <p>This passage reveals the dual purpose of ministry: equipping God's people and building up the church. Those called to ministry work serve as both trainers and builders in God's kingdom.</p>
-          <h3>The Heart of Ministry</h3>
-          <p>At its core, ministry is about service. The Greek word for ministry, "diakonia," literally means "service." Jesus modeled this servant leadership when He washed His disciples' feet and when He declared that He came "not to be served but to serve" (Mark 10:45).</p>
-          <p>This servant-hearted approach stands in stark contrast to worldly leadership models that emphasize power, control, and personal advancement. In God's kingdom, greatness is measured by one's willingness to serve others.</p>
-          <p>Ministry also requires sacrifice. Like Paul, those in ministry often experience hardship, rejection, and personal cost. Yet these sacrifices are made willingly out of love for God and His people.</p>
-          <p>As we explore the work of ministry in this book, we will examine both the practical skills and the spiritual qualities needed to serve effectively in God's kingdom...</p>
-        `,
+    <h2>The Sacred Call to Ministry</h2>
+    <p>Ministry is a sacred calling, but it is also a battlefield, one that demands divine direction, wisdom, endurance, and unwavering commitment. Many begin with zeal, yet only those who grasp the principles, understand spiritual warfare, and receive continuous divine strategy, endure to the end.</p>
+    <p>This book explores essential aspects of ministry, including practical church work, leadership succession, the different phases of ministry, critical pitfalls to avoid, the mindset required for effective ministry, the role and responsibilities of an assistant, strategies for overcoming setbacks, preservation of ministry focus, and many other vital insights.</p>
+    <p>Whatever phase of the ministry you are in, this book will challenge, inspire, and empower you to rise above obstacles, walk in the fullness of your ministry, and fulfill the call of God on your life. </p>
+    <p>Prepare to be transformed for the work of ministry!"</p>
+
+  `,
       },
     };
 

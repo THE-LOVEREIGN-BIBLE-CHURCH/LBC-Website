@@ -90,13 +90,21 @@ function PaymentInfoModal({ isOpen, onClose, books = [] }) {
     setIsSubmitting(true);
 
     // Create order details for email
-    const orderDetails = selectedBooks.map(book =>
-      `${book.title} - Quantity: ${book.quantity} - Price: ${book.price}`
-    ).join('\n');
+    const orderDetails = selectedBooks
+      .map(
+        (book) =>
+          `${book.title} - Quantity: ${book.quantity} - Price: ${book.price}`,
+      )
+      .join("\n");
 
-    const totalAmount = selectedBooks.reduce((total, book) =>
-      total + (parseFloat(book.price.replace(/[^0-9.]/g, '')) * book.quantity), 0
-    ).toFixed(2);
+    const totalAmount = selectedBooks
+      .reduce(
+        (total, book) =>
+          total +
+          parseFloat(book.price.replace(/[^0-9.]/g, "")) * book.quantity,
+        0,
+      )
+      .toFixed(2);
 
     // Prepare email template parameters
     const templateParams = {
@@ -104,37 +112,40 @@ function PaymentInfoModal({ isOpen, onClose, books = [] }) {
       phone: phoneNumber,
       order_details: orderDetails,
       total_amount: totalAmount,
-      message: `Order placed by ${name} (${phoneNumber}) for books:\n${orderDetails}\nTotal: ${totalAmount}`
+      message: `Order placed by ${name} (${phoneNumber}) for books:\n${orderDetails}\nTotal: ${totalAmount}`,
     };
 
     // Send email using emailjs
-    emailjs.send(
-      "service_cte8xrg",
-      "template_vruhehp",
-      templateParams,
-      "fN2qkg7bDDx_2te0R"
-    )
-    .then(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    emailjs
+      .send(
+        "service_cte8xrg",
+        "template_vruhehp",
+        templateParams,
+        "fN2qkg7bDDx_2te0R",
+      )
+      .then(() => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
 
-      // Log the order details
-      console.log({
-        name,
-        phoneNumber,
-        books: selectedBooks,
+        // Log the order details
+        console.log({
+          name,
+          phoneNumber,
+          books: selectedBooks,
+        });
+
+        // Close modal after showing success message
+        setTimeout(() => {
+          onClose();
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        setIsSubmitting(false);
+        alert(
+          "An error occurred while submitting your order. Please try again.",
+        );
       });
-
-      // Close modal after showing success message
-      setTimeout(() => {
-        onClose();
-      }, 3000);
-    })
-    .catch((error) => {
-      console.error("Error sending email:", error);
-      setIsSubmitting(false);
-      alert("An error occurred while submitting your order. Please try again.");
-    });
   };
 
   return (
@@ -144,7 +155,7 @@ function PaymentInfoModal({ isOpen, onClose, books = [] }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
@@ -410,8 +421,9 @@ function PaymentInfoModal({ isOpen, onClose, books = [] }) {
                     Order Submitted Successfully!
                   </h3>
                   <p className="text-blue-100/80 text-sm mb-6">
-                    Thank you for your order. Your order details have been sent via email, and we'll contact you shortly to
-                    confirm your purchase.
+                    Thank you for your order. Your order details have been sent
+                    via email, and we'll contact you shortly to confirm your
+                    purchase.
                   </p>
                 </div>
               )}
