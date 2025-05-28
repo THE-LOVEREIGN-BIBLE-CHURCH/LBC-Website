@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { ExternalLink } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
-const bookImage1 = '/assets/img/giftsandcallings.jpg'
-const bookImage2 = '/assets/img/systems_structures.jpg'
-const bookImage3 = '/assets/img/work_of_ministry.jpg'
+const bookImage1 = "/assets/img/giftsandcallings.jpg";
+const bookImage2 = "/assets/img/systems_structures.jpg";
+const bookImage3 = "/assets/img/work_of_ministry.jpg";
 
 export default function Books() {
-  const [books, setBooks] = useState([]) // State to store book data
-  const navigate = useNavigate() // Hook for programmatic navigation
+  const [books, setBooks] = useState([]); // State to store book data
+  const navigate = useNavigate(); // Hook for programmatic navigation
 
   // Simulate API call with book information
   useEffect(() => {
@@ -19,11 +19,11 @@ export default function Books() {
       const placeholderBooks = [
         {
           id: 1,
-          title: "The Gifts and Callings of God",
+          title: "The Gifts and Calling of God",
           image: bookImage1,
           description:
-              "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
-          price: "$10",
+            "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
+          price: "$20",
           pages: 220,
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
@@ -34,7 +34,7 @@ export default function Books() {
           title: "Church Systems and Strutures For Growth",
           image: bookImage2,
           description:
-              "Church Systems and Structures for Growth equips church leaders with 13 essential systems to strengthen governance, develop leaders, and drive sustainable ministry growth. Rooted in biblical principles and real ministry experience, it offers practical tools for building a thriving church. Ideal for pastors, administrators, and anyone preparing for ministry.",
+            "Church Systems and Structures for Growth equips church leaders with 13 essential systems to strengthen governance, develop leaders, and drive sustainable ministry growth. Rooted in biblical principles and real ministry experience, it offers practical tools for building a thriving church. Ideal for pastors, administrators, and anyone preparing for ministry.",
           price: "$20",
           pages: 280,
           year: 2025,
@@ -46,24 +46,24 @@ export default function Books() {
           title: "The Work of Ministry",
           image: bookImage3,
           description:
-              "A comprehensive guide to understanding the various aspects of ministry work and how to effectively serve in your calling. This book offers wisdom for both new and experienced ministers.",
-          price: "$10",
-          pages: 310,
+            "A comprehensive guide to understanding the various aspects of ministry work and how to effectively serve in your calling. This book offers wisdom for both new and experienced ministers.",
+          price: "$20",
+          pages: 400,
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book"],
         },
-      ]
-      setBooks(placeholderBooks)
-    }
-    fetchBooks()
-  }, [])
+      ];
+      setBooks(placeholderBooks);
+    };
+    fetchBooks();
+  }, []);
 
   // Function to handle navigation to book details
   // Changed to use /books?id= to match the other component
   const handleBookDetails = (bookId) => {
-    navigate(`/books?id=${bookId}`)
-  }
+    navigate(`/books?id=${bookId}`);
+  };
 
   // Animation variants
   const containerVariants = {
@@ -74,7 +74,7 @@ export default function Books() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -83,7 +83,7 @@ export default function Books() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <div className="bg-gradient-to-b from-[#295264] to-[#152745] min-h-screen flex flex-col items-center px-4 md:px-8 py-16 relative overflow-hidden">
@@ -103,7 +103,9 @@ export default function Books() {
       >
         <div className="flex items-center justify-center md:justify-start mb-4">
           <div className="h-1 w-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-4"></div>
-          <span className="text-blue-300 uppercase tracking-wider text-sm font-medium">Coming Soon</span>
+          <span className="text-blue-300 uppercase tracking-wider text-sm font-medium">
+            Coming Soon
+          </span>
         </div>
 
         <h1 className="text-white text-[2.5rem] sm:text-[3rem] md:text-[4.5rem] leading-tight font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
@@ -111,13 +113,18 @@ export default function Books() {
         </h1>
 
         <p className="text-blue-100/80 mt-6 max-w-2xl mx-auto md:mx-0 text-lg">
-          Explore spiritual wisdom and guidance through these transformative books that have touched thousands of lives
-          around the world.
+          Explore spiritual wisdom and guidance through these transformative
+          books that have touched thousands of lives around the world.
         </p>
       </motion.div>
 
       {/* Books List */}
-      <motion.div className="w-full max-w-6xl" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.div
+        className="w-full max-w-6xl"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {books.map((book, index) => (
             <motion.div
@@ -127,7 +134,11 @@ export default function Books() {
             >
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
-                <img src={book.image || "/placeholder.svg"} alt={book.title} className="w-full h-full object-cover" />
+                <img
+                  src={book.image || "/placeholder.svg"}
+                  alt={book.title}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                   <h3 className="text-white text-xl font-bold">{book.title}</h3>
                   <p className="text-blue-200 text-sm mt-1">
@@ -137,15 +148,21 @@ export default function Books() {
               </div>
 
               <div className="p-5 flex-1 flex flex-col">
-                <p className="text-blue-100/90 text-sm mb-4 line-clamp-3">{book.description}</p>
+                <p className="text-blue-100/90 text-sm mb-4 line-clamp-3">
+                  {book.description}
+                </p>
 
                 <div className="grid grid-cols-2 gap-3 mb-4 mt-auto">
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Price</h4>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Price
+                    </h4>
                     <p className="text-white text-sm">{book.price}</p>
                   </div>
                   <div>
-                    <h4 className="text-blue-300 text-xs font-medium mb-1">Formats</h4>
+                    <h4 className="text-blue-300 text-xs font-medium mb-1">
+                      Formats
+                    </h4>
                     <p className="text-white text-sm">{book.formats[0]}, ...</p>
                   </div>
                 </div>
@@ -162,7 +179,6 @@ export default function Books() {
           ))}
         </div>
       </motion.div>
-
     </div>
-  )
+  );
 }

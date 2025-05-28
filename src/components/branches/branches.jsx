@@ -55,7 +55,7 @@ const branchesData = [
       friday: { time: "6:00 PM - 8:00 PM" },
       sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
-        afternoon: { time: "10:30 PM - 12:30 PM" },
+        afternoon: { time: "10:30 AM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:00 PM" },
       },
     },
@@ -68,13 +68,13 @@ const branchesData = [
       photo: PastorEmmanuelYartey,
     },
     location: "Abeka Free Pipe Junction",
-    contact: "+233 54 121 2641",
+    contact: "+233 54 957 0219",
     services: {
       tuesday: { time: "6:00 PM - 8:30 PM" },
       friday: { time: "6:00 PM - 8:30 PM" },
       sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
-        afternoon: { time: "10:30 PM - 12:30 PM" },
+        afternoon: { time: "10:30 AM - 12:30 PM" },
         evening: { time: "6:00 PM - 8:30 PM" },
       },
     },
@@ -112,7 +112,7 @@ const branchesData = [
       friday: { time: "7:00 PM - 8:30 PM" },
       sunday: {
         morning: { time: "9:00 AM - 11:30 AM" },
-        afternoon: { time: "12:30 AM - 2:30 PM" },
+        afternoon: { time: "12:30 PM - 2:30 PM" },
         evening: null,
       },
     },
@@ -125,13 +125,14 @@ const branchesData = [
       photo: ChiefElderCharlesFiadjoe,
     },
     location: "Koforidua Technical University, Getfund Hall",
-    contact: "",
+    contact: "+233 59 690 0722",
     services: {
-      tuesday: { time: "6:00 PM - 8:00 PM" },
+      tuesday: null,
+      thursday: { time: "6:00 PM - 8:00 PM" },
       friday: null,
       sunday: {
-        morning: { time: "2:00 PM - 4:30 PM" },
-        afternoon: null,
+        morning: null,
+        afternoon: { time: "2:00 PM - 4:30 PM" },
         evening: null,
       },
     },
@@ -143,7 +144,7 @@ const branchesData = [
       name: "Chief Elder Prosper Asamoah Mensah",
       photo: CEElderProsperAsamoah,
     },
-    location: "Royal First GAte,Pantang",
+    location: "Trassaco, First Gate",
     contact: "+233 54 739 0354",
     services: {
       tuesday: { time: "6:00 PM - 8:00 PM" },
@@ -162,8 +163,8 @@ const branchesData = [
       name: "Pastor Herbert Togbe",
       photo: CEHerbertTogbey,
     },
-    location: "",
-    contact: "",
+    location: "Adjacent Tantra Hill Roundabout",
+    contact: "+233 54 404 8436",
     services: {
       tuesday: { time: "6:00 PM - 8:30 PM" },
       friday: { time: "6:00 PM - 8:30 PM" },
@@ -182,7 +183,7 @@ const branchesData = [
       photo: ChiefElderCharlesFiadjoe,
     },
     location: "Unique Citizens University College",
-    contact: "",
+    contact: "+233 59 896 9708",
     services: {
       tuesday: { time: "6:30 PM - 8:30 PM" },
       friday: { time: "6:30 PM - 8:30 PM" },
@@ -219,8 +220,8 @@ const branchesData = [
       name: "Pastor Terrick Naador",
       photo: CETerrickNaador,
     },
-    location: "",
-    contact: "",
+    location: "Bethel Lodge Hotel",
+    contact: "+233 54 043 6862",
     services: {
       tuesday: { time: "6:00 PM - 8:30 PM" },
       friday: { time: "6:00 PM - 8:30 PM" },
@@ -254,7 +255,7 @@ const branchesData = [
     id: 12,
     name: "Cape Coast F Church",
     pastor: {
-      name: "Pastor Essien Nana",
+      name: "Pastor Essien Oppong",
       photo: CEElderEssienNana,
     },
     location: "Adjacent Saabahawk Hostel - UCC",
@@ -279,12 +280,12 @@ const branchesData = [
     location: "",
     contact: "+233 54 325 6343",
     services: {
-      tuesday: { time: "6:00 PM - 8:30 PM" },
-      friday: { time: "6:00 PM - 8:30 PM" },
+      tuesday: { time: "7:30 PM - 9:30 PM" },
+      friday: { time: "7:30 PM - 9:30 PM" },
       sunday: {
-        morning: { time: "8:00 AM - 10:30 AM" },
-        afternoon: { time: "10:40 PM - 12:30 PM" },
-        evening: { time: "6:00 PM - 8:30 PM" },
+        morning: { time: "8:30 AM - 10:30 AM" },
+        afternoon: null,
+        evening: null,
       },
     },
   },
@@ -295,7 +296,7 @@ const branchesData = [
       name: "Pastor Peter Hagin-Wealth",
       photo: CEPeterHaginWealth,
     },
-    location: "Madina Rawlings Circle",
+    location: "Madina Akosombo Junction",
     contact: "+233 53 073 0728",
     services: {
       tuesday: { time: "7:00 PM - 9:00 PM" },
@@ -372,7 +373,7 @@ const branchesData = [
       photo: ShepherdKingsleyTetteh,
     },
     contact: "+ 233 54 475 1612",
-    location: "Abelenkpe, Adjacent Santa Market",
+    location: "Abelenkpe Taxi Rank",
     services: {
       tuesday: { time: "7:00 PM - 9:00 PM" },
       friday: { time: "7:00 PM - 9:00 PM" },
@@ -411,14 +412,14 @@ const branchesData = [
     },
     location:
       " Executive Guest House (Opposite De-Ventas Hostel, Adjacent St. Vitus School)",
-    contact: "",
+    contact: "+233 24 152 2989",
     services: {
       tuesday: { time: "6:00 PM - 8:30 PM" },
       friday: { time: "6:00 PM - 8:30 PM" },
       sunday: {
         morning: { time: "8:00 AM - 10:30 AM" },
-        afternoon: { time: "10:40 PM - 12:30 PM" },
-        evening: { time: "6:00 PM - 8:30 PM" },
+        afternoon: null,
+        evening: null,
       },
     },
   },

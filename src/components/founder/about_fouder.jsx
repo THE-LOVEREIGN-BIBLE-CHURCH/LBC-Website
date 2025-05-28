@@ -181,11 +181,11 @@ export default function AboutFounder() {
               <p>
                 He is also the founder of the Young Ministers’ Network
                 International (YMNI), a growing fellowship and a network of
-                young ministers of the gospel. He is as a board member of the
-                “Healing Jesus Campaign”, an international evangelist network of
-                pastors, headed by the renowned Healing Evangelist, Mega Church
-                Pastor and Teacher, Bishop Dag Heward Mills. He is also a member
-                of the Ghana Charismatic Bishops’ Conference.
+                young ministers of the gospel. He is a board member of the
+                “Healing Jesus Campaign”, an international evangelistic network
+                of pastors, headed by the renowned Healing Evangelist, Mega
+                Church Pastor and Teacher, Bishop Dag Heward Mills. He is also a
+                member of the Ghana Charismatic Bishops’ Conference.
               </p>
               <p>
                 His aim is to prepare Gods people and arm them with an excellent

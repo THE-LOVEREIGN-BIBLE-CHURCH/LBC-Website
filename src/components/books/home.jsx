@@ -31,7 +31,7 @@ export default function BooksByFounder() {
           image: bookImage1,
           description:
             "An insightful exploration of spiritual rebirth and the transformative journey of faith. This book delves into the profound meaning of being 'born again' and how it changes one's perspective on life.",
-          price: "$10",
+          price: "$20",
           pages: "200+",
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
@@ -55,8 +55,8 @@ export default function BooksByFounder() {
           image: bookImage3,
           description:
             "A comprehensive guide to understanding the various aspects of ministry work and how to effectively serve in your calling. This book offers wisdom for both new and experienced ministers.",
-          price: "$10",
-          pages: "200+",
+          price: "$20",
+          pages: "400+",
           year: 2025,
           availableAt: ["Amazon", "Church Bookstore", "Christian Bookshops"],
           formats: ["Hardcover", "Paperback", "E-Book"],

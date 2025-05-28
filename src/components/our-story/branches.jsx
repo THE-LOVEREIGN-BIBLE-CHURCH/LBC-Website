@@ -159,7 +159,7 @@ export default function ChurchLeadership() {
       image: PastorVitalis,
     },
     {
-      name: "Pastor",
+      name: "Chief Elder",
       pastor: "Michael Agbadji",
       location: "Bole",
       image: PastorMichaelAgbadze,
@@ -223,15 +223,15 @@ export default function ChurchLeadership() {
     },
     {
       name: "Elder",
-      pastor: "Raphael Addai",
-      location: "Legon",
-      image: ElderRaphaelAddai,
-    },
-    {
-      name: "Shepherd",
       pastor: "Kingsley Tetteh",
       location: "Abelenkpe",
       image: ShepherdKingsleyTetteh,
+    },
+    {
+      name: "Elder",
+      pastor: "Raphael Addai",
+      location: "Legon",
+      image: ElderRaphaelAddai,
     },
   ];
 
