@@ -16,18 +16,26 @@ import "slick-carousel/slick/slick-theme.css";
 
 const events = [
   {
-    image: "/assets/img/flyers/businessmen.jpeg",
-    title: "Apostolic Encounter",
-    date: "22nd - 23rd May 2025",
-    time: "6:00PM GMT Each Night",
+    image: "/assets/img/flyers/newprogram1.JPG",
+    title: "Academic Conference",
+    date: "25th - 27th June 2025",
+    time: {
+    morning: null,
+    afternoon: null,
+    evening: "6:00 PM GMT",
+  },
     description: "",
     phone: "0242371411",
   },
   {
-    image: "/assets/img/flyers/trilogy.jpeg",
-    title: "The Triology",
-    date: "8th June 2025",
-    time: "2:00PM GMT",
+    image: "/assets/img/flyers/newprogram2.JPG",
+    title: "Young Ministers Conference",
+    date: "25th - 27th June 2025",
+    time: {
+      morning: "9:00 AM GMT",
+      afternoon: null,
+      evening: "6:00 PM GMT",
+    },
     description: "",
     phone: "0242371411",
   },
@@ -248,10 +256,20 @@ export default function Announce() {
                         <Calendar size={16} className="mr-2" />
                         <span className="text-sm">{event.date}</span>
                       </div>
-                      <div className="flex items-center text-teal-300/80">
+                      {event.time.morning && (  <div className="flex items-center text-teal-300/80">
                         <Clock size={16} className="mr-2" />
-                        <span className="text-sm">{event.time}</span>
-                      </div>
+                        <span className="text-sm">Morning Session: {event.time.morning}</span>
+                      </div>)}
+                      {event.time.afternoon && (<div className="flex items-center text-teal-300/80">
+                        <Clock size={16} className="mr-2" />
+                        <span className="text-sm">Afternoon Session: {event.time.afternoon}</span>
+                      </div>)}
+
+                      {event.time.evening && ( <div className="flex items-center text-teal-300/80">
+                        <Clock size={16} className="mr-2" />
+                        <span className="text-sm">Evening Session: {event.time.evening}</span>
+                      </div>)}
+
                     </div>
 
                     <p className="text-slate-300 text-sm mb-4 flex-grow">
