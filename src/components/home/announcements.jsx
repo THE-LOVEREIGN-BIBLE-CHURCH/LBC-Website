@@ -30,7 +30,7 @@ const events = [
   {
     image: "/assets/img/flyers/newprogram2.JPG",
     title: "Young Ministers Conference",
-    date: "25th - 27th June 2025",
+    date: "16th - 18th July 2025",
     time: {
       morning: "9:00 AM GMT",
       afternoon: null,
