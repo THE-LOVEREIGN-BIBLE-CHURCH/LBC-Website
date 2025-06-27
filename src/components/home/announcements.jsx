@@ -22,7 +22,7 @@ const events = [
     time: {
     morning: null,
     afternoon: null,
-    evening: "6:00 PM GMT",
+    evening: "6:00 PM",
   },
     description: "",
     phone: "0242371411",
@@ -32,9 +32,9 @@ const events = [
     title: "Young Ministers Conference",
     date: "16th - 18th July 2025",
     time: {
-      morning: "9:00 AM GMT",
+      morning: "9:00 AM",
       afternoon: null,
-      evening: "6:00 PM GMT",
+      evening: "6:00 PM",
     },
     description: "",
     phone: "0242371411",
