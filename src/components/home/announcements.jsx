@@ -20,10 +20,10 @@ const events = [
     title: "Academic Conference",
     date: "25th - 27th June 2025",
     time: {
-    morning: null,
-    afternoon: null,
-    evening: "6:00 PM",
-  },
+      morning: null,
+      afternoon: null,
+      evening: "6:00 PM",
+    },
     description: "",
     phone: "0242371411",
   },
@@ -152,7 +152,7 @@ export default function Announce() {
     speed: 500,
     slidesToShow: Math.min(3, events.length),
     slidesToScroll: 1,
-    autoplay: events.length > 3,
+    autoplay: true, // Ensure autoplay is always enabled
     autoplaySpeed: 3000,
     pauseOnHover: true,
     prevArrow: <PrevArrow />,
@@ -256,20 +256,31 @@ export default function Announce() {
                         <Calendar size={16} className="mr-2" />
                         <span className="text-sm">{event.date}</span>
                       </div>
-                      {event.time.morning && (  <div className="flex items-center text-teal-300/80">
-                        <Clock size={16} className="mr-2" />
-                        <span className="text-sm">Morning Session: {event.time.morning}</span>
-                      </div>)}
-                      {event.time.afternoon && (<div className="flex items-center text-teal-300/80">
-                        <Clock size={16} className="mr-2" />
-                        <span className="text-sm">Afternoon Session: {event.time.afternoon}</span>
-                      </div>)}
+                      {event.time.morning && (
+                        <div className="flex items-center text-teal-300/80">
+                          <Clock size={16} className="mr-2" />
+                          <span className="text-sm">
+                            Morning Session: {event.time.morning}
+                          </span>
+                        </div>
+                      )}
+                      {event.time.afternoon && (
+                        <div className="flex items-center text-teal-300/80">
+                          <Clock size={16} className="mr-2" />
+                          <span className="text-sm">
+                            Afternoon Session: {event.time.afternoon}
+                          </span>
+                        </div>
+                      )}
 
-                      {event.time.evening && ( <div className="flex items-center text-teal-300/80">
-                        <Clock size={16} className="mr-2" />
-                        <span className="text-sm">Evening Session: {event.time.evening}</span>
-                      </div>)}
-
+                      {event.time.evening && (
+                        <div className="flex items-center text-teal-300/80">
+                          <Clock size={16} className="mr-2" />
+                          <span className="text-sm">
+                            Evening Session: {event.time.evening}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <p className="text-slate-300 text-sm mb-4 flex-grow">
