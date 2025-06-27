@@ -182,6 +182,7 @@ export default function Announce() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          autoplay: events.length > 1,
         },
       },
     ],
