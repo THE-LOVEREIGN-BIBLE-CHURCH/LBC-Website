@@ -251,7 +251,7 @@ export default function Announce() {
                     <img
                       src={events[0].image || "/placeholder.svg"}
                       alt={events[0].title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      className="w-full h-full object-contain transition-transform duration-700 hover:scale-110"
                       draggable="false"
                     />
                   </div>
@@ -315,14 +315,14 @@ export default function Announce() {
                 <div key={index} className="px-2">
                   <motion.div
                     variants={cardVariants}
-                    className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl min-h-[400px]"
+                    className=" backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl min-h-[400px]"
                   >
                     <div className="relative h-64 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
                       <img
                         src={event.image || "/placeholder.svg"}
                         alt={event.title}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        className="w-full h-full object-contain transition-transform duration-700 hover:scale-110"
                         draggable="false"
                       />
                     </div>
