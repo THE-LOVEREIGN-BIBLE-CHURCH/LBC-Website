@@ -16,18 +16,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const events = [
   {
-    image: "/assets/img/flyers/newprogram1.JPG",
-    title: "Academic Conference",
-    date: "25th - 27th June 2025",
-    time: {
-      morning: null,
-      afternoon: null,
-      evening: "6:00 PM",
-    },
-    description: "",
-    phone: "0242371411",
-  },
-  {
     image: "/assets/img/flyers/newprogram2.JPG",
     title: "Young Ministers Conference",
     date: "16th - 18th July 2025",
@@ -35,6 +23,18 @@ const events = [
       morning: "9:00 AM",
       afternoon: null,
       evening: "6:00 PM",
+    },
+    description: "",
+    phone: "0242371411",
+  },
+  {
+    image: "/assets/img/flyers/prophetic_conference.jpeg",
+    title: "Prophetic Conference",
+    date: "24th - 25th July 2025",
+    time: {
+      morning: null,
+      afternoon: null,
+      evening: "6:00 PM Each Night",
     },
     description: "",
     phone: "0242371411",
@@ -93,10 +93,8 @@ export default function Announce() {
         <div className="max-w-7xl mx-auto">
           {/* Header skeleton */}
           <div className="w-3/4 h-12 bg-gray-800 rounded-lg mx-auto mb-12 animate-pulse"></div>
-
           {/* Big text skeleton */}
           <div className="w-full h-20 bg-gray-800/70 rounded-lg mb-12 animate-pulse"></div>
-
           {/* Cards skeleton */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -146,35 +144,44 @@ export default function Announce() {
     );
   };
 
+  // Determine if we should show slider controls
+  const showSliderControls = events.length > 1;
+
   const settings = {
-    dots: events.length > 1,
-    infinite: events.length > 1,
+    dots: showSliderControls,
+    infinite: showSliderControls,
     speed: 500,
-    slidesToShow: Math.min(3, events.length),
+    slidesToShow: events.length === 1 ? 1 : Math.min(3, events.length),
     slidesToScroll: 1,
-    autoplay: true, // Ensure autoplay is always enabled
+    autoplay: showSliderControls,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    swipe: events.length > 1,
-    swipeToSlide: true,
-    touchMove: true,
+    prevArrow: showSliderControls ? <PrevArrow /> : null,
+    nextArrow: showSliderControls ? <NextArrow /> : null,
+    swipe: showSliderControls,
+    swipeToSlide: showSliderControls,
+    touchMove: showSliderControls,
     touchThreshold: 1,
     cssEase: "ease-in-out",
+    centerMode: events.length === 1,
+    centerPadding: events.length === 1 ? "0px" : "60px",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(3, events.length),
+          slidesToShow: events.length === 1 ? 1 : Math.min(3, events.length),
           slidesToScroll: 1,
+          centerMode: events.length === 1,
+          centerPadding: events.length === 1 ? "0px" : "40px",
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: Math.min(2, events.length),
+          slidesToShow: events.length === 1 ? 1 : Math.min(2, events.length),
           slidesToScroll: 1,
+          centerMode: events.length === 1,
+          centerPadding: events.length === 1 ? "0px" : "20px",
         },
       },
       {
@@ -182,7 +189,9 @@ export default function Announce() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          autoplay: events.length > 1,
+          autoplay: showSliderControls,
+          centerMode: true,
+          centerPadding: "20px",
         },
       },
     ],
@@ -230,64 +239,59 @@ export default function Announce() {
         className="max-w-5xl mx-auto"
       >
         <div className="relative pb-16 touch-slider-container">
-          <Slider ref={sliderRef} {...settings} className="event-slider">
-            {events.map((event, index) => (
-              <div key={index} className="px-2">
+          {events.length === 1 ? (
+            <div className="flex justify-center">
+              <div className="w-full max-w-sm mx-auto px-2">
                 <motion.div
                   variants={cardVariants}
-                  className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl"
+                  className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl min-h-[400px]"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
+                  <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
                     <img
-                      src={event.image || "/placeholder.svg"}
-                      alt={event.title}
+                      src={events[0].image || "/placeholder.svg"}
+                      alt={events[0].title}
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       draggable="false"
                     />
                   </div>
-
                   <div className="p-6 flex-grow flex flex-col">
                     <h2 className="text-2xl font-bold text-white mb-4">
-                      {event.title}
+                      {events[0].title}
                     </h2>
-
                     <div className="flex flex-col space-y-2 mb-4">
                       <div className="flex items-center text-teal-300">
                         <Calendar size={16} className="mr-2" />
-                        <span className="text-sm">{event.date}</span>
+                        <span className="text-sm">{events[0].date}</span>
                       </div>
-                      {event.time.morning && (
+                      {events[0].time.morning && (
                         <div className="flex items-center text-teal-300/80">
                           <Clock size={16} className="mr-2" />
                           <span className="text-sm">
-                            Morning Session: {event.time.morning}
+                            Morning Session: {events[0].time.morning}
                           </span>
                         </div>
                       )}
-                      {event.time.afternoon && (
+                      {events[0].time.afternoon && (
                         <div className="flex items-center text-teal-300/80">
                           <Clock size={16} className="mr-2" />
                           <span className="text-sm">
-                            Afternoon Session: {event.time.afternoon}
+                            Afternoon Session: {events[0].time.afternoon}
                           </span>
                         </div>
                       )}
-
-                      {event.time.evening && (
+                      {events[0].time.evening && (
                         <div className="flex items-center text-teal-300/80">
                           <Clock size={16} className="mr-2" />
                           <span className="text-sm">
-                            Evening Session: {event.time.evening}
+                            Evening Session: {events[0].time.evening}
                           </span>
                         </div>
                       )}
                     </div>
-
                     <p className="text-slate-300 text-sm mb-4 flex-grow">
-                      {event.description}
+                      {events[0].description}
                     </p>
-
                     <div className="mt-auto pt-4 border-t border-slate-700/30">
                       <div className="flex items-center justify-between">
                         <a
@@ -296,24 +300,87 @@ export default function Announce() {
                           className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
                         >
                           <Phone size={16} className="mr-2" />
-                          <span>{event.phone}</span>
+                          <span>{events[0].phone}</span>
                         </a>
-                        <button
-                          onClick={(e) => {
-                            window.location.href = "tel:0242371411";
-                            e.stopPropagation();
-                          }}
-                          className="px-4 py-2 bg-teal-600/30 hover:bg-teal-600/50 text-white text-sm rounded-full transition-colors"
-                        >
-                          Call Now
-                        </button>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               </div>
-            ))}
-          </Slider>
+            </div>
+          ) : (
+            // Multiple events - use slider
+            <Slider ref={sliderRef} {...settings} className="event-slider">
+              {events.map((event, index) => (
+                <div key={index} className="px-2">
+                  <motion.div
+                    variants={cardVariants}
+                    className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/30 shadow-xl h-full flex flex-col transform transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl min-h-[400px]"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                      <img
+                        src={event.image || "/placeholder.svg"}
+                        alt={event.title}
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        draggable="false"
+                      />
+                    </div>
+                    <div className="p-6 flex-grow flex flex-col">
+                      <h2 className="text-2xl font-bold text-white mb-4">
+                        {event.title}
+                      </h2>
+                      <div className="flex flex-col space-y-2 mb-4">
+                        <div className="flex items-center text-teal-300">
+                          <Calendar size={16} className="mr-2" />
+                          <span className="text-sm">{event.date}</span>
+                        </div>
+                        {event.time.morning && (
+                          <div className="flex items-center text-teal-300/80">
+                            <Clock size={16} className="mr-2" />
+                            <span className="text-sm">
+                              Morning Session: {event.time.morning}
+                            </span>
+                          </div>
+                        )}
+                        {event.time.afternoon && (
+                          <div className="flex items-center text-teal-300/80">
+                            <Clock size={16} className="mr-2" />
+                            <span className="text-sm">
+                              Afternoon Session: {event.time.afternoon}
+                            </span>
+                          </div>
+                        )}
+                        {event.time.evening && (
+                          <div className="flex items-center text-teal-300/80">
+                            <Clock size={16} className="mr-2" />
+                            <span className="text-sm">
+                              Evening Session: {event.time.evening}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-slate-300 text-sm mb-4 flex-grow">
+                        {event.description}
+                      </p>
+                      <div className="mt-auto pt-4 border-t border-slate-700/30">
+                        <div className="flex items-center justify-between">
+                          <a
+                            href="tel:0242371411"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center text-teal-400 hover:text-teal-300 transition-colors"
+                          >
+                            <Phone size={16} className="mr-2" />
+                            <span>{event.phone}</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </Slider>
+          )}
         </div>
       </motion.div>
     </div>
