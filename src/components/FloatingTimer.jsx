@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const FloatingTimer = () => {
@@ -12,7 +12,7 @@ const FloatingTimer = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const targetDate = new Date("July 16, 2025 09:00:00").getTime();
+    const targetDate = new Date("July 21, 2025 09:00:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -49,10 +49,10 @@ const FloatingTimer = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
         whileHover={{ scale: 1.05 }}
-        onClick={toggleModal}
+        // onClick={toggleModal}
       >
         <div className="bg-red-600 text-white rounded-full p-3 shadow-lg flex flex-col items-center justify-center">
-          <div className="text-xs font-bold">YMNI</div>
+          <div className="text-xs font-bold">Fasting and Prayers</div>
           <div className="text-sm font-bold">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
             {timeLeft.seconds}s

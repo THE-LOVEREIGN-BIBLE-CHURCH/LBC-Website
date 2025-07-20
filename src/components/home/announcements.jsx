@@ -16,13 +16,13 @@ import "slick-carousel/slick/slick-theme.css";
 
 const events = [
   {
-    image: "/assets/img/flyers/newprogram2.JPG",
-    title: "Young Ministers Conference",
-    date: "16th - 18th July 2025",
+    image: "/assets/img/flyers/fasting.jpeg",
+    title: "7 Days Fasting and Prayers",
+    date: "21st - 27th July 2025",
     time: {
-      morning: "9:00 AM",
+      morning: null,
       afternoon: null,
-      evening: "6:00 PM",
+      evening: "6:00 PM EACH NIGHT",
     },
     description: "",
     phone: "0242371411",
