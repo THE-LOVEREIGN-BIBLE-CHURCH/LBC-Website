@@ -39,6 +39,18 @@ const events = [
     description: "",
     phone: "0242371411",
   },
+  {
+    image: "/assets/img/flyers/absolute_worship.jpeg",
+    title: "Absolute Worship",
+    date: "27th July 2025",
+    time: {
+      morning: null,
+      afternoon: null,
+      evening: "6:00 PM",
+    },
+    description: "",
+    phone: "0242371411",
+  },
 ];
 
 export default function Announce() {
